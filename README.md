@@ -7,6 +7,7 @@ The project will also have a complex animation system, because the game takes pl
 
 The game will be evaluated by letting many different types of people play it to gauge and adjust the difficulty and to fix any bugs and exploits that might break the game. And making them play it multiple times to see how engaging it is to replay it
 
+
 ## PLan
 Research:  
 - Research different types of AI and choose which fits the game best.  
@@ -25,8 +26,9 @@ Refinement:
 - Adjust and finish animations
 - Test it further with many people
 
+
 ## Prototypes    
 ![Prototype](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDoc.png?raw=true) 
-### Background ideas
-![Background1](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png?raw=true)
-![Background2](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png?raw=true)
+### Background Environment Ideas
+![Background1](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png?raw=true)![Background2](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png?raw=true)
+
