@@ -24,12 +24,12 @@ Implementation:
 Refinement:
 - Refine and finish AI by testing it with the player character
 - Adjust and finish animations
-- Test it further with many people
+- Test it further with many people  
 
 
 ## Prototypes    
 ![Prototype](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDoc.png?raw=true) 
 ### Background Environment Ideas
-<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png" alt="Background1" width="300" height="312">
-<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png" alt="Background1" width="300" height="337"/>
+<p float="left">
+<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png" alt="Background1" width="300" height="312"><img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png" alt="Background1" width="300" height="337"/></p>
 
