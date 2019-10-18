@@ -30,6 +30,6 @@ Refinement:
 ## Prototypes    
 ![Prototype](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDoc.png?raw=true) 
 ### Background Environment Ideas
-<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png" alt="Background1" width="600" height="625" />
-<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png" alt="Background1" width="600" height="675" />
+<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep1.png" alt="Background1" width="300" height="612" />
+<img src="https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDocPrep2.png" alt="Background1" width="300" height="337" />
 
