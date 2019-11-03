@@ -74,11 +74,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        if (run)
+        if (run) //running
         {
             rb.velocity = new Vector2(move * speed * 3, rb.velocity.y);
         }
-        else
+        else //walking
         {
             rb.velocity = new Vector2(move * speed, rb.velocity.y);
         }
