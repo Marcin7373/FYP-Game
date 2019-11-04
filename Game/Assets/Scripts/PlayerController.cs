@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float fallMult = 1.5f;
     public float lowJumpMult = 0.1f;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

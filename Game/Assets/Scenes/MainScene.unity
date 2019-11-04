@@ -263,6 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ad56ff8d2a9de44974af8c6fe0fbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyes: {fileID: 293948730}
+  redSprite:
+  - {fileID: 21300000, guid: ff4e41386527d6f4da1ea8384eb5f0b6, type: 3}
+  - {fileID: 21300000, guid: 5f8cf9b27154525438cdbcda14df99df, type: 3}
+  - {fileID: 21300000, guid: 8d4ad6c97fcb89b4a8a8c5cbbefbcee6, type: 3}
+  speed: 0.5
 --- !u!1 &194828519
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   longRadius: 10
+  behind: 0
 --- !u!61 &293948731
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -432,7 +439,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.7612729, y: -0.9873705}
+  m_Offset: {x: -2.3638973, y: -1.2090278}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -443,7 +450,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.943345, y: 5.513918}
+  m_Size: {x: 5.872011, y: 4.81866}
   m_EdgeRadius: 0
 --- !u!1 &387313103
 GameObject:
@@ -605,7 +612,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   speed: 3
-  jumpHeight: 10
+  jumpHeight: 10.2
   fallMult: 4
   lowJumpMult: 2
 --- !u!1 &519420028
