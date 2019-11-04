@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BgParallax.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />

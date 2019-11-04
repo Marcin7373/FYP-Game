@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     void MoveCamera()
     {
         //temp height, 0.3 = % above ground from player, 4.25 = offset from ground
-        float cameraHeight = (transform.position.y * 0.3f) + 4.25f;
+        float cameraHeight = (transform.position.y * 0.3f) + 3.5f;
         if (facingRight)
         {
             cameraTarget.position = new Vector2(transform.position.x + 1 +(move * cameraOffset), cameraHeight);
