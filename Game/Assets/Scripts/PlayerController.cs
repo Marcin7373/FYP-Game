@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public float speed, jumpHeight;
     private float move, cameraOffset = 3;
-    private bool jump, run, isGrounded, facingRight;
+    private bool jump, run, isGrounded, facingRight, isFalling;
 
     public float fallMult = 1.5f;
     public float lowJumpMult = 0.1f;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
         }
 
+        //Animations
         if (move != 0 && !run && isGrounded){
             animator.Play("Walk");
         }
@@ -59,17 +60,17 @@ public class PlayerController : MonoBehaviour
         //variable hight and faster fall
         if (rb.velocity.y < 0){
             rb.velocity += Vector2.up * Physics2D.gravity.y * fallMult * Time.deltaTime;
+            isFalling = true;
         }
         else if (rb.velocity.y > 0 && !jump){
             rb.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMult * Time.deltaTime;
         }
 
-        if (Physics2D.Linecast(transform.position, groundCheck.position, groundLayer))
-        {
+        if (Physics2D.Linecast(transform.position, groundCheck.position, groundLayer)){
             isGrounded = true;
+            isFalling = false;
         }
-        else
-        {
+        else {
             isGrounded = false;
         }
 

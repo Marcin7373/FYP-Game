@@ -6,6 +6,7 @@ public class BgParallax : MonoBehaviour
 {
     public Transform[] backgrounds;
     public float smoothing = 1f;
+    private float bgTargetPosX, bgTargetPosY;
 
     private Transform cam;
     private Vector3 previousCamPos;
@@ -24,9 +25,9 @@ public class BgParallax : MonoBehaviour
     {
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            float parallax = (previousCamPos.x - cam.position.x) * backgrounds[i].position.z * -1;
-            float backgroundTargetPosX = backgrounds[i].position.x + parallax;
-            Vector3 backgroundTargetPos = new Vector3(backgroundTargetPosX, backgrounds[i].position.y, backgrounds[i].position.z);
+            bgTargetPosX = backgrounds[i].position.x + ((previousCamPos.x - cam.position.x) * -backgrounds[i].position.z);
+            bgTargetPosY = backgrounds[i].position.y + ((previousCamPos.y - cam.position.y) * -backgrounds[i].position.z);
+            Vector3 backgroundTargetPos = new Vector3(bgTargetPosX, bgTargetPosY, backgrounds[i].position.z);
 
             backgrounds[i].position = Vector3.Lerp(backgrounds[i].position, backgroundTargetPos, smoothing * Time.deltaTime);
         }
