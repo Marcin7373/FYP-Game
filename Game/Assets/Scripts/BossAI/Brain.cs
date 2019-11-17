@@ -13,15 +13,20 @@ public class Brain : MonoBehaviour
     private Rigidbody2D rb;
     private Hashtable playerInfo = new Hashtable();
 
+    UAI_Agent agent;
+    public UAI_PropertyBoundedFloat playerDistance, timeUndetected;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sRenderer = GetComponent<SpriteRenderer>();
+        sRenderer = GetComponent<SpriteRenderer>();    
     }
 
     void Start()
     {
-        
+        agent = GetComponent<UAI_Agent>();
+        agent.SetVoidActionDelegate("Run", Run);
+        agent.SetVoidActionDelegate("Look", Look);
     }
 
     void Update()
@@ -30,7 +35,50 @@ public class Brain : MonoBehaviour
         playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
         {
-            SensorResponse();
+            //SensorResponse();
+        }
+
+        if (playerInfo["position"] != null && (float)playerInfo["timePassed"] < 1f)
+        {
+            playerDistance.value = (transform.position - (Vector3)playerInfo["position"]).magnitude;
+        } else
+        {
+            playerDistance.value = 10f;
+        }
+
+        if ((float)playerInfo["timePassed"] < 2f) {
+            timeUndetected.value = (float)playerInfo["timePassed"];
+        }
+        else
+        {
+            timeUndetected.value = 2f;
+        }
+        agent.UpdateAI();
+    }
+
+    void Run()
+    {
+        if (faceLeft)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else if (!faceLeft)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+    }
+
+    void Look()
+    {
+        if (faceLeft)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+            faceLeft = false;
+        }
+        else if (!faceLeft)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+            faceLeft = true;
         }
     }
 

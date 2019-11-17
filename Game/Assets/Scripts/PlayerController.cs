@@ -45,7 +45,11 @@ public class PlayerController : MonoBehaviour
         else if (run && move != 0 && isGrounded){
             animator.Play("Run");
         }
-        else if (!isGrounded){
+        else if (!isGrounded && !isFalling){
+            animator.Play("Jump");
+        }
+        else if (!isGrounded && isFalling)
+        {
             animator.Play("Jump");
         }
         else{

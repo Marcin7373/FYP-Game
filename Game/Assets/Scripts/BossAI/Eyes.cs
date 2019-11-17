@@ -9,6 +9,12 @@ public class Eyes : MonoBehaviour
     public Hashtable playerInfo = new Hashtable();
     public List<RaycastHit2D> rays = new List<RaycastHit2D>();
 
+    private void Awake()
+    {
+        playerInfo["timePassed"] = 0.0f;
+        playerInfo["position"] = null;
+    }
+
     void Update()
     {
         rays.Clear();
@@ -40,6 +46,10 @@ public class Eyes : MonoBehaviour
                 playerInfo["velocity"] = rays[i].collider.gameObject.GetComponent<Rigidbody2D>().velocity;
                 timePassed = 0;
                 break;
+            }
+            else
+            {
+                playerInfo["position"] = transform.position;
             }
         }
         playerInfo["timePassed"] = timePassed;
