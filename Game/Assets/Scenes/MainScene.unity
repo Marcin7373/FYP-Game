@@ -316,9 +316,9 @@ MonoBehaviour:
     m_Bits: 1280
   speed: 3
   jumpHeight: 10.2
-  savedVelocity: 0
-  fallMult: 4
   lowJumpMult: 2
+  fallMult: 4
+  controller: 1
 --- !u!1 &194828519
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194828519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2, y: 4.34, z: 0}
+  m_LocalPosition: {x: 3, y: 4.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 387313105}
@@ -851,9 +851,9 @@ MonoBehaviour:
     m_Bits: 1280
   speed: 3
   jumpHeight: 10.2
-  savedVelocity: 0
-  fallMult: 4
   lowJumpMult: 2
+  fallMult: 4
+  controller: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 4.44, z: -20}
+  m_LocalPosition: {x: -0.83, y: 3.97, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

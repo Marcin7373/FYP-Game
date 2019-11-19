@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,13 +6,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
-    public float speed, jumpHeight;
-    private float move, cameraOffset = 3, dashCooldown = 0;
-    private bool jump, run, isGrounded, facingRight, isFalling, crouch, dash, busy = false;
-    public float savedVelocity;
-
-    public float fallMult = 1.5f;
-    public float lowJumpMult = 0.1f;
+    public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
+    private float move, cameraPan, cameraOffset = 3, dashCooldown = 0;
+    private bool jump, run, isGrounded, isFalling, crouch, dashing = false;
+    public bool controller = true;
 
     void Awake()
     {
@@ -24,52 +19,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Input
-        move = Input.GetAxisRaw("Horizontal");
-        crouch = Input.GetKey("n");
-        if (!busy)
-        {
-            dash = Input.GetKeyDown("b");
-        }
-        jump = Input.GetButton("Jump");
-        run = Input.GetButton("Fire1");
+        ControllerInput();
 
         //inverting sprite for facing direction
-        if (move < 0){
-            facingRight = false;
+        if (move < 0 && !dashing) {
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-        }
-        else if (move > 0){
-            facingRight = true;
+        } else if (move > 0 && !dashing)
+        {
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
         }
 
         //Animations
-        if (busy)
-        {
+        if (dashing && isGrounded){
             animator.Play("Dash");
         }
-        if (move != 0 && !run && isGrounded){
-            animator.Play("Walk");
-        }
-        else if (run && move != 0 && isGrounded){
-            animator.Play("Run");
-        }
-        else if (!isGrounded && rb.velocity.y < 6 & rb.velocity.y > -4)
-        {
+        else if (!isGrounded && rb.velocity.y < 6 & rb.velocity.y > -4){
             animator.Play("JumpPeak");
         }
         else if (!isGrounded && !isFalling){
             animator.Play("Jump");
         }
-        else if (isFalling)
-        {
+        else if (isFalling){
             animator.Play("Falling");
         }
-        else if (crouch)
-        {
+        else if (crouch){
             animator.Play("Crouch");
         }
+        else if (move != 0 && !run && isGrounded){
+            animator.Play("Walk");
+        }
+        else if (run && move != 0 && isGrounded){
+            animator.Play("Run");
+        }                           //finding peak of = velocity.y < at peak
         else{
             animator.Play("Idle");
         }
@@ -96,38 +77,30 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        /*if (dash)
+        Dash();
+
+        if (crouch && isGrounded)
         {
-            savedVelocity = rb.velocity.x;
-            rb.velocity = new Vector2(move * speed * 5, rb.velocity.y);
-            busy = true;
+            rb.velocity = new Vector2(rb.velocity.x * 0.9f, rb.velocity.y);
         }
-        else if (busy)
-        {
-            dash = false;
-            dashCooldown += Time.deltaTime * 3;
-            if (dashCooldown >= 20f)
-            {
-                dashCooldown = 20f;
-                rb.velocity = new Vector2(savedVelocity, rb.velocity.y);
-                busy = false;
-                dashCooldown = 0;
-            }
-        }
-        Debug.Log(dashCooldown);
-        Debug.Log(dash);
-        Debug.Log(busy);
-        */
-        if (run) //running
+        else if (run && !dashing && isGrounded && !crouch) //running
         {
             rb.velocity = new Vector2(move * speed * 3, rb.velocity.y);
         }
-        else //walking
+        else if (run && !dashing && !isGrounded) //run in air
+        {
+            rb.velocity = new Vector2(Mathf.Lerp(move * speed * 3, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
+        }
+        else if (!dashing && !isGrounded) //walk in air
+        {
+            rb.velocity = new Vector2(Mathf.Lerp(move * speed, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
+        }
+        else if (!dashing && !crouch)//walking
         {
             rb.velocity = new Vector2(move * speed, rb.velocity.y);
         }
 
-        if (jump && isGrounded)
+        if (jump && isGrounded && !dashing)//jump
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
@@ -135,23 +108,55 @@ public class PlayerController : MonoBehaviour
 
     void MoveCamera()
     {
-        //temp height, 0.3 = % above ground from player, 4.25 = offset from ground
-        float cameraHeight = (transform.position.y * 0.3f) + 3.5f;
-        if (facingRight)
-        {
-            cameraTarget.position = new Vector2(transform.position.x + 1 +(move * cameraOffset), cameraHeight);
-        }
-        else
-        {
-            cameraTarget.position = new Vector2(transform.position.x - 1 +(move * cameraOffset), cameraHeight);
-        }
+        //temp height, 0.3 = % above ground from player, 4.25 = offset from ground   
+        cameraTarget.position = new Vector2(transform.position.x + transform.right.x +(move * 3)
+            ,(transform.position.y * 0.3f) + 3.5f);   
     }
 
     void Dash()
     {
-        
-        //rb.velocity = new Vector2(move * speed * 5, rb.velocity.y);
+        if (dashCooldown > 0 && !dashing) //delay to dash again
+        {
+            dashCooldown -= Time.deltaTime * 2;
+            dashing = false;
+        }
+        else if (dashing && isGrounded) //dashing
+        {
+            dashCooldown += Time.deltaTime;
+            if (dashCooldown >= 0.4f)
+            {
+                dashing = false;
+            }                           //speed x direction (top speed - speed of deceleration)
+            rb.velocity = new Vector2(speed * transform.right.x * (10f - (dashCooldown * 23)), rb.velocity.y);
+        }
     }
 
-    
+    void ControllerInput()
+    {
+        if (controller) //Controller or keyboard input
+        {
+            move = Input.GetAxisRaw("Horizontal");
+            //cameraPan = Input.GetAxisRaw("RightSticX");
+            crouch = Input.GetButton("Circle");
+            if (!dashing && dashCooldown <= 0)
+            {
+                dashing = Input.GetButtonDown("Square");
+                dashCooldown = 0;
+            }
+            jump = Input.GetButton("X");
+            run = Mathf.Abs(move) > 0.85f ? true : false;
+        }
+        else
+        {
+            move = Input.GetAxisRaw("Horizontal");
+            crouch = Input.GetButton("Crouch");
+            if (!dashing && dashCooldown <= 0)
+            {
+                dashing = Input.GetButtonDown("Dash");
+                dashCooldown = 0;
+            }
+            jump = Input.GetButton("Jump");
+            run = Input.GetButton("Run");
+        }
+    }
 }
