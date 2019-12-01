@@ -1,20 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Apex.AI.Components;
+using Apex.AI;
+using System;
 
-public class Brain : MonoBehaviour
+public class Brain : MonoBehaviour, IContextProvider
 {
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
-    public Eyes eyes;
+    //public Eyes eyes;
+    public Transform eyes;
     private bool faceLeft = true;
     public Sprite[] redSprite = new Sprite[3];
     public float speed = 1f;
     private SpriteRenderer sRenderer;
-    private Rigidbody2D rb;
-    private Hashtable playerInfo = new Hashtable();
+    public Rigidbody2D rb;
+    public Hashtable playerInfo = new Hashtable();
+    private AIContext context;
 
     private void Awake()
     {
+        eyes = transform.GetChild(0);
+        context = new AIContext(this);
         rb = GetComponent<Rigidbody2D>();
         sRenderer = GetComponent<SpriteRenderer>();
     }
@@ -26,26 +33,26 @@ public class Brain : MonoBehaviour
 
     void Update()
     {
-        rays = eyes.rays;
-        playerInfo = eyes.playerInfo;
+        //rays = eyes.rays;
+        //playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
         {
-            SensorResponse();
+            //SensorResponse();
         }
     }
 
     private void SensorResponse()
     {        
-        if ((bool)playerInfo["isBehind"] && faceLeft)
+        /*if ((bool)playerInfo["isBehind"] && faceLeft)
         { 
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-            eyes.behind = false;
+            //eyes.behind = false;
             faceLeft = false;
         }
         else if ((bool)playerInfo["isBehind"] && !faceLeft)
         {
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-            eyes.behind = false;
+            //eyes.behind = false;
             faceLeft = true;
         }
 
@@ -69,6 +76,11 @@ public class Brain : MonoBehaviour
         else if (!(rays[0] || rays[1] || rays[2] || rays[3] || rays[4]))
         {
             sRenderer.sprite = redSprite[0];
-        }
-    } 
+        }*/
+    }
+
+    public IAIContext GetContext(Guid aiId)
+    {
+        return context;
+    }
 }

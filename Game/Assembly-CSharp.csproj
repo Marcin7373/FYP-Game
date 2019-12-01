@@ -60,11 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Apex\AINameMap.cs" />
     <Compile Include="Assets\Scripts\BgParallax.cs" />
+    <Compile Include="Assets\Scripts\BossAI\AIContext.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\Look.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\Run.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <None Include="Assets\Apex\Apex AI Examples and Documentation\GetYourLicense.txt" />
+    <None Include="Assets\Apex\Apex Utility AI\ChangeLog.txt" />
+    <None Include="Assets\Apex\Apex AI Examples and Documentation\Additional Documentation Online.txt" />
+    <None Include="Assets\Apex\Apex Binaries\link.xml" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Owner/Desktop/Final_Year_Project/FYP-Game/Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -316,6 +324,15 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0a3/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="ApexAI">
+      <HintPath>C:/Users/Owner/Desktop/Final_Year_Project/FYP-Game/Game/Assets/Apex/Apex Binaries/ApexAI.dll</HintPath>
+    </Reference>
+    <Reference Include="ApexSerialization">
+      <HintPath>C:/Users/Owner/Desktop/Final_Year_Project/FYP-Game/Game/Assets/Apex/Apex Binaries/ApexSerialization.dll</HintPath>
+    </Reference>
+    <Reference Include="ApexShared">
+      <HintPath>C:/Users/Owner/Desktop/Final_Year_Project/FYP-Game/Game/Assets/Apex/Apex Binaries/ApexShared.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/Owner/Desktop/Final_Year_Project/FYP-Game/Game/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>

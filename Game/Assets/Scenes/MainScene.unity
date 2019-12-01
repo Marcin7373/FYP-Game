@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 6357837}
   - component: {fileID: 6357836}
   - component: {fileID: 6357840}
+  - component: {fileID: 6357841}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Boss
@@ -263,12 +264,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ad56ff8d2a9de44974af8c6fe0fbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyes: {fileID: 293948730}
+  eyes: {fileID: 0}
   redSprite:
   - {fileID: 21300000, guid: ff4e41386527d6f4da1ea8384eb5f0b6, type: 3}
   - {fileID: 21300000, guid: 5f8cf9b27154525438cdbcda14df99df, type: 3}
   - {fileID: 21300000, guid: 8d4ad6c97fcb89b4a8a8c5cbbefbcee6, type: 3}
   speed: 1.5
+  rb: {fileID: 0}
+--- !u!114 &6357841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 939582531, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiConfigs:
+  - aiId: 6709d383-0541-49b2-b2e9-f0b113709e8b
+    intervalMin: 0.1
+    intervalMax: 0.1
+    startDelayMin: 0
+    startDelayMax: 0
+    isActive: 1
 --- !u!1 &149912185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7613626344486820654, guid: 353d9b2e20576e942bac28d9731850bb,
@@ -519,7 +540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 293948729}
   - component: {fileID: 293948731}
-  - component: {fileID: 293948730}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -541,22 +561,6 @@ Transform:
   m_Father: {fileID: 6357839}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &293948730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293948728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30361fd13ebb84549b7cb33bc73c839a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
-  longRadius: 10
-  timePassed: 0
-  behind: 0
 --- !u!61 &293948731
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -853,7 +857,7 @@ MonoBehaviour:
   jumpHeight: 10.2
   lowJumpMult: 2
   fallMult: 4
-  controller: 1
+  controller: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1582,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1038548867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038548869}
+  - component: {fileID: 1038548868}
+  m_Layer: 0
+  m_Name: Load Balancer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1038548868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038548867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -927418779, guid: 41cdb5d7253968f41a8659c7eba5c2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configurations:
+  - updateInterval: 1
+    maxUpdatesPerFrame: 200
+    maxUpdateTimeInMillisecondsPerUpdate: 4
+    autoAdjust: 0
+    targetLoadBalancer: aiLoadBalancer
+  - updateInterval: 0.1
+    maxUpdatesPerFrame: 20
+    maxUpdateTimeInMillisecondsPerUpdate: 4
+    autoAdjust: 0
+    targetLoadBalancer: defaultBalancer
+  - updateInterval: 0.1
+    maxUpdatesPerFrame: 20
+    maxUpdateTimeInMillisecondsPerUpdate: 4
+    autoAdjust: 0
+    targetLoadBalancer: unscaled
+  _mashallerMaxMillisecondPerFrame: 4
+--- !u!4 &1038548869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038548867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1166476146
 GameObject:
   m_ObjectHideFlags: 0
