@@ -13,14 +13,13 @@ public sealed class Eyes : ActionBase
 
     private void Awake()
     {
-        playerInfo["timePassed"] = 0.0f;
-        playerInfo["position"] = null;
+        playerInfo["position"] = new Vector3(-5,0,0);
     }
 
     public override void Execute(IAIContext context)
     {
-        var c = (AIContext)context;
-        eyes = c.boss.eyes;
+        var cont = (AIContext)context;
+        eyes = cont.boss.eyes;
         rays.Clear();
         Vector3 target = Quaternion.AngleAxis(20.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * radius, Color.blue);
@@ -53,13 +52,13 @@ public sealed class Eyes : ActionBase
             }
             else
             {
-                playerInfo["position"] = eyes.position;
+                playerInfo["position"] = new Vector3(-5,0,0);
             }
         }
+        timePassed += Time.deltaTime;
         playerInfo["timePassed"] = timePassed;
         playerInfo["isBehind"] = behind;
-        timePassed += Time.deltaTime;
-        c.playerInfo = playerInfo;
+        cont.playerInfo = playerInfo;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

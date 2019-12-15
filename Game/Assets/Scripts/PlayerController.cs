@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
     public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
-    private float move, cameraPan, cameraOffset = 3, dashCooldown = 0;
+    private float move, cameraPan, cameraOffset = 3.5f, dashCooldown = 0;
     private bool jump, run, isGrounded, isFalling, crouch, dashing = false;
-    public bool controller = true;
+    public bool controller = false;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        ControllerInput();
+        PlayerInput();
 
         //inverting sprite for facing direction
         if (move < 0 && !dashing) {
@@ -108,9 +108,9 @@ public class PlayerController : MonoBehaviour
 
     void MoveCamera()
     {
-        //temp height, 0.3 = % above ground from player, 4.25 = offset from ground   
+        //temp height, 0.3 = % above ground from player, 3.5 = offset from ground   
         cameraTarget.position = new Vector2(transform.position.x + transform.right.x +(move * 3)
-            ,(transform.position.y * 0.3f) + 3.5f);   
+            ,(transform.position.y * 0.3f) + cameraOffset);   
     }
 
     void Dash()
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ControllerInput()
+    void PlayerInput()
     {
         if (controller) //Controller or keyboard input
         {

@@ -16,5 +16,7 @@ public sealed class Look : ActionBase
         {
             c.boss.transform.rotation = Quaternion.Euler(c.boss.transform.rotation.x, 180, c.boss.transform.rotation.z);
         }
+
+        c.boss.sRenderer.sprite = c.boss.redSprite[0];
     }
 }

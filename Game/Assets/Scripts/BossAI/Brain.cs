@@ -13,7 +13,7 @@ public class Brain : MonoBehaviour, IContextProvider
     private bool faceLeft = true;
     public Sprite[] redSprite = new Sprite[3];
     public float speed = 1f;
-    private SpriteRenderer sRenderer;
+    public SpriteRenderer sRenderer;
     public Rigidbody2D rb;
     public Hashtable playerInfo = new Hashtable();
     private AIContext context;
@@ -22,6 +22,8 @@ public class Brain : MonoBehaviour, IContextProvider
     {
         eyes = transform.GetChild(0);
         context = new AIContext(this);
+        playerInfo["timePassed"] = 10f;
+        context.playerInfo = playerInfo;
         rb = GetComponent<Rigidbody2D>();
         sRenderer = GetComponent<SpriteRenderer>();
     }
@@ -43,7 +45,7 @@ public class Brain : MonoBehaviour, IContextProvider
 
     private void SensorResponse()
     {        
-        /*if ((bool)playerInfo["isBehind"] && faceLeft)
+        if ((bool)playerInfo["isBehind"] && faceLeft)
         { 
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
             //eyes.behind = false;
@@ -76,7 +78,7 @@ public class Brain : MonoBehaviour, IContextProvider
         else if (!(rays[0] || rays[1] || rays[2] || rays[3] || rays[4]))
         {
             sRenderer.sprite = redSprite[0];
-        }*/
+        }
     }
 
     public IAIContext GetContext(Guid aiId)

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\BossAI\Actions\Run.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\Apex\Apex AI Examples and Documentation\GetYourLicense.txt" />

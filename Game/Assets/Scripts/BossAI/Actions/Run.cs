@@ -8,13 +8,16 @@ public sealed class Run : ActionBase
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;
-        if (c.boss.transform.right.x < 0)
-        {
-            c.boss.rb.velocity += new Vector2(c.boss.speed, c.boss.rb.velocity.y);
+
+        float distance = ((Vector3)c.playerInfo["position"] - c.boss.transform.position).magnitude;
+        if (distance < 6f) {
+            c.boss.rb.velocity += new Vector2(-c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
+            c.boss.sRenderer.sprite = c.boss.redSprite[1];
         }
-        else if (c.boss.transform.right.x > 0)
+        else
         {
-            c.boss.rb.velocity += new Vector2(-c.boss.speed, c.boss.rb.velocity.y);
+            c.boss.rb.velocity += new Vector2(c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
+            c.boss.sRenderer.sprite = c.boss.redSprite[2];
         }
     }
 }

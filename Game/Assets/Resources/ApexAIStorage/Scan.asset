@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: Scan
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16779010
+  aiId: a53541db-ac71-4e21-8a99-75b424bd66cb
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":105a31e576d34c0bbdcb97d504677a12,"_id":a53541dbac714e218a9975b424bd66cb,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":105a31e576d34c0bbdcb97d504677a12,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Eyes, Assembly-CSharp"}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{}}}}'
