@@ -11,21 +11,21 @@ The game will be evaluated by letting many different types of people play it to 
 
 ## Plan
 Research:
-•	Research different types of AI and choose which fits the game best.
-•	Learn basics of a few different game engines to see which is best.
-•	Choose animation type and start making animations for testing in implementation.
+-Research different types of AI and choose which fits the game best.
+-Learn basics of a few different game engines to see which is best.
+-Choose animation type and start making animations for testing in implementation.
 
 Implementation:
-•	Create the player character in the game engine using test animations.
-•	Start creating the AI for the boss.
-•	Make assets, refining animations, background and boss test animations.
-•	Test the feel of the basic movements with players.
-•	Test AI iteratively as it's made
+-Create the player character in the game engine using test animations.
+-Start creating the AI for the boss.
+-Make assets, refining animations, background and boss test animations.
+-Test the feel of the basic movements with players.
+-Test AI iteratively as it's made
 
 Refinement:
-•	Refine and finish AI by testing it with players.
-•	Adjust and finish animations after play testing.
-•	Test it further with many players adjusting difficulty.
+-Refine and finish AI by testing it with players.
+-Adjust and finish animations after play testing.
+-Test it further with many players adjusting difficulty.
 
 ## Prototypes    
 ![Prototype](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/ProposalDoc.png?raw=true) 
