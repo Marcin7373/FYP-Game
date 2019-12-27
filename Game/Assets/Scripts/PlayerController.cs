@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
+    public ParticleSystem splash;
     public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
     private float move, cameraPan, cameraOffset = 3.5f, dashCooldown = 0;
     private bool jump, run, grounded, falling, crouch, jumpPeak, dashing = false;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        splash = Instantiate(splash, transform.position, transform.rotation);
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerInput();
 
-        //inverting sprite for facing direction
+        //inverting to facing direction
         if (move < 0 && !dashing) {
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
         } else if (move > 0 && !dashing)
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
             dashing = false;
         }
 
-        if (crouch)
+        if (crouch || dashing)
         {
             run = false;
             move = 0f;
@@ -177,5 +179,27 @@ public class PlayerController : MonoBehaviour
             jump = Input.GetButton("Jump");
             run = Input.GetButton("Run");
         }
+    }
+
+    void Splash(float offset)
+    {
+        if (move > 0)
+        {
+            splash.transform.position = new Vector3(transform.position.x + offset, -0.5f, transform.position.z);
+        }
+        else
+        {
+            splash.transform.position = new Vector3(transform.position.x - offset, -0.5f, transform.position.z);
+        }
+
+        if (offset > 1)
+        {
+            splash.Emit(20);
+        }
+        else
+        {
+            splash.Emit(7);
+        }
+        
     }
 }
