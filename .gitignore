@@ -1,2 +1,6 @@
-[Tt]emp
+/[Tt]emp/
+/[Ll]ibrary/
+
 .vs/
+
+*.suo
