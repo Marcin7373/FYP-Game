@@ -1,2 +1,8 @@
-[Tt]emp
+/[Tt]emp/
+/[Ll]ibrary/
+
+!/[Aa]ssets/**/*.meta
+
 .vs/
+
+*.suo
