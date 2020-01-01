@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public ParticleSystem splash;
     public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
-    private float move, cameraPan, cameraOffset = 3.5f, dashCooldown = 0;
+    private float move, cameraPan, cameraOffset = -0.5f, dashCooldown = 0;
     private bool jump, run, grounded, falling, crouch, jumpPeak, dashing = false;
     public bool controller;
 
@@ -185,11 +185,11 @@ public class PlayerController : MonoBehaviour
     {
         if (move > 0)
         {
-            splash.transform.position = new Vector3(transform.position.x + offset, -0.5f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x + offset, -4.5f, transform.position.z);
         }
         else
         {
-            splash.transform.position = new Vector3(transform.position.x - offset, -0.5f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x - offset, -4.5f, transform.position.z);
         }
 
         if (offset > 1)
