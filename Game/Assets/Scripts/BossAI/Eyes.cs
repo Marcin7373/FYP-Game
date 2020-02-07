@@ -5,11 +5,11 @@ using Apex.AI;
 
 public sealed class Eyes : ActionBase
 {  
-    public float radius = 5f, longRadius = 10f, timePassed = 0;
+    public float radius = 8f, longRadius = 15f, timePassed = 0;
     public bool behind = false;
     private Transform eyes;
     public Hashtable playerInfo = new Hashtable();
-    public List<RaycastHit2D> rays = new List<RaycastHit2D>();
+    private List<RaycastHit2D> rays = new List<RaycastHit2D>();
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public sealed class Eyes : ActionBase
         var cont = (AIContext)context;
         eyes = cont.boss.eyes;
         rays.Clear();
-        Vector3 target = Quaternion.AngleAxis(20.0f, Vector3.forward) * eyes.right;
+        Vector3 target = Quaternion.AngleAxis(30.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * radius, Color.blue);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
 
@@ -29,15 +29,15 @@ public sealed class Eyes : ActionBase
         Debug.DrawRay(eyes.position, target * radius, Color.blue);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
 
-        target = Quaternion.AngleAxis(-20.0f, Vector3.forward) * eyes.right;
+        target = Quaternion.AngleAxis(-30.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * radius, Color.blue);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
 
-        target = Quaternion.AngleAxis(10.0f, Vector3.forward) * eyes.right;
+        target = Quaternion.AngleAxis(15.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * longRadius, Color.green);
         rays.Add(Physics2D.Raycast(eyes.position, target, longRadius, 1 << LayerMask.NameToLayer("Player")));
 
-        target = Quaternion.AngleAxis(-10.0f, Vector3.forward) * eyes.right;
+        target = Quaternion.AngleAxis(-15.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * longRadius, Color.green);
         rays.Add(Physics2D.Raycast(eyes.position, target, longRadius, 1 << LayerMask.NameToLayer("Player")));
         

@@ -90,32 +90,32 @@ TextureImporter:
     bones:
     - name: chest
       position: {x: -568.69617, y: 75.04581, z: 1}
-      rotation: {x: 0, y: 0, z: 0.12077105, w: 0.99268043}
+      rotation: {x: 0, y: 0, z: 0.12077092, w: 0.99268043}
       length: 95.43671
       parentId: 15
     - name: abdomen
-      position: {x: 95.43672, y: -0.000037318998, z: 4}
-      rotation: {x: 0, y: 0, z: -0.14643312, w: 0.9892206}
-      length: 92.265465
+      position: {x: 95.43672, y: 0.0000070246133, z: 4}
+      rotation: {x: 0, y: 0, z: -0.14643298, w: 0.9892206}
+      length: 92.26546
       parentId: 0
     - name: pelvis
-      position: {x: 92.26542, y: 0.000014415937, z: 4}
+      position: {x: 92.26545, y: 0.000028885792, z: 4}
       rotation: {x: 0, y: 0, z: 0.016659804, w: 0.99986124}
       length: 65.574646
       parentId: 1
     - name: frontThigh
-      position: {x: 65.57465, y: 0.000068935406, z: 4}
+      position: {x: 65.574646, y: 0.00007011705, z: 4}
       rotation: {x: 0, y: 0, z: 0.028866468, w: 0.9995833}
-      length: 177.55219
+      length: 177.55215
       parentId: 2
     - name: frontLeg
-      position: {x: 177.55214, y: -0.000044777986, z: 4}
+      position: {x: 177.55214, y: -0.00005181917, z: 4}
       rotation: {x: 0, y: 0, z: -0.058625277, w: 0.99828005}
       length: 275.33923
       parentId: 3
     - name: frontFoot
-      position: {x: 275.33923, y: 0.00013619024, z: 4}
-      rotation: {x: 0, y: 0, z: 0.64685124, w: 0.7626162}
+      position: {x: 275.33923, y: 0.000105061525, z: 4}
+      rotation: {x: 0, y: 0, z: 0.64685124, w: 0.7626163}
       length: 46.232307
       parentId: 4
     - name: head
@@ -131,36 +131,36 @@ TextureImporter:
     - name: backArm
       position: {x: -54.283184, y: 143.84534, z: 0}
       rotation: {x: 0, y: 0, z: -0.12569426, w: 0.99206907}
-      length: 119.8831
+      length: 119.88323
       parentId: 0
     - name: backForearm
-      position: {x: 119.883156, y: -0.0000071598715, z: 0}
-      rotation: {x: 0, y: 0, z: 0.09428435, w: 0.9955454}
+      position: {x: 119.88321, y: -0.00001528704, z: 0}
+      rotation: {x: 0, y: 0, z: 0.094284326, w: 0.9955454}
       length: 135.83624
       parentId: 8
     - name: frontArm
       position: {x: -9.270816, y: -92.96451, z: 5}
-      rotation: {x: 0, y: 0, z: -0.13902271, w: 0.9902892}
-      length: 111.70079
+      rotation: {x: 0, y: 0, z: -0.1390226, w: 0.9902892}
+      length: 111.700806
       parentId: 0
     - name: frontForearm
-      position: {x: 111.70082, y: 0.000013097551, z: 5}
-      rotation: {x: 0, y: 0, z: 0.11047017, w: 0.9938795}
+      position: {x: 111.700806, y: -0.000002675808, z: 5}
+      rotation: {x: 0, y: 0, z: 0.110470034, w: 0.9938795}
       length: 142.26866
       parentId: 10
     - name: backThigh
       position: {x: 58.464638, y: 115.780174, z: 1}
-      rotation: {x: 0, y: 0, z: 0.013807443, w: 0.9999047}
-      length: 185.52399
+      rotation: {x: 0, y: 0, z: 0.013807442, w: 0.9999047}
+      length: 185.52402
       parentId: 2
     - name: backLeg
-      position: {x: 185.52399, y: 0.00023836196, z: 1}
+      position: {x: 185.52405, y: 0.00022818959, z: 1}
       rotation: {x: 0, y: 0, z: -0.04394599, w: 0.9990339}
-      length: 272.01425
+      length: 272.01422
       parentId: 12
     - name: backFoot
-      position: {x: 272.01425, y: -0.000055693796, z: 1}
-      rotation: {x: 0, y: 0, z: 0.6432071, w: 0.76569235}
+      position: {x: 272.01425, y: -0.00011390295, z: 1}
+      rotation: {x: 0, y: 0, z: 0.6432072, w: 0.7656922}
       length: 44.23625
       parentId: 13
     - name: root

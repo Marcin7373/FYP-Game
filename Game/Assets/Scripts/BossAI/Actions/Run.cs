@@ -10,14 +10,14 @@ public sealed class Run : ActionBase
         var c = (AIContext)context;
 
         float distance = ((Vector3)c.playerInfo["position"] - c.boss.transform.position).magnitude;
-        if (distance < 6f) {
-            c.boss.rb.velocity += new Vector2(-c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
-            c.boss.sRenderer.sprite = c.boss.redSprite[1];
+        if (distance < 8f) {
+            //c.boss.rb.velocity += new Vector2(-c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
+            c.boss.anim.Play("LegSwipe");
         }
         else
         {
             c.boss.rb.velocity += new Vector2(c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
-            c.boss.sRenderer.sprite = c.boss.redSprite[2];
+            c.boss.anim.Play("Idle");
         }
     }
 }
