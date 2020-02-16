@@ -64,10 +64,14 @@
     <Compile Include="Assets\Apex\AINameMap.cs" />
     <Compile Include="Assets\Scripts\BgParallax.cs" />
     <Compile Include="Assets\Scripts\BossAI\AIContext.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\Bite.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Look.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Run.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\Swipe.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Scorers\Distance.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Scorers\Height.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

@@ -5,16 +5,44 @@ using Apex.AI;
 
 public class AIContext : IAIContext
 {
-    public AIContext(Brain boss)
+    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, float speed, Hashtable playerInfo)
     {
-        this.boss = boss;
+        bossTr = transform;
+        bossEyesTr = eyes;
+        bossRb = rb;
+        bossAnim = anim;
+        bossSpeed = speed;
         this.playerInfo = playerInfo;
     }
 
-    public Brain boss
+    public Transform bossTr
     {
         get;
-        private set;
+        set;
+    }
+
+    public Transform bossEyesTr
+    {
+        get;
+        set;
+    }
+
+    public Rigidbody2D bossRb
+    {
+        get;
+        set;
+    }
+
+    public Animator bossAnim
+    {
+        get;
+        set;
+    }
+
+    public float bossSpeed
+    {
+        get;
+        set;
     }
 
     public Hashtable playerInfo

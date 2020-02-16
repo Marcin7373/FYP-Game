@@ -9,15 +9,16 @@ public sealed class Run : ActionBase
     {
         var c = (AIContext)context;
 
-        float distance = ((Vector3)c.playerInfo["position"] - c.boss.transform.position).magnitude;
-        if (distance < 8f) {
+        float distance = ((Vector3)c.playerInfo["position"] - c.bossTr.position).magnitude;
+        if (distance < 6f) {
             //c.boss.rb.velocity += new Vector2(-c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
-            c.boss.anim.Play("LegSwipe");
+            //c.boss.anim.SetTrigger("swipe");
+            
         }
         else
         {
-            c.boss.rb.velocity += new Vector2(c.boss.transform.right.x * c.boss.speed, c.boss.rb.velocity.y);
-            c.boss.anim.Play("Idle");
+            c.bossRb.velocity += new Vector2(c.bossTr.right.x * c.bossSpeed, c.bossRb.velocity.y);
+            
         }
     }
 }

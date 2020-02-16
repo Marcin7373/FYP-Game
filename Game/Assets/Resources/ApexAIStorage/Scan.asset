@@ -17,5 +17,5 @@ MonoBehaviour:
   aiId: a53541db-ac71-4e21-8a99-75b424bd66cb
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":105a31e576d34c0bbdcb97d504677a12,"_id":a53541dbac714e218a9975b424bd66cb,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":105a31e576d34c0bbdcb97d504677a12,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Eyes, Assembly-CSharp"}}}]}'
+    ApexAI","score":0.1,"action":{"@type":"Eyes, Assembly-CSharp"}}}]}'
   editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":100},"DefaultQualifier":{"ActionView":{}}}}'

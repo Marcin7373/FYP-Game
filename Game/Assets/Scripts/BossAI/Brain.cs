@@ -18,12 +18,11 @@ public class Brain : MonoBehaviour, IContextProvider
 
     private void Awake()
     {
-        eyes = transform.GetChild(0);
-        context = new AIContext(this);
         playerInfo["timePassed"] = 10f;
-        context.playerInfo = playerInfo;
+        playerInfo["position"] = new Vector3(-27, -4, 0);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        context = new AIContext(this.transform, eyes, rb, anim, speed, playerInfo);
     }
 
     void Update()
@@ -57,20 +56,6 @@ public class Brain : MonoBehaviour, IContextProvider
         }else if (rays[0] && rays[1] && rays[2] && !faceLeft)
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
-        }
-
-        if (rays[3] || rays[4])
-        {
-           
-        }
-
-        if (rays[0] || rays[1] || rays[2])
-        {
-            
-        }
-        else if (!(rays[0] || rays[1] || rays[2] || rays[3] || rays[4]))
-        {
-            
         }
     }
 

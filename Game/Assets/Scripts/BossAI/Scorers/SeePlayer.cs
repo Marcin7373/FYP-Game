@@ -14,6 +14,6 @@ public class SeePlayer : ContextualScorerBase
         {
             return score = 0f;
         }
-        return score = 5f;
+        return score = 1f;
     }
 }
