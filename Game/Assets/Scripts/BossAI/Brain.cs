@@ -8,11 +8,12 @@ using System;
 public class Brain : MonoBehaviour, IContextProvider
 {
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
-    public Transform eyes;
+    public Transform eyes, longTail, shortTail;
+    public ParticleSystem laser;
     private bool faceLeft = true;
     public float speed = 1f;
-    public Rigidbody2D rb;
-    public Animator anim;
+    private Rigidbody2D rb;
+    private Animator anim;
     public Hashtable playerInfo = new Hashtable();
     private AIContext context;
 
@@ -62,5 +63,22 @@ public class Brain : MonoBehaviour, IContextProvider
     public IAIContext GetContext(Guid aiId)
     {
         return context;
+    }
+
+    void Laser(float on)
+    {
+        if (on == 1)
+        {
+            laser.Play();
+        }
+        else
+        {
+            laser.Stop();
+        }
+    }
+
+    void TailSwipe()
+    {
+        longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
     }
 }

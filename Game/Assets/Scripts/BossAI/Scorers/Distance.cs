@@ -28,7 +28,7 @@ public class Distance : ContextualScorerBase
             score = 0;
         }
 
-        Debug.Log(distance+" "+ (Vector3)c.playerInfo["position"]);
+        //Debug.Log(distance+" "+ score);
         return score;
     }
 }

@@ -8,6 +8,6 @@ public class Swipe : ActionBase
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;
-        c.bossAnim.SetTrigger("swipe");
+        //c.bossAnim.SetTrigger("swipe");
     }
 }

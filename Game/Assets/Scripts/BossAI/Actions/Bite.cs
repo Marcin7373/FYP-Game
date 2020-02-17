@@ -8,6 +8,6 @@ public class Bite : ActionBase
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;
-        c.bossAnim.SetTrigger("bite");
+        //c.bossAnim.SetTrigger("bite");
     }
 }
