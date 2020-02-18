@@ -28,7 +28,7 @@ public class Distance : ContextualScorerBase
             score = 0;
         }
 
-        //Debug.Log(distance+" "+ score);
+        Debug.Log(distance+" "+ score);
         return score;
     }
 }

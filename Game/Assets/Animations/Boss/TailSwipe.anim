@@ -452,7 +452,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: {x: 0, y: 0, z: 83.333}
         inSlope: {x: 0, y: 0, z: 15.235199}
         outSlope: {x: 0, y: 0, z: 15.235199}
@@ -756,14 +756,14 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.8333333
         value: {x: 0.7018731, y: -6.615574, z: 0}
-        inSlope: {x: 0.27068713, y: 0.5414887, z: 0}
-        outSlope: {x: 0.27068713, y: 0.5414887, z: 0}
+        inSlope: {x: 0.18045808, y: 0.36099246, z: 0}
+        outSlope: {x: 0.18045808, y: 0.36099246, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: {x: 0.76683074, y: -6.507287, z: 0}
         inSlope: {x: 0.5196609, y: 0.8662948, z: 0}
         outSlope: {x: 0.5196609, y: 0.8662948, z: 0}
@@ -774,8 +774,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: {x: 1.005008, y: -5.913718, z: 0}
-        inSlope: {x: 0, y: 1.6026344, z: 0}
-        outSlope: {x: 0, y: 1.6026344, z: 0}
+        inSlope: {x: 0, y: 2.4039514, z: 0}
+        outSlope: {x: 0, y: 2.4039514, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -1717,14 +1717,14 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.8333333
         value: 0.7018731
-        inSlope: 0.27068713
-        outSlope: 0.27068713
+        inSlope: 0.18045808
+        outSlope: 0.18045808
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: 0.76683074
         inSlope: 0.5196609
         outSlope: 0.5196609
@@ -1799,14 +1799,14 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.8333333
         value: -6.615574
-        inSlope: 0.5414887
-        outSlope: 0.5414887
+        inSlope: 0.36099246
+        outSlope: 0.36099246
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: -6.507287
         inSlope: 0.8662948
         outSlope: 0.8662948
@@ -1817,8 +1817,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: -5.913718
-        inSlope: 1.6026344
-        outSlope: 1.6026344
+        inSlope: 2.4039514
+        outSlope: 2.4039514
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -1888,7 +1888,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: 0
         inSlope: 0
         outSlope: 0
@@ -4594,7 +4594,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: 0
         inSlope: 0
         outSlope: 0
@@ -4649,7 +4649,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: 0
         inSlope: 0
         outSlope: 0
@@ -4704,7 +4704,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.1666666
         value: 83.333
         inSlope: 15.235199
         outSlope: 15.235199
@@ -5958,6 +5958,13 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: TailSwipe
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: NotBusy
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

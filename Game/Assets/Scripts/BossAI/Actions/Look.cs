@@ -8,13 +8,17 @@ public sealed class Look : ActionBase
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;
-        if (c.bossTr.right.x < 0)
+        if (c.bossTr.right.x < 0 && !c.busy)
         {
             c.bossTr.rotation = Quaternion.Euler(c.bossTr.rotation.x, 0, c.bossTr.rotation.z);
+            //c.busy = true;
+            c.bossAnim.SetTrigger("look");
         }
-        else if (c.bossTr.right.x > 0)
+        else if (c.bossTr.right.x > 0 && !c.busy)
         {
             c.bossTr.rotation = Quaternion.Euler(c.bossTr.rotation.x, 180, c.bossTr.rotation.z);
+            //c.busy = true;
+            c.bossAnim.SetTrigger("look");
         }
     }
 }

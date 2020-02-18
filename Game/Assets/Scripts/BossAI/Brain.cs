@@ -23,7 +23,7 @@ public class Brain : MonoBehaviour, IContextProvider
         playerInfo["position"] = new Vector3(-27, -4, 0);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        context = new AIContext(this.transform, eyes, rb, anim, speed, playerInfo);
+        context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo);
     }
 
     void Update()
@@ -80,5 +80,10 @@ public class Brain : MonoBehaviour, IContextProvider
     void TailSwipe()
     {
         longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
+    }
+
+    void NotBusy()
+    {
+        context.busy = false;
     }
 }

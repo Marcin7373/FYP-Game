@@ -16,12 +16,16 @@ MonoBehaviour:
   version: 16779010
   aiId: 6709d383-0541-49b2-b2e9-f0b113709e8b
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":0b929143260c4ae4931fc55943d49730,"_id":6709d383054149b2b2e9f0b113709e8b,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
-    ApexAI","_id":0b929143260c4ae4931fc55943d49730,"_qualifiers":[{"@type":"Apex.AI.CompositePriorityQualifier,
-    ApexAI","action":{"@type":"Bite, Assembly-CSharp"},"threshold":0.5,"_scorers":[{"@type":"SeePlayer,
-    Assembly-CSharp"},{"@type":"Distance, Assembly-CSharp","minRange":6,"maxRange":12,"scoreMax":2}]},{"@type":"Apex.AI.CompositePriorityQualifier,
-    ApexAI","action":{"@type":"Swipe, Assembly-CSharp"},"threshold":0.5,"_scorers":[{"@type":"SeePlayer,
-    Assembly-CSharp"},{"@type":"Distance, Assembly-CSharp","minRange":0,"maxRange":6,"scoreMax":2}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Run, Assembly-CSharp"},"_scorers":[{"@type":"SeePlayer,
+    ApexAI","_id":0b929143260c4ae4931fc55943d49730,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":08494d2d92274b858463402f6f3828b4},"_scorers":[{"@type":"SeePlayer,
     Assembly-CSharp"}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","score":0.1,"action":{"@type":"Look, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":0,"@y":1},"zoom":1,"SelectorView":{"ViewArea":{"@left":180,"@top":81,"@width":200,"@height":280},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
+    ApexAI","score":0.1,"action":{"@type":"Look, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":08494d2d92274b858463402f6f3828b4,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Bite, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
+    Assembly-CSharp","minRange":8,"maxRange":12,"scoreMax":2}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Swipe, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
+    Assembly-CSharp","minRange":0,"maxRange":8,"scoreMax":2}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Laser, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
+    Assembly-CSharp","minRange":9,"maxRange":15,"scoreMax":2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"TailSwipe, Assembly-CSharp"}}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":1},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":101,"@width":200,"@height":160},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":460,"@top":121,"@width":200,"@height":280},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

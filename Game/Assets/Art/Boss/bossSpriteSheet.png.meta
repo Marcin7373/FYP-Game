@@ -144,7 +144,7 @@ TextureImporter:
         parentId: 4
       - name: head
         position: {x: 135.37553, y: -0.000024439934, z: 1}
-        rotation: {x: 0, y: 0, z: 0.657586, w: 0.7533796}
+        rotation: {x: 0, y: 0, z: 0.65758574, w: 0.7533797}
         length: 183.69293
         parentId: 5
       - name: eye
@@ -154,11 +154,11 @@ TextureImporter:
         parentId: 6
       - name: neck
         position: {x: 105.53601, y: 14.54934, z: 1}
-        rotation: {x: 0, y: 0, z: 0.44387835, w: 0.89608705}
-        length: 84.726105
+        rotation: {x: 0, y: 0, z: 0.44387835, w: 0.8960871}
+        length: 84.72609
         parentId: 4
       - name: jaw
-        position: {x: 84.72611, y: -0.0000040851223, z: 1}
+        position: {x: 84.7261, y: -0.000010717141, z: 1}
         rotation: {x: 0, y: 0, z: 0.4666107, w: 0.88446283}
         length: 142.77293
         parentId: 8
@@ -189,7 +189,7 @@ TextureImporter:
         parentId: 13
       - name: fingers
         position: {x: 60.31749, y: 0.00003343119, z: 4}
-        rotation: {x: 0, y: 0, z: 0.5209023, w: 0.85361636}
+        rotation: {x: 0, y: 0, z: 0.52090234, w: 0.85361636}
         length: 64.06242
         parentId: 14
       - name: armspike
