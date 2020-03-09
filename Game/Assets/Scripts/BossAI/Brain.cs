@@ -21,6 +21,8 @@ public class Brain : MonoBehaviour, IContextProvider
     {
         playerInfo["timePassed"] = 10f;
         playerInfo["position"] = new Vector3(-27, -4, 0);
+        playerInfo["velocity"] = new Vector2(0,0);
+        playerInfo["crouch"] = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo);
@@ -85,5 +87,13 @@ public class Brain : MonoBehaviour, IContextProvider
     void NotBusy()
     {
         context.busy = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 13)
+        {
+            //Debug.Log("BossHit");
+        }
     }
 }

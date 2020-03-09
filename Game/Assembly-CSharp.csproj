@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\Distance.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\Height.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Scorers\IsCrouching.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

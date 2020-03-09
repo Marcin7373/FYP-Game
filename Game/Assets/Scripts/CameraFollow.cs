@@ -7,7 +7,6 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothing;
 
-    // Update is called once per frame
     void LateUpdate()
     {
         target.position = new Vector3(target.position.x, target.position.y, transform.position.z);

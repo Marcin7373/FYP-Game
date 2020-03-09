@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public ParticleSystem splash;
     public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
-    private float move, cameraPan, cameraOffset = -0.5f, dashCooldown = 0;
-    private bool jump, run, grounded, falling, crouch, jumpPeak, dashing = false;
-    public bool controller;
+    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0;
+    private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false;
+    [HideInInspector]
+    public bool controller, crouch;
 
     void Awake()
     {
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
         }
 
         PlayerInput();
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("AirAttack"))
+        {
+            attack = true;
+        }
 
         //inverting to facing direction
         if (move < 0 && !dashing) {
@@ -67,22 +73,36 @@ public class PlayerController : MonoBehaviour
             move = 0f;
         }
 
-        anim.SetBool("dashing", dashing);
-        anim.SetBool("jump", jump);
-        anim.SetBool("jumpPeak", jumpPeak);
-        anim.SetBool("falling", falling);
-        anim.SetBool("crouch", crouch);
-        anim.SetBool("run", run);
-        anim.SetBool("grounded", grounded);
-        anim.SetFloat("move", Mathf.Abs(move));
-
+        if (!attack) {
+            anim.SetBool("dashing", dashing);
+            anim.SetBool("jump", jump);
+            anim.SetBool("jumpPeak", jumpPeak);
+            anim.SetBool("falling", falling);
+            anim.SetBool("crouch", crouch);
+            anim.SetBool("run", run);
+            anim.SetBool("grounded", grounded);
+            anim.SetFloat("move", Mathf.Abs(move));
+            anim.SetBool("attack", attack);
+        }
+        else
+        {
+            anim.SetBool("dashing", false);
+            anim.SetBool("jump", false);
+            anim.SetBool("jumpPeak", false);
+            anim.SetBool("falling", false);
+            anim.SetBool("crouch", false);
+            anim.SetBool("run", run);
+            anim.SetBool("grounded", grounded);
+            anim.SetFloat("move", 0f);
+            anim.SetBool("attack", attack);
+        }
         MoveCamera();
     }
 
     private void FixedUpdate()
     {
         //faster fall
-        if (rb.velocity.y < 0) {
+        if (rb.velocity.y < -0.1f) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * fallMult * Time.deltaTime;
             falling = true;
         }
@@ -114,7 +134,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(move * speed, rb.velocity.y);
         }
 
-        if (jump && grounded && !dashing)//jump
+        if (jump && grounded && !dashing && !attack)//jump
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
@@ -162,9 +182,10 @@ public class PlayerController : MonoBehaviour
                 dashing = Input.GetButtonDown("Square");
                 dashCooldown = 0;
             }
+            
             jump = Input.GetButton("X");
             run = Mathf.Abs(move) > 0.85f ? true : false;
-
+            attack = Input.GetButtonDown("Triangle");
         }
         else
         {
@@ -178,6 +199,7 @@ public class PlayerController : MonoBehaviour
 
             jump = Input.GetButton("Jump");
             run = Input.GetButton("Run");
+            attack = Input.GetButton("Attack");
         }
     }
 
@@ -207,7 +229,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == 12)
         {
-            Debug.Log("Hit");
+            //Debug.Log("PlayerHit");
         }
     }
 }

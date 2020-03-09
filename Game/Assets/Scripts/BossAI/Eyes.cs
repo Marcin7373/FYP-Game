@@ -5,11 +5,12 @@ using Apex.AI;
 
 public sealed class Eyes : ActionBase
 {  
-    public float radius = 15f, timePassed = 0;
+    public float radius = 13f, timePassed = 0;
     public bool behind = false;
     private Transform eyes;
     public Hashtable playerInfo = new Hashtable();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
+    private Vector3 target;
 
     public override void Execute(IAIContext context)
     {
@@ -17,15 +18,7 @@ public sealed class Eyes : ActionBase
         eyes = cont.bossEyesTr;
         playerInfo = cont.playerInfo;
         rays.Clear();
-        Vector3 target = Quaternion.AngleAxis(30.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(0.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-30.0f, Vector3.forward) * eyes.right;
+        target = Quaternion.AngleAxis(30.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * radius, Color.green);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
 
@@ -33,16 +26,41 @@ public sealed class Eyes : ActionBase
         Debug.DrawRay(eyes.position, target * radius, Color.green);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
 
+        target = Quaternion.AngleAxis(7.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
+        target = Quaternion.AngleAxis(0.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
+        target = Quaternion.AngleAxis(-7.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
         target = Quaternion.AngleAxis(-15.0f, Vector3.forward) * eyes.right;
         Debug.DrawRay(eyes.position, target * radius, Color.green);
         rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
+        target = Quaternion.AngleAxis(-22.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
+        target = Quaternion.AngleAxis(-30.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+
+        target = Quaternion.AngleAxis(-45.0f, Vector3.forward) * eyes.right;
+        Debug.DrawRay(eyes.position, target * radius, Color.green);
+        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
         
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 9; i++)
         {         
             if (rays[i])
             {
-                playerInfo["position"] = rays[i].collider.gameObject.transform.position;
+                playerInfo["position"] = rays[i].collider.gameObject.GetComponent<Transform>().position;
                 playerInfo["velocity"] = rays[i].collider.gameObject.GetComponent<Rigidbody2D>().velocity;
+                playerInfo["crouch"] = rays[i].collider.gameObject.GetComponent<PlayerController>().crouch;
                 timePassed = 0;
                 break;
             }

@@ -134,16 +134,16 @@ TextureImporter:
         parentId: 2
       - name: spine4
         position: {x: 146.0877, y: 0.00011718422, z: 1}
-        rotation: {x: 0, y: 0, z: 0.07612257, w: 0.9970985}
-        length: 112.25442
+        rotation: {x: 0, y: 0, z: 0.07612237, w: 0.9970985}
+        length: 112.2544
         parentId: 3
       - name: spine5
-        position: {x: 112.2544, y: -0.0000413671, z: 1}
-        rotation: {x: 0, y: 0, z: 0.24833769, w: 0.9686735}
-        length: 135.37553
+        position: {x: 112.254425, y: 0.000011386117, z: 1}
+        rotation: {x: 0, y: 0, z: 0.2483379, w: 0.96867347}
+        length: 135.3755
         parentId: 4
       - name: head
-        position: {x: 135.37553, y: -0.000024439934, z: 1}
+        position: {x: 135.37553, y: -0.000001813758, z: 1}
         rotation: {x: 0, y: 0, z: 0.65758574, w: 0.7533797}
         length: 183.69293
         parentId: 5
@@ -155,11 +155,11 @@ TextureImporter:
       - name: neck
         position: {x: 105.53601, y: 14.54934, z: 1}
         rotation: {x: 0, y: 0, z: 0.44387835, w: 0.8960871}
-        length: 84.72609
+        length: 84.72611
         parentId: 4
       - name: jaw
-        position: {x: 84.7261, y: -0.000010717141, z: 1}
-        rotation: {x: 0, y: 0, z: 0.4666107, w: 0.88446283}
+        position: {x: 84.726135, y: -0.0000150428095, z: 1}
+        rotation: {x: 0, y: 0, z: 0.4666108, w: 0.8844628}
         length: 142.77293
         parentId: 8
       - name: spine_3.5
@@ -179,17 +179,17 @@ TextureImporter:
         parentId: 11
       - name: forearm
         position: {x: 532.1784, y: -162.45668, z: 4}
-        rotation: {x: 0, y: -0, z: 0.73990756, w: 0.6727086}
+        rotation: {x: 0, y: -0, z: 0.73990744, w: 0.6727087}
         length: 317.36148
         parentId: 12
       - name: wrist
-        position: {x: 317.3615, y: -0.000079608406, z: 4}
-        rotation: {x: 0, y: 0, z: -0.29464853, w: 0.95560575}
-        length: 60.317516
+        position: {x: 317.36145, y: 0.000040494342, z: 4}
+        rotation: {x: 0, y: 0, z: -0.29464787, w: 0.9556059}
+        length: 60.317497
         parentId: 13
       - name: fingers
-        position: {x: 60.31749, y: 0.00003343119, z: 4}
-        rotation: {x: 0, y: 0, z: 0.52090234, w: 0.85361636}
+        position: {x: 60.317493, y: -0.000032993197, z: 4}
+        rotation: {x: 0, y: 0, z: 0.5209019, w: 0.8536166}
         length: 64.06242
         parentId: 14
       - name: armspike
@@ -6847,7 +6847,7 @@ TextureImporter:
         parentId: 1
       - name: L_tail4
         position: {x: 148.80403, y: 0.00093407085, z: 0}
-        rotation: {x: 0, y: 0, z: -0.030677436, w: 0.99952936}
+        rotation: {x: 0, y: 0, z: -0.030677434, w: 0.9995294}
         length: 235.71948
         parentId: 2
       spriteID: d7a86a1a85a6396408a9292d0b2eeff5
