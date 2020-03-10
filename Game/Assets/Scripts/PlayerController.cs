@@ -7,11 +7,11 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
     public ParticleSystem splash;
-    public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f;
+    public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f;
     private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false;
     [HideInInspector]
-    public bool controller, crouch;
+    public bool controller, crouch, canHit;
 
     void Awake()
     {
@@ -73,7 +73,19 @@ public class PlayerController : MonoBehaviour
             move = 0f;
         }
 
-        if (!attack) {
+        if (attack || anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd"))
+        {
+            anim.SetBool("dashing", false);
+            anim.SetBool("jump", false);
+            anim.SetBool("jumpPeak", false);
+            anim.SetBool("falling", false);
+            anim.SetBool("crouch", false);
+            anim.SetBool("run", false);
+            anim.SetBool("grounded", grounded);
+            anim.SetFloat("move", 0f);
+            anim.SetBool("dashEnd", false);
+        }
+        else{
             anim.SetBool("dashing", dashing);
             anim.SetBool("jump", jump);
             anim.SetBool("jumpPeak", jumpPeak);
@@ -82,20 +94,9 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("run", run);
             anim.SetBool("grounded", grounded);
             anim.SetFloat("move", Mathf.Abs(move));
-            anim.SetBool("attack", attack);
         }
-        else
-        {
-            anim.SetBool("dashing", false);
-            anim.SetBool("jump", false);
-            anim.SetBool("jumpPeak", false);
-            anim.SetBool("falling", false);
-            anim.SetBool("crouch", false);
-            anim.SetBool("run", run);
-            anim.SetBool("grounded", grounded);
-            anim.SetFloat("move", 0f);
-            anim.SetBool("attack", attack);
-        }
+
+        anim.SetBool("attack", attack);
         MoveCamera();
     }
 
@@ -151,15 +152,20 @@ public class PlayerController : MonoBehaviour
     {
         if (dashCooldown > 0 && !dashing) //delay to dash again
         {
-            dashCooldown -= Time.deltaTime * 2;
-            dashing = false;
+            dashCooldown -= Time.deltaTime;// * 2;  //rate of recovery
+            dashing = false;                 
         }
         else if (dashing && grounded) //dashing
         {
             dashCooldown += Time.deltaTime;
-            if (dashCooldown >= 0.4f)
+            if (dashCooldown >= maxDash || Input.GetButtonUp("Dash"))
             {
                 dashing = false;
+                anim.SetBool("dashEnd", true);
+                if (Input.GetButtonUp("Dash"))
+                {
+                    dashCooldown = maxDash * 0.75f;  //if shortened dash half cooldown
+                }
             }
             run = false;
             crouch = false;
@@ -182,7 +188,11 @@ public class PlayerController : MonoBehaviour
                 dashing = Input.GetButtonDown("Square");
                 dashCooldown = 0;
             }
-            
+            else if (dashCooldown > minDash && dashing)
+            {
+                dashing = Input.GetButton("Square");
+            }
+
             jump = Input.GetButton("X");
             run = Mathf.Abs(move) > 0.85f ? true : false;
             attack = Input.GetButtonDown("Triangle");
@@ -195,6 +205,10 @@ public class PlayerController : MonoBehaviour
             {
                 dashing = Input.GetButtonDown("Dash");
                 dashCooldown = 0;
+            }
+            else if (dashCooldown > minDash && dashing)
+            {
+                dashing = Input.GetButton("Dash");
             }
 
             jump = Input.GetButton("Jump");
@@ -225,11 +239,22 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    void CanHit(float can)
+    {
+        if (can == 1) {
+            canHit = true;
+        }
+        else
+        {
+            canHit = false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 12)
+        if (other.gameObject.layer == 12 && canHit)
         {
-            //Debug.Log("PlayerHit");
+            Debug.Log("PlayerHit");
         }
     }
 }
