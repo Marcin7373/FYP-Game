@@ -5,7 +5,7 @@ using Apex.AI;
 
 public sealed class Eyes : ActionBase
 {  
-    public float radius = 13f, timePassed = 0;
+    public float radius = 20f, timePassed = 0;
     public bool behind = false;
     private Transform eyes;
     public Hashtable playerInfo = new Hashtable();

@@ -9,6 +9,7 @@ public class TailSwipe : ActionBase
         {
             c.bossAnim.SetTrigger("tailSwipe");
             c.busy = true;
+            c.attack = 0.1f;
         }
     }
 }

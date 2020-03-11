@@ -9,6 +9,7 @@ public class Swipe : ActionBase
         {            
             c.bossAnim.SetTrigger("swipe");
             c.busy = true;
+            c.attack = 0.1f;
         } 
     }
 }

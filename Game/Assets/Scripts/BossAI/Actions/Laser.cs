@@ -9,6 +9,7 @@ public class Laser : ActionBase
         {
             c.bossAnim.SetTrigger("laser");
             c.busy = true;
+            c.attack = 0;
         }
     }
 }

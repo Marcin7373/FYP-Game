@@ -4,7 +4,7 @@ using Apex.Serialization;
 public class IsCrouching : ContextualScorerBase
 {
     [ApexSerialization]
-    public bool not;
+    public bool not = false;
     private bool crouch; 
 
     public override float Score(IAIContext context)
@@ -22,9 +22,13 @@ public class IsCrouching : ContextualScorerBase
         {
             return score = 0;
         }
-        else
+        else if((float)c.playerInfo["timePassed"] < 0.5f)
         {
             return score = 0.1f;
+        }
+        else
+        {
+            return score = 0f;
         }
     }
 }

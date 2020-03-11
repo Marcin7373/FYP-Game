@@ -6,18 +6,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
-    public ParticleSystem splash;
-    public float speed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f;
-    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0;
+    public ParticleSystem splash, trail, trail2, trailCloak;
+    public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f;
+    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0, speedBoost = 1f, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false;
     [HideInInspector]
-    public bool controller, crouch, canHit;
+    public bool controller, crouch, canHit = true;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         splash = Instantiate(splash, transform.position, transform.rotation);
+        speed = baseSpeed;
     }
 
     void Update()
@@ -73,6 +74,20 @@ public class PlayerController : MonoBehaviour
             move = 0f;
         }
 
+        if (falling || jumpPeak)
+        {
+            trail.Stop();
+            trail2.Stop();
+            trailCloak.Stop();
+        }
+        else if (jump)
+        {
+            trail.Play();
+            trail2.Play();
+            trailCloak.Play();
+        }
+        
+
         if (attack || anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd"))
         {
             anim.SetBool("dashing", false);
@@ -95,7 +110,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("grounded", grounded);
             anim.SetFloat("move", Mathf.Abs(move));
         }
-
         anim.SetBool("attack", attack);
         MoveCamera();
     }
@@ -149,11 +163,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void Dash()
-    {
+    {       
         if (dashCooldown > 0 && !dashing) //delay to dash again
         {
             dashCooldown -= Time.deltaTime;// * 2;  //rate of recovery
-            dashing = false;                 
+            dashing = false;
+            //speed = baseSpeed * (1f + (dashCooldown*6));
         }
         else if (dashing && grounded) //dashing
         {
@@ -165,6 +180,8 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButtonUp("Dash"))
                 {
                     dashCooldown = maxDash * 0.75f;  //if shortened dash half cooldown
+                    dashing = false;
+                    anim.SetBool("dashEnd", true);
                 }
             }
             run = false;
@@ -211,6 +228,8 @@ public class PlayerController : MonoBehaviour
                 dashing = Input.GetButton("Dash");
             }
 
+            //Debug.Log(dashing + " " + anim.GetBool("dashEnd"));
+
             jump = Input.GetButton("Jump");
             run = Input.GetButton("Run");
             attack = Input.GetButton("Attack");
@@ -236,7 +255,6 @@ public class PlayerController : MonoBehaviour
         {
             splash.Emit(7);
         }
-        
     }
 
     void CanHit(float can)
@@ -254,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == 12 && canHit)
         {
-            Debug.Log("PlayerHit");
+            //Debug.Log("PlayerHit");
         }
     }
 }

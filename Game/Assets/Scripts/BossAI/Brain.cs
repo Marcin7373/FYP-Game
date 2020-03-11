@@ -8,10 +8,10 @@ using System;
 public class Brain : MonoBehaviour, IContextProvider
 {
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
-    public Transform eyes, longTail, shortTail;
+    public Transform eyes, longTail, shortTail, health;
     public ParticleSystem laser;
     private bool faceLeft = true;
-    public float speed = 1f;
+    public float speed = 1f, playerDamage = 0.1f, attack = 0f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
@@ -25,11 +25,12 @@ public class Brain : MonoBehaviour, IContextProvider
         playerInfo["crouch"] = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo);
+        context = new AIContext(this.transform, eyes, rb, anim, speed, attack, false, playerInfo);
     }
 
     void Update()
     {
+        health.position = new Vector3(transform.position.x, health.position.y, health.position.z);
         //rays = eyes.rays;
         //playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
@@ -89,11 +90,35 @@ public class Brain : MonoBehaviour, IContextProvider
         context.busy = false;
     }
 
+    public void Attacks(bool col)
+    {
+        if (health.localScale.x >= 2f)
+        {
+            Debug.Log("Dead");
+        }
+        else if (col)
+        {
+            health.localScale = new Vector2(health.localScale.x + 0.1f * Time.deltaTime, health.localScale.y);
+        }
+        else if(context.attack != 0f)
+        {
+            health.localScale = new Vector2(health.localScale.x + context.attack, health.localScale.y);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 13)
         {
             //Debug.Log("BossHit");
+            if (health.localScale.x - playerDamage > 0f)
+            {
+                health.localScale = new Vector2(health.localScale.x - playerDamage, health.localScale.y);
+            }
+            else
+            {
+                health.localScale = new Vector2(0f, health.localScale.y);
+            }          
         }
     }
 }

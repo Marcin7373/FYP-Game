@@ -31,7 +31,8 @@ MonoBehaviour:
     Assembly-CSharp","minRange":9,"maxRange":15,"scoreMin":1,"scoreMax":2},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"TailSwipe, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
-    Assembly-CSharp","minRange":14,"maxRange":25,"scoreMin":1,"scoreMax":2},{"@type":"Height,
-    Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","minRange":14,"maxRange":25,"scoreMin":0,"scoreMax":1},{"@type":"Height,
+    Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1},{"@type":"IsMoving,
+    Assembly-CSharp","maxSpeed":5.5,"minSpeed":0,"scoreMin":0,"scoreMax":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
   editorConfiguration: '{"offset":{"@x":117,"@y":-41},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":197,"@top":39,"@width":160,"@height":128},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":485,"@top":55,"@width":160,"@height":272},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'

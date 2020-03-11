@@ -9,6 +9,7 @@ public class Bite : ActionBase
         {
             c.bossAnim.SetTrigger("bite");
             c.busy = true;
+            c.attack = 0.2f;
         }   
     }
 }
