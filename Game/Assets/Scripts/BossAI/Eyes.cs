@@ -61,7 +61,7 @@ public sealed class Eyes : ActionBase
                 playerInfo["position"] = rays[i].collider.gameObject.GetComponent<Transform>().position;
                 playerInfo["velocity"] = rays[i].collider.gameObject.GetComponent<Rigidbody2D>().velocity;
                 playerInfo["crouch"] = rays[i].collider.gameObject.GetComponent<PlayerController>().crouch;
-                timePassed = 0;
+                timePassed = 0f;
                 break;
             }
         }

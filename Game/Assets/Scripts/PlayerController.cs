@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
     public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f;
-    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0, speedBoost = 1f, speed;
+    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false;
+    public bool controller;
     [HideInInspector]
-    public bool controller, crouch, canHit = true;
+    public bool crouch, canHit = true;
 
     void Awake()
     {
@@ -23,11 +24,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if ((!run && Input.GetButton("Run")) || (!jump && Input.GetButton("Jump")) || (!jumpPeak && rb.velocity.y < 6 && !grounded))
-        {
-            anim.SetBool("transition", true);
-        }
-
         PlayerInput();
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("AirAttack"))
@@ -68,13 +64,13 @@ public class PlayerController : MonoBehaviour
             dashing = false;
         }
 
-        if (crouch || dashing)
+        if (crouch || dashing || attack)
         {
             run = false;
             move = 0f;
         }
 
-        if (falling || jumpPeak)
+        if (falling || jumpPeak || grounded)
         {
             trail.Stop();
             trail2.Stop();
@@ -86,7 +82,6 @@ public class PlayerController : MonoBehaviour
             trail2.Play();
             trailCloak.Play();
         }
-        
 
         if (attack || anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd"))
         {
@@ -99,6 +94,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("grounded", grounded);
             anim.SetFloat("move", 0f);
             anim.SetBool("dashEnd", false);
+
         }
         else{
             anim.SetBool("dashing", dashing);
@@ -121,8 +117,14 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * fallMult * Time.deltaTime;
             falling = true;
         }
+
+        if (rb.velocity.y < -0.1f && attack)//cancel faster fall and gravity(3) mostly
+        {
+            rb.velocity -= Vector2.up * Physics2D.gravity.y * (fallMult+2f) * Time.deltaTime;
+        }
+
         //variable height
-        if (rb.velocity.y > 0 && !jump) {
+        if ((rb.velocity.y > 0 && !jump) || attack) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMult * Time.deltaTime;
         }
 
@@ -166,23 +168,17 @@ public class PlayerController : MonoBehaviour
     {       
         if (dashCooldown > 0 && !dashing) //delay to dash again
         {
-            dashCooldown -= Time.deltaTime;// * 2;  //rate of recovery
+            dashCooldown -= Time.deltaTime /2;  //rate of recovery
             dashing = false;
-            //speed = baseSpeed * (1f + (dashCooldown*6));
+            speed = baseSpeed * (1f + (dashCooldown*4));
         }
         else if (dashing && grounded) //dashing
         {
             dashCooldown += Time.deltaTime;
-            if (dashCooldown >= maxDash || Input.GetButtonUp("Dash"))
+            if (dashCooldown >= maxDash)
             {
                 dashing = false;
-                anim.SetBool("dashEnd", true);
-                if (Input.GetButtonUp("Dash"))
-                {
-                    dashCooldown = maxDash * 0.75f;  //if shortened dash half cooldown
-                    dashing = false;
-                    anim.SetBool("dashEnd", true);
-                }
+                anim.SetBool("dashEnd", true);           
             }
             run = false;
             crouch = false;
@@ -195,15 +191,34 @@ public class PlayerController : MonoBehaviour
 
     void PlayerInput()
     {
+        if (!jumpPeak && rb.velocity.y < 6 && !grounded)
+        {
+            anim.SetBool("transition", true);
+        }
+
         if (controller) //Controller or keyboard input
         {
+            if (Input.GetButtonUp("Square") && dashing)
+            {
+                dashCooldown = maxDash * 0.75f;  //if shortened dash half cooldown
+                dashing = false;
+                anim.SetBool("dashEnd", true);
+            }
+
             move = Input.GetAxisRaw("Horizontal");
+
+            if ((!run && Mathf.Abs(move) > 0.85f ? true : false) || (!jump && Input.GetButton("X")))
+            {
+                anim.SetBool("transition", true);
+            }
             //cameraPan = Input.GetAxisRaw("RightSticX");
-            crouch = Input.GetButton("Circle");
+            crouch = Input.GetAxisRaw("Vertical") < 0 && Mathf.Abs(move) < 0.5f ? true : false;
+
             if (!dashing && dashCooldown <= 0)
             {
                 dashing = Input.GetButtonDown("Square");
                 dashCooldown = 0;
+                speed = baseSpeed;
             }
             else if (dashCooldown > minDash && dashing)
             {
@@ -212,12 +227,24 @@ public class PlayerController : MonoBehaviour
 
             jump = Input.GetButton("X");
             run = Mathf.Abs(move) > 0.85f ? true : false;
-            attack = Input.GetButtonDown("Triangle");
+            attack = Input.GetButtonDown("Circle");
         }
         else
         {
+            if ((!run && Input.GetButton("Run")) || (!jump && Input.GetButton("Jump"))){
+                anim.SetBool("transition", true);
+            }
+
+            if (Input.GetButtonUp("Dash") && dashing)
+            {
+                dashCooldown = maxDash * 0.75f;  //if shortened dash half cooldown
+                dashing = false;
+                anim.SetBool("dashEnd", true);
+            }
+
             move = Input.GetAxisRaw("Horizontal");
             crouch = Input.GetButton("Crouch");
+
             if (!dashing && dashCooldown <= 0)
             {
                 dashing = Input.GetButtonDown("Dash");
@@ -227,8 +254,7 @@ public class PlayerController : MonoBehaviour
             {
                 dashing = Input.GetButton("Dash");
             }
-
-            //Debug.Log(dashing + " " + anim.GetBool("dashEnd"));
+            //Debug.Log(dashing + " " + anim.GetBool("dashEnd")+" "+dashCooldown);
 
             jump = Input.GetButton("Jump");
             run = Input.GetButton("Run");
@@ -238,21 +264,17 @@ public class PlayerController : MonoBehaviour
 
     void Splash(float offset)
     {
-        if (move > 0)
-        {
+        if (move > 0){
             splash.transform.position = new Vector3(transform.position.x + offset, -4.5f, transform.position.z);
         }
-        else
-        {
+        else{
             splash.transform.position = new Vector3(transform.position.x - offset, -4.5f, transform.position.z);
         }
 
-        if (offset > 1)
-        {
+        if (offset > 1){
             splash.Emit(20);
         }
-        else
-        {
+        else{
             splash.Emit(7);
         }
     }
@@ -260,11 +282,11 @@ public class PlayerController : MonoBehaviour
     void CanHit(float can)
     {
         if (can == 1) {
-            canHit = true;
+            gameObject.layer = 9;
         }
         else
         {
-            canHit = false;
+            gameObject.layer = 9;
         }
     }
 

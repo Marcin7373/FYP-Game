@@ -307,7 +307,7 @@
 /define:CSHARP_7_3_OR_NEWER
 Assets\Animations\Player\transitions\transitionTrigger.cs
 Assets\Apex\AINameMap.cs
-Assets\AttackCol.cs
+Assets\Scripts\AttackCol.cs
 Assets\Scripts\BgParallax.cs
 Assets\Scripts\BossAI\AIContext.cs
 Assets\Scripts\BossAI\Actions\Bite.cs

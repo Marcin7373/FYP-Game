@@ -2,6 +2,7 @@
 
 public class Bite : ActionBase
 {
+    private const int ID = 1;
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;
@@ -9,7 +10,8 @@ public class Bite : ActionBase
         {
             c.bossAnim.SetTrigger("bite");
             c.busy = true;
-            c.attack = 0.2f;
+            c.history[0,0] = ID;  //current
+            c.history[ID,0]++;    //times used
         }   
     }
 }

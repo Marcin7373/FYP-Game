@@ -124,27 +124,27 @@ TextureImporter:
         parentId: 0
       - name: spine2
         position: {x: 165.14217, y: -0.000003150093, z: 1}
-        rotation: {x: 0, y: 0, z: -0.3089652, w: 0.95107335}
-        length: 162.3372
+        rotation: {x: 0, y: 0, z: -0.30896515, w: 0.9510734}
+        length: 162.33722
         parentId: 1
       - name: spine3
-        position: {x: 162.33723, y: 0.00003792201, z: 1}
+        position: {x: 162.33722, y: 0.00002534347, z: 1}
         rotation: {x: 0, y: 0, z: -0.022740494, w: 0.99974144}
-        length: 146.08781
+        length: 146.08783
         parentId: 2
       - name: spine4
-        position: {x: 146.08783, y: -0.00014286001, z: 1}
+        position: {x: 146.08783, y: -0.00019882934, z: 1}
         rotation: {x: 0, y: 0, z: 0.076121, w: 0.9970986}
-        length: 112.2544
+        length: 112.25441
         parentId: 3
       - name: spine5
-        position: {x: 112.25441, y: 0.00003034433, z: 1}
-        rotation: {x: 0, y: 0, z: 0.248338, w: 0.96867347}
+        position: {x: 112.25441, y: -0.000014101821, z: 1}
+        rotation: {x: 0, y: 0, z: 0.24833798, w: 0.96867347}
         length: 135.37561
         parentId: 4
       - name: head
-        position: {x: 135.37564, y: 0.000011693624, z: 1}
-        rotation: {x: 0, y: 0, z: 0.6575859, w: 0.75337964}
+        position: {x: 135.37561, y: -0.000036162874, z: 1}
+        rotation: {x: 0, y: 0, z: 0.6575858, w: 0.75337964}
         length: 183.69293
         parentId: 5
       - name: eye
@@ -154,12 +154,12 @@ TextureImporter:
         parentId: 6
       - name: neck
         position: {x: 105.53604, y: 14.549332, z: 1}
-        rotation: {x: 0, y: 0, z: 0.4438786, w: 0.896087}
-        length: 84.72605
+        rotation: {x: 0, y: 0, z: 0.44387874, w: 0.8960869}
+        length: 84.726006
         parentId: 4
       - name: jaw
-        position: {x: 84.72602, y: 0.000006360672, z: 1}
-        rotation: {x: 0, y: 0, z: 0.46661055, w: 0.88446295}
+        position: {x: 84.72598, y: -0.000027850725, z: 1}
+        rotation: {x: 0, y: 0, z: 0.4666104, w: 0.884463}
         length: 142.77293
         parentId: 8
       - name: spine_3.5
@@ -180,16 +180,16 @@ TextureImporter:
       - name: forearm
         position: {x: 532.1781, y: -162.45671, z: 4}
         rotation: {x: 0, y: -0, z: 0.73990744, w: 0.6727087}
-        length: 317.36157
+        length: 317.36154
         parentId: 12
       - name: wrist
-        position: {x: 317.3616, y: 0.000006527691, z: 4}
-        rotation: {x: 0, y: 0, z: -0.29464883, w: 0.9556056}
-        length: 60.317455
+        position: {x: 317.3616, y: 0.0000050719364, z: 4}
+        rotation: {x: 0, y: 0, z: -0.29464844, w: 0.95560575}
+        length: 60.317413
         parentId: 13
       - name: fingers
-        position: {x: 60.317413, y: 0.000004696776, z: 4}
-        rotation: {x: 0, y: 0, z: 0.52090305, w: 0.8536159}
+        position: {x: 60.31739, y: -0.00004526644, z: 4}
+        rotation: {x: 0, y: 0, z: 0.5209027, w: 0.85361606}
         length: 64.06242
         parentId: 14
       - name: armspike
@@ -6747,17 +6747,17 @@ TextureImporter:
         parentId: -1
       - name: L_tail2
         position: {x: 109.86356, y: 0.000013310593, z: 0}
-        rotation: {x: 0, y: 0, z: -0.0113518825, w: 0.99993557}
+        rotation: {x: 0, y: 0, z: -0.011351883, w: 0.99993557}
         length: 185.97757
         parentId: 0
       - name: L_tail3
-        position: {x: 185.97757, y: -0.00018578193, z: 0}
+        position: {x: 185.97757, y: -0.00019281184, z: 0}
         rotation: {x: 0, y: 0, z: 0.00713459, w: 0.99997455}
         length: 148.80403
         parentId: 1
       - name: L_tail4
-        position: {x: 148.80402, y: 0.00049202, z: 0}
-        rotation: {x: 0, y: 0, z: -0.030678494, w: 0.99952936}
+        position: {x: 148.80402, y: 0.00048527113, z: 0}
+        rotation: {x: 0, y: 0, z: -0.030678492, w: 0.99952936}
         length: 235.71948
         parentId: 2
       spriteID: 099c196a7dfcc384fb28cbe120d1343a

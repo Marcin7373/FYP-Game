@@ -307,6 +307,7 @@
 /define:CSHARP_7_3_OR_NEWER
 Assets\Animations\Player\transitions\transitionTrigger.cs
 Assets\Apex\AINameMap.cs
+Assets\Scripts\AttackCol.cs
 Assets\Scripts\BgParallax.cs
 Assets\Scripts\BossAI\AIContext.cs
 Assets\Scripts\BossAI\Actions\Bite.cs
@@ -320,6 +321,8 @@ Assets\Scripts\BossAI\Eyes.cs
 Assets\Scripts\BossAI\Scorers\Distance.cs
 Assets\Scripts\BossAI\Scorers\Height.cs
 Assets\Scripts\BossAI\Scorers\IsCrouching.cs
+Assets\Scripts\BossAI\Scorers\IsMoving.cs
 Assets\Scripts\BossAI\Scorers\SeePlayer.cs
 Assets\Scripts\CameraFollow.cs
+Assets\Scripts\Health.cs
 Assets\Scripts\PlayerController.cs
