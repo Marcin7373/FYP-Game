@@ -6,14 +6,13 @@ using Apex.AI;
 using System;
 
 public class Brain : MonoBehaviour, IContextProvider
-{                                        //Bite Laser Swipe  TailS
+{                                                 //Bite Laser Swipe TailS
     private readonly float[] damage = new float[] { 0.2f, 0.1f, 0.1f, 0.1f };
-    //private Health healthObj = new Health();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
-    public Transform eyes, longTail, shortTail, healthScale;
+    public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
     private bool faceLeft = true;
-    public float speed = 1f, playerDamage = 0.1f, health, dmgScale = 1f;
+    public float speed = 1f, playerDamage = 0.1f, dmgScale = 1f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
@@ -27,7 +26,6 @@ public class Brain : MonoBehaviour, IContextProvider
         playerInfo["position"] = new Vector3(-27, -4, 0);
         playerInfo["velocity"] = new Vector2(0,0);
         playerInfo["crouch"] = false;
-        //health = healthScale.localScale.x;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo, history);
@@ -84,10 +82,7 @@ public class Brain : MonoBehaviour, IContextProvider
         longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
     }
 
-    void NotBusy()
-    {
-        context.busy = false;
-    }
+    void NotBusy() => context.busy = false;
 
     public void Attacks(bool col)
     {
