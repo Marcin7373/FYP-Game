@@ -17,11 +17,11 @@ TagManager:
   - 
   - Background
   - Player
+  - CantHitPlayer
   - Boss
   - Foreground
   - BossAttacks
   - PlayerAttacks
-  - 
   - 
   - 
   - 

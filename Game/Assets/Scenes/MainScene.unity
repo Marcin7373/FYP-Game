@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 77343508}
   - component: {fileID: 77343507}
   - component: {fileID: 77343511}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: longTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 293948729}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 377762556}
   - component: {fileID: 377762558}
   - component: {fileID: 377762557}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: shortTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   cameraTarget: {fileID: 194828520}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 2304
   splash: {fileID: 2525357118127635945, guid: 9ca806fbfb618f945950ead47222f3e8, type: 3}
   trail: {fileID: 1308006223}
   trail2: {fileID: 1394281997}
@@ -1299,7 +1299,7 @@ MonoBehaviour:
   fallMult: 4
   maxDash: 0.4
   minDash: 0.1
-  controller: 1
+  controller: 0
   crouch: 0
   canHit: 0
 --- !u!1 &486844173
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 728210661}
   - component: {fileID: 728210662}
   - component: {fileID: 728210663}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2176,7 +2176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151504145}
   - component: {fileID: 1151504146}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2245,7 +2245,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 3584
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -17123,6 +17123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596079305}
   - component: {fileID: 1596079306}
+  - component: {fileID: 1596079307}
   m_Layer: 8
   m_Name: Health
   m_TagString: Untagged
@@ -17193,6 +17194,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1596079307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596079304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877db83e99ae23547bdfb0fdfa8d2930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615941861
 GameObject:
   m_ObjectHideFlags: 0
@@ -17415,7 +17428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1692811277}
   - component: {fileID: 1692811278}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17484,7 +17497,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 3584
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -17709,7 +17722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1840739418}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17743,7 +17756,7 @@ GameObject:
   - component: {fileID: 1852398799}
   - component: {fileID: 1852398801}
   - component: {fileID: 1852398800}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: backArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22661,7 +22674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1936063639}
   - component: {fileID: 1936063640}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: PlayerAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22789,7 +22802,7 @@ GameObject:
   - component: {fileID: 1953303685}
   - component: {fileID: 1953303684}
   - component: {fileID: 1953303683}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}

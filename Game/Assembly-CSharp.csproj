@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\BossAI\Scorers\IsMoving.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\Apex\Apex AI Examples and Documentation\GetYourLicense.txt" />
     <None Include="Assets\Apex\Apex Utility AI\ChangeLog.txt" />

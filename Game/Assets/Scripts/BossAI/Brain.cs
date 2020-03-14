@@ -7,7 +7,8 @@ using System;
 
 public class Brain : MonoBehaviour, IContextProvider
 {                                        //Bite Laser Swipe  TailS
-    private float[] damage = new float[] { 0.2f, 0.1f, 0.1f, 0.1f };
+    private readonly float[] damage = new float[] { 0.2f, 0.1f, 0.1f, 0.1f };
+    //private Health healthObj = new Health();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     public Transform eyes, longTail, shortTail, healthScale;
     public ParticleSystem laser;
@@ -21,11 +22,12 @@ public class Brain : MonoBehaviour, IContextProvider
 
     private void Awake()
     {
+        Health.Instance.BossPos = transform.position;
         playerInfo["timePassed"] = 10f;
         playerInfo["position"] = new Vector3(-27, -4, 0);
         playerInfo["velocity"] = new Vector2(0,0);
         playerInfo["crouch"] = false;
-        health = healthScale.localScale.x;
+        //health = healthScale.localScale.x;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo, history);
@@ -33,8 +35,8 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void Update()
     {
-        HealthUpdate();
-        
+        Health.Instance.BossPos = transform.position;
+
         /*rays = eyes.rays;
         playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
@@ -91,29 +93,22 @@ public class Brain : MonoBehaviour, IContextProvider
     {
         if (col && context.history[0,0] == 2)
         {
-            health+=(damage[context.history[0, 0]-1] * Time.deltaTime) * dmgScale;
+            Health.Instance.CurHealth+=(damage[context.history[0, 0]-1] * Time.deltaTime) * dmgScale;
         }
         else if (!col)
         {
             context.history[(context.history[0, 0]), 1]++;  // times attack hit
-            health += damage[context.history[0, 0] - 1] * dmgScale;
+            Health.Instance.CurHealth += damage[context.history[0, 0] - 1] * dmgScale;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 13)
+        if (other.gameObject.layer == 14)
         {
             //Debug.Log("BossHit");
-            health-=playerDamage;         
+            Health.Instance.CurHealth-=playerDamage;         
         }
-    }
-
-    private void HealthUpdate()
-    {
-        healthScale.position = new Vector3(transform.position.x, healthScale.position.y, healthScale.position.z);
-        health = Mathf.Clamp(health, 0, 2);
-        healthScale.localScale = new Vector2(Mathf.Lerp(healthScale.localScale.x, health, 0.2f), healthScale.localScale.y);
     }
 
     public IAIContext GetContext(Guid aiId)
