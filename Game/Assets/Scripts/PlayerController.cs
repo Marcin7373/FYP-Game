@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private readonly Dictionary<string, string[]> buttons = new Dictionary<string, string[]>()
     {{"attack", new string[] {"Attack", "Square"}}, {"jump", new string[] {"Jump", "X"}}, {"dash", new string[] {"Dash", "Circle"}}, {"fade", new string[] {"Fade", "Triangle"}}};
-    private Animator anim;
+    public Animator anim;
     private Rigidbody2D rb;
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
@@ -30,13 +30,26 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
 
         UpdateFlags();
-        
+        //air rotation       
+        if (!grounded && !falling) 
+        {
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, -(Mathf.Abs(move) * 10));
+        }
+        else if(falling)
+        {
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, Mathf.Lerp(rotInAir, (Mathf.Abs(move) * 20), 0.4f));
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+        }
+
         //inverting to facing direction
         if (move < 0 && !dashing) {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, 180, transform.eulerAngles.z);
         } else if (move > 0 && !dashing)
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
         }
 
         //Particle system jump trails
@@ -268,16 +281,16 @@ public class PlayerController : MonoBehaviour
     void Splash(float offset)
     {
         if (move > 0){
-            splash.transform.position = new Vector3(transform.position.x + offset, -4.5f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x + offset, -4.6f, transform.position.z);
         }
         else{
-            splash.transform.position = new Vector3(transform.position.x - offset, -4.5f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x - offset, -4.6f, transform.position.z);
         }
 
         if (offset > 1){
             splash.Emit(20);
         }
-        else{
+        else if(Mathf.Abs(rb.velocity.x) > 0.9f){
             splash.Emit(7);
         }
     }

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 6357841}
   - component: {fileID: 6357843}
   - component: {fileID: 6357842}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 77343508}
   - component: {fileID: 77343507}
   - component: {fileID: 77343511}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: longTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 377762556}
   - component: {fileID: 377762558}
   - component: {fileID: 377762557}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: shortTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11c00867af93f8479e6ace380b7cf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   groundCheck: {fileID: 1989056395}
   cameraTarget: {fileID: 194828520}
   groundLayer:
@@ -2243,7 +2244,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 10752
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
