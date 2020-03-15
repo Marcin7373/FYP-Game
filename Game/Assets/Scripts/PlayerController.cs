@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private readonly Dictionary<string, string[]> buttons = new Dictionary<string, string[]>()
     {{"attack", new string[] {"Attack", "Square"}}, {"jump", new string[] {"Jump", "X"}}, {"dash", new string[] {"Dash", "Circle"}}, {"fade", new string[] {"Fade", "Triangle"}}};
-    public Animator anim;
+    private Animator anim;
     private Rigidbody2D rb;
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        for (int i = 0; i<Input.GetJoystickNames().Length;i++)
+        {
+            if (Input.GetJoystickNames()[i].Length > 0)
+            {
+                cont = Input.GetJoystickNames()[i].Length > 0 ? 1 : 0;
+            }
+        }
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         splash = Instantiate(splash, transform.position, transform.rotation);
@@ -31,29 +38,29 @@ public class PlayerController : MonoBehaviour
 
         UpdateFlags();
         //air rotation       
-        if (!grounded && !falling) 
+        if (!grounded && !falling)//bug at peak if direction inverting not restricted to ground
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, -(Mathf.Abs(move) * 10));
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, -(Mathf.Abs(move) * 15));
         }
         else if(falling)
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, Mathf.Lerp(rotInAir, (Mathf.Abs(move) * 20), 0.4f));
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, Mathf.Abs(move) * 10);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0f);
         }
-
+        
         //inverting to facing direction
-        if (move < 0 && !dashing) {
+        if ((move < 0 && !dashing && grounded) || (attack && rb.velocity.x < 0)) {
             transform.rotation = Quaternion.Euler(0, 180, transform.eulerAngles.z);
-        } else if (move > 0 && !dashing)
+        } else if ((move > 0 && !dashing && grounded) || (attack && rb.velocity.x > 0))
         {
             transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
         }
 
         //Particle system jump trails
-        if (falling || jumpPeak || grounded)
+        if (falling || grounded || attack)
         {
             trail.Stop();
             trail2.Stop();

@@ -27,13 +27,13 @@ public class BgParallax : MonoBehaviour
         {
             bgTargetPosX = backgrounds[i].position.x + ((previousCamPos.x - cam.position.x) * -backgrounds[i].position.z);
 
-            if (i > 9) {
+            //if (i > 9) {
                 bgTargetPosY = backgrounds[i].position.y + ((previousCamPos.y - cam.position.y) * -backgrounds[i].position.z);
-            }
+            /*}
             else
             {
                 bgTargetPosY = backgrounds[i].position.y;
-            }
+            }*/
             Vector3 backgroundTargetPos = new Vector3(bgTargetPosX, bgTargetPosY, backgrounds[i].position.z);
 
             backgrounds[i].position = Vector3.Lerp(backgrounds[i].position, backgroundTargetPos, smoothing * Time.deltaTime);

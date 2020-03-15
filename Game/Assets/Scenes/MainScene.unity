@@ -1282,7 +1282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11c00867af93f8479e6ace380b7cf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   groundCheck: {fileID: 1989056395}
   cameraTarget: {fileID: 194828520}
   groundLayer:
@@ -1298,7 +1297,7 @@ MonoBehaviour:
   fallMult: 4
   maxDash: 0.4
   minDash: 0.1
-  cont: 1
+  cont: 0
   crouch: 0
   canHit: 0
 --- !u!1 &486844173
@@ -2639,7 +2638,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.38
+      scalar: 0.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7472,7 +7471,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.26
+      scalar: 0.23
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -17278,7 +17277,7 @@ MonoBehaviour:
   - {fileID: 1185378230}
   - {fileID: 196835242}
   - {fileID: 1730239604}
-  smoothing: 1
+  smoothing: 1.1
 --- !u!4 &1625216636
 Transform:
   m_ObjectHideFlags: 0
@@ -18026,7 +18025,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.26
+      scalar: 0.23
       minScalar: 5
       maxCurve:
         serializedVersion: 2
