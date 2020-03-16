@@ -5,7 +5,7 @@ using Apex.AI;
 
 public class AIContext : IAIContext
 {
-    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, float speed, bool busy, Hashtable playerInfo, int[,] history)
+    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, float speed, bool busy, Hashtable playerInfo, float[,] history)
     {
         bossTr = transform;
         bossEyesTr = eyes;
@@ -59,7 +59,7 @@ public class AIContext : IAIContext
         set;
     }
 
-    public int[,] history
+    public float[,] history
     {
         get;
         set;

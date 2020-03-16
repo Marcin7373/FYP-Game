@@ -9,7 +9,7 @@ public class AttackCol : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            brain.Attacks(false);
+            brain.Attacks(0);
         }
     }
 
@@ -17,7 +17,15 @@ public class AttackCol : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
-            brain.Attacks(true);
+            brain.Attacks(1);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            brain.Attacks(2);
         }
     }
 }

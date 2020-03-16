@@ -7,7 +7,7 @@ using System;
 
 public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe TailS
-    private readonly float[] damage = new float[] { 0.2f, 0.1f, 0.1f, 0.1f };
+    private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f };
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
@@ -17,7 +17,8 @@ public class Brain : MonoBehaviour, IContextProvider
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
     private AIContext context;           //Current   Bite      Laser     Swipe    TailSwipe
-    public int[,] history = new int[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+    public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+    private float temp;
 
     private void Awake()
     {
@@ -29,11 +30,17 @@ public class Brain : MonoBehaviour, IContextProvider
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo, history);
+        temp = history[0,1];
     }
 
     void Update()
     {
         Health.Instance.BossPos = transform.position;
+        if (context.history[0,1] != temp)
+        {
+            PrintHistory(context.history);
+        }
+        temp = context.history[0,1];
 
         /*rays = eyes.rays;
         playerInfo = eyes.playerInfo;
@@ -84,16 +91,26 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void NotBusy() => context.busy = false;
 
-    public void Attacks(bool col)
+    public void Attacks(int state)
     {
-        if (col && context.history[0,0] == 2)
+        float baseDamage = damage[(int)context.history[0, 0] - 1] * dmgScale;
+
+        if (state == 1 && context.history[0,0] == 2)
         {
-            Health.Instance.CurHealth+=(damage[context.history[0, 0]-1] * Time.deltaTime) * dmgScale;
+            float dis = (Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]) - 19) / (5f - 19);      //base 0.8 * 1.25 = 1 over time 
+            context.history[(int)context.history[0, 0], 1] += baseDamage * Time.deltaTime * dis / (damage[(int)context.history[0, 0] - 1] * 1.25f);  //fraction of damage landed
+            Health.Instance.CurHealth += baseDamage * Time.deltaTime * dis;
+            
+            Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
         }
-        else if (!col)
+        else if (state == 0 && context.history[0, 0] != 2)
         {
-            context.history[(context.history[0, 0]), 1]++;  // times attack hit
-            Health.Instance.CurHealth += damage[context.history[0, 0] - 1] * dmgScale;
+            context.history[(int)context.history[0, 0], 1]++;  // times attack hit
+            Health.Instance.CurHealth += baseDamage;
+            context.history[0, 1]++;    //history index
+        }else if (state == 2 && context.history[0,0] == 2)
+        {
+            context.history[0, 1]++;    //history index
         }
     }
 
@@ -109,5 +126,12 @@ public class Brain : MonoBehaviour, IContextProvider
     public IAIContext GetContext(Guid aiId)
     {
         return context;
+    }
+
+    void PrintHistory(float[,] his)
+    {
+        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + "\n \t      " +
+        his[1, 1] + " | " + his[2, 1].ToString("F2") + " | " + his[3, 1] + " | " + his[4, 1]);
+        //context.history[2, 1] = 0;
     }
 }
