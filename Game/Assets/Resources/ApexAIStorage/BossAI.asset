@@ -25,7 +25,7 @@ MonoBehaviour:
     Assembly-CSharp","not":false},{"@type":"Distance, Assembly-CSharp","minRange":6,"maxRange":10,"scoreMin":1,"scoreMax":3},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1},{"@type":"LearningAccuracy,
     Assembly-CSharp","scoreMin":0,"scoreMax":1,"ID":1,"minFrequency":3}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Laser, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
+    ApexAI","action":{"@type":"Laser, Assembly-CSharp","interval":2},"_scorers":[{"@type":"Distance,
     Assembly-CSharp","minRange":5,"maxRange":18,"scoreMin":0,"scoreMax":2},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":1,"scoreMax":2},{"@type":"LearningAccuracy,
     Assembly-CSharp","scoreMin":0,"scoreMax":1,"ID":2,"minFrequency":3}]},{"@type":"Apex.AI.CompositeScoreQualifier,
@@ -34,10 +34,10 @@ MonoBehaviour:
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1},{"@type":"LearningAccuracy,
     Assembly-CSharp","scoreMin":0,"scoreMax":2,"ID":3,"minFrequency":3}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"TailSwipe, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
-    Assembly-CSharp","minRange":10,"maxRange":25,"scoreMin":0,"scoreMax":1},{"@type":"Height,
+    Assembly-CSharp","minRange":10,"maxRange":25,"scoreMin":0,"scoreMax":2},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":1},{"@type":"IsMoving,
     Assembly-CSharp","maxSpeed":5.5,"minSpeed":0,"scoreMin":0,"scoreMax":2},{"@type":"LearningAccuracy,
-    Assembly-CSharp","scoreMin":0,"scoreMax":2,"ID":4,"minFrequency":3}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","scoreMin":0,"scoreMax":1,"ID":4,"minFrequency":3}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
   editorConfiguration: '{"offset":{"@x":117,"@y":-41},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":197,"@top":39,"@width":160,"@height":128},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":485,"@top":55,"@width":160,"@height":272},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID

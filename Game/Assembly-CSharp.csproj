@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\Animations\Player\transitions\transitionTrigger.cs" />
     <Compile Include="Assets\Apex\AINameMap.cs" />
-    <Compile Include="Assets\Scripts\AttackCol.cs" />
     <Compile Include="Assets\Scripts\BgParallax.cs" />
     <Compile Include="Assets\Scripts\BossAI\AIContext.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Bite.cs" />
@@ -79,8 +78,10 @@
     <Compile Include="Assets\Scripts\BossAI\Scorers\IsMoving.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\LearningAccuracy.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
+    <Compile Include="Assets\Scripts\BossAttackCol.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttackCol.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\Apex\Apex AI Examples and Documentation\GetYourLicense.txt" />
     <None Include="Assets\Apex\Apex Utility AI\ChangeLog.txt" />

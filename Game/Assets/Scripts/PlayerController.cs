@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
-    public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f;
+    public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.1f;
     private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false;
     public int cont = 0; //controller 1=yes 0=no
@@ -329,11 +329,8 @@ public class PlayerController : MonoBehaviour
 
     void SetDashEnd() => anim.SetBool("dashEnd", false);
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Attack()
     {
-        if (other.gameObject.layer == 13)
-        {
-            //Debug.Log("PlayerHit");
-        }
+        Health.Instance.CurHealth -= damage;
     }
 }

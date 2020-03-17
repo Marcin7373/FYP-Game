@@ -12,7 +12,7 @@ public class Brain : MonoBehaviour, IContextProvider
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
     private bool faceLeft = true;
-    public float speed = 1f, playerDamage = 0.1f, dmgScale = 1f;
+    public float speed = 1f, dmgScale = 1f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
@@ -117,15 +117,6 @@ public class Brain : MonoBehaviour, IContextProvider
             //context.history[0, 1]++;    //history index
         }
         //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 14)
-        {
-            //Debug.Log("BossHit");
-            Health.Instance.CurHealth-=playerDamage;         
-        }
     }
 
     public IAIContext GetContext(Guid aiId)

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AttackCol : MonoBehaviour
+public class BossAttackCol : MonoBehaviour
 {
     private Brain brain;
     void Awake() => brain = transform.parent.GetComponent<Brain>();
