@@ -3,7 +3,7 @@ using Apex.Serialization;
 
 public class IsCrouching : ContextualScorerBase
 {
-    [ApexSerialization]
+    [ApexSerialization, FriendlyName("Not", "If true its reversed, e.g. true -> player crouching = 0")]
     public bool not = false;
     private bool crouch; 
 

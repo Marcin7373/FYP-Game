@@ -21,8 +21,7 @@ public class Brain : MonoBehaviour, IContextProvider
     private float temp;
 
     private void Awake()
-    {
-        Health.Instance.BossPos = transform.position;
+    {        
         playerInfo["timePassed"] = 10f;
         playerInfo["position"] = new Vector3(-27, -4, 0);
         playerInfo["velocity"] = new Vector2(0,0);
@@ -33,6 +32,11 @@ public class Brain : MonoBehaviour, IContextProvider
         temp = history[0,1];
     }
 
+    private void Start()
+    {
+        Health.Instance.BossPos = transform.position;
+    }
+
     void Update()
     {
         Health.Instance.BossPos = transform.position;
@@ -41,7 +45,7 @@ public class Brain : MonoBehaviour, IContextProvider
             PrintHistory(context.history);
         }
         temp = context.history[0,1];
-
+       
         /*rays = eyes.rays;
         playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
@@ -97,21 +101,22 @@ public class Brain : MonoBehaviour, IContextProvider
 
         if (state == 1 && context.history[0,0] == 2)
         {
-            float dis = (Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]) - 19) / (5f - 19);      //base 0.8 * 1.25 = 1 over time 
-            context.history[(int)context.history[0, 0], 1] += baseDamage * Time.deltaTime * dis / (damage[(int)context.history[0, 0] - 1] * 1.25f);  //fraction of damage landed
-            Health.Instance.CurHealth += baseDamage * Time.deltaTime * dis;
+            float dis = (Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]) - 19) / (5f - 19);                        
+            context.history[(int)context.history[0, 0], 1] += baseDamage * Time.deltaTime  //base 0.8 * 1.25 = 1 over time 
+                    *(Mathf.Clamp(dis * 1.8f, 0, 1)) / (damage[(int)context.history[0, 0] - 1] * 1.25f); //fraction of damage landed
+            Health.Instance.CurHealth += baseDamage * Time.deltaTime * dis;            
             
-            Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
         }
         else if (state == 0 && context.history[0, 0] != 2)
         {
             context.history[(int)context.history[0, 0], 1]++;  // times attack hit
             Health.Instance.CurHealth += baseDamage;
-            context.history[0, 1]++;    //history index
+            //context.history[0, 1]++;    //history index
         }else if (state == 2 && context.history[0,0] == 2)
         {
-            context.history[0, 1]++;    //history index
+            //context.history[0, 1]++;    //history index
         }
+        //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -130,8 +135,8 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void PrintHistory(float[,] his)
     {
-        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + "\n \t      " +
-        his[1, 1] + " | " + his[2, 1].ToString("F2") + " | " + his[3, 1] + " | " + his[4, 1]);
+        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + "\n \t " +
+        his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F2") + " | " + his[3, 1] + " | " + his[4, 1]);
         //context.history[2, 1] = 0;
     }
 }

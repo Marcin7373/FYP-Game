@@ -278,7 +278,7 @@ MonoBehaviour:
   shortTail: {fileID: 377762556}
   laser: {fileID: 1953303684}
   speed: 4
-  playerDamage: 0.1
+  playerDamage: 0.07
   dmgScale: 1
 --- !u!114 &6357841
 MonoBehaviour:

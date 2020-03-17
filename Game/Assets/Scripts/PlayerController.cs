@@ -34,7 +34,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        PlayerInput();
+        if (Input.GetKeyDown("p") || Input.GetButtonDown("Options"))
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        }
+
+        if (Time.timeScale == 1)
+        {
+            PlayerInput();
+        }
 
         UpdateFlags();
         //air rotation       
@@ -75,7 +83,7 @@ public class PlayerController : MonoBehaviour
         //fade ability damage to player
         if (fade)
         {
-            Health.Instance.CurHealth += 0.05f * Time.deltaTime;
+            Health.Instance.CurHealth += 0.8f * Time.deltaTime;
         }
         //Animtion flags
         anim.SetBool("dashing", dashing);
@@ -186,7 +194,7 @@ public class PlayerController : MonoBehaviour
         {
             dashing = Input.GetButton(buttons["dash"][cont]);
         }
-        //Debug.Log(dashing + " " + anim.GetBool("dashEnd")+" "+dashCooldown);
+
         jump = Input.GetButton(buttons["jump"][cont]);
         attack = Input.GetButtonDown(buttons["attack"][cont]);
         fade = Input.GetButton(buttons["fade"][cont]);
@@ -244,6 +252,7 @@ public class PlayerController : MonoBehaviour
             jump = false;
             move = 0f;
             fade = false;
+            attack = false;
         }
 
         if (attack || anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd"))
@@ -254,6 +263,11 @@ public class PlayerController : MonoBehaviour
             falling = false;
             crouch = false;
             fade = false;
+        }
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd"))
+        {
+            attack = false;
         }
     }
 

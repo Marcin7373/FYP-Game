@@ -2,11 +2,12 @@
 using Apex.Serialization;
 using UnityEngine;
 
+[ApexSerializedType, FriendlyName("Height", "Increases score across a jump, zero score then up to half score at peak and max score before landing")]
 public class Height : ContextualScorerBase
 {
     [ApexSerialization]
     public float maxPosY = 4.2f, minPosY = -2.85f, scoreMin = 1, scoreMax = 1;
-    private float ypos,  scoreMid;
+    private float ypos, scoreMid;
 
     public override float Score(IAIContext context)
     {
@@ -26,7 +27,7 @@ public class Height : ContextualScorerBase
         {
             score = 0;
         }
-        //Debug.Log(score + " "+ ypos+ " "+ ((Vector2)c.playerInfo["velocity"]).y);
+        //Debug.Log(score + "  "+ ypos+ "  "+ ((Vector2)c.playerInfo["velocity"]).y);
 
         return score;
     }

@@ -2,6 +2,7 @@
 using Apex.Serialization;
 using UnityEngine;
 
+[ApexSerializedType, FriendlyName("Distance","Middle of range being the max score tapering off to 0 to both edges/ranges")]
 public class Distance : ContextualScorerBase
 {
     [ApexSerialization]
