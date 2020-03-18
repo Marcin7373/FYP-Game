@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Apex.AI;
+using Apex.Serialization;
 
+[ApexSerializedType, FriendlyName("EyesScan","Ray casts looking for the player and updates context")]
 public sealed class Eyes : ActionBase
 {  
-    public float radius = 20f, timePassed = 0;
-    public bool behind = false;
+    public float radius = 20f, timePassed = 0;    //bottom to top
+    public float[] rayAngles = new float[] { 35f, 22f, 10f, 0f, -10f, -18f, -26f, -35f, -45f};
     private Transform eyes;
-    public Hashtable playerInfo = new Hashtable();
+    private Hashtable playerInfo = new Hashtable();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     private Vector3 target;
 
@@ -17,44 +19,16 @@ public sealed class Eyes : ActionBase
         var cont = (AIContext)context;
         eyes = cont.bossEyesTr;
         playerInfo = cont.playerInfo;
-        rays.Clear();
-        target = Quaternion.AngleAxis(30.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+        rays.Clear();  
 
-        target = Quaternion.AngleAxis(15.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(7.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(0.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-7.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-15.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-22.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-30.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
-
-        target = Quaternion.AngleAxis(-45.0f, Vector3.forward) * eyes.right;
-        Debug.DrawRay(eyes.position, target * radius, Color.green);
-        rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+        for (int i = 0; i < rayAngles.Length; i++)
+        {
+            target = Quaternion.AngleAxis(rayAngles[i], Vector3.forward) * eyes.right;
+            Debug.DrawRay(eyes.position, target * radius, Color.green);
+            rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
+        }
         
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < rayAngles.Length; i++)
         {         
             if (rays[i])
             {
@@ -67,23 +41,7 @@ public sealed class Eyes : ActionBase
         }
         timePassed += Time.deltaTime;
         playerInfo["timePassed"] = timePassed;
-        playerInfo["isBehind"] = behind;
+        //playerInfo["isBehind"] = behind;
         cont.playerInfo = playerInfo;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other)
-        {
-            behind = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other)
-        {
-            behind = false;
-        }
     }
 }

@@ -7,17 +7,17 @@ using System;
 
 public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe TailS
-    private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f };
+    private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
     private bool faceLeft = true;
-    public float speed = 1f, dmgScale = 1f;
+    public float speed = 1f, dmgScale = 0.6f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
     private AIContext context;           //Current   Bite      Laser     Swipe    TailSwipe
-    public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+    public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
     private float temp;
 
     private void Awake()
@@ -126,8 +126,8 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void PrintHistory(float[,] his)
     {
-        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + "\n \t " +
-        his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F2") + " | " + his[3, 1] + " | " + his[4, 1]);
+        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + " | " + his[5, 0] + "\n \t " +
+        his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F1") + " | " + his[3, 1] + " | " + his[4, 1] + " | " + his[5, 1]);
         //context.history[2, 1] = 0;
     }
 }

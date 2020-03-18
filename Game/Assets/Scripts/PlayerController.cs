@@ -274,8 +274,8 @@ public class PlayerController : MonoBehaviour
     void MoveCamera()
     {
         //temp height, 0.3 = % above ground from player, 3.5 = offset from ground   
-        cameraTarget.position = new Vector2(transform.position.x + transform.right.x +(move * 3)
-            ,(transform.position.y * 0.3f) + cameraOffset);   
+        cameraTarget.position = new Vector3(transform.position.x + transform.right.x +(move * 3)
+            ,(transform.position.y * 0.3f) + cameraOffset, 0);   
     }
 
     void Dash()

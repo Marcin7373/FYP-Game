@@ -6,9 +6,9 @@ using UnityEngine;
 public class IsMoving : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("MaxSpeed","Top speed as velocity on x axis")]
-    public float maxSpeed;
+    public float maxSpeed = 5.5f;
     [ApexSerialization]
-    public float minSpeed, scoreMin = 0, scoreMax = 1;
+    public float minSpeed = 0f, scoreMin = 0, scoreMax = 1;
     private float velocity;
 
     public override float Score(IAIContext context)

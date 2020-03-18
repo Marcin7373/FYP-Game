@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{DDFBC18F-9396-3137-9CFE-DEB2CDB74636}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -68,6 +69,7 @@
     <Compile Include="Assets\Scripts\BossAI\Actions\Laser.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Look.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Run.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\SpikeThrust.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Swipe.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\TailSwipe.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />

@@ -2,12 +2,28 @@
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    public Transform playerTarget, bossTarget;
     public float smoothing;
+    private Vector3 temp;
 
     void LateUpdate()
     {
-        target.position = new Vector3(Mathf.Clamp(target.position.x, -17f, 15f), Mathf.Clamp(target.position.y, -1.24f, 1.3f), transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, target.position, smoothing * Time.deltaTime);
+        if (Vector3.Distance(playerTarget.position, bossTarget.position) < 21)
+        {
+            if(playerTarget.position.x < bossTarget.position.x - 4){
+                temp = new Vector3(Mathf.Clamp(bossTarget.position.x-10, -16f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+            }
+            else if(playerTarget.position.x > bossTarget.position.x + 4)
+            {
+                temp = new Vector3(Mathf.Clamp(bossTarget.position.x+10, -16f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+            }
+            
+            transform.position = Vector3.Lerp(transform.position, temp, smoothing * Time.deltaTime);           
+        }
+        else
+        {
+            temp = new Vector3(Mathf.Clamp(playerTarget.position.x, -15f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, temp, smoothing * Time.deltaTime);
+        }       
     }
 }

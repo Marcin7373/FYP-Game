@@ -135,10 +135,6 @@ GameObject:
   - component: {fileID: 6357841}
   - component: {fileID: 6357843}
   - component: {fileID: 6357842}
-  - component: {fileID: 6357844}
-  - component: {fileID: 6357846}
-  - component: {fileID: 6357845}
-  - component: {fileID: 6357836}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
@@ -146,28 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!66 &6357836
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6357835}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths: []
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &6357837
 Rigidbody2D:
   serializedVersion: 4
@@ -365,94 +339,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!60 &6357844
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6357835}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.45, y: 9.42}
-    newSize: {x: 13, y: 10.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -3.84, y: 0.75}
-      - {x: -0.82, y: 0.92}
-      - {x: -2.14, y: 2.38}
---- !u!60 &6357845
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6357835}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.45, y: 9.42}
-    newSize: {x: 13, y: 10.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.7, y: -0.92}
-      - {x: -2.02, y: -3.4}
-      - {x: -0.92, y: -5.81}
-      - {x: 2.88, y: -5.6853046}
-      - {x: 0.2596388, y: -2.7052088}
---- !u!60 &6357846
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6357835}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0.21}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.45, y: 9.42}
-    newSize: {x: 13, y: 10.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.85, y: 0.53}
-      - {x: -0.89, y: -0.97}
-      - {x: -1.25, y: -1.87}
-      - {x: -0.04, y: -1.82}
-      - {x: -0.22, y: -0.94}
 --- !u!1 &23340745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +990,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -24.42, y: 6.7120895}
+  - {x: -24.55, y: 6.7120895}
   - {x: -24.6, y: -3.2}
   - {x: -21.70844, y: -4.044309}
   - {x: -21.708435, y: -4.47}
@@ -1137,7 +1023,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347485670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1162,16 +1048,6 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 347485675}
-    m_ColliderPaths:
-    - - X: -11425011
-        Y: -2499994
-      - X: -5125017
-        Y: 30
-      - X: -19425028
-        Y: 24599975
-      - X: -35224961
-        Y: 10199979
   - m_Collider: {fileID: 347485674}
     m_ColliderPaths:
     - - X: -9200007
@@ -1186,27 +1062,37 @@ CompositeCollider2D:
         Y: -34000010
   - m_Collider: {fileID: 347485676}
     m_ColliderPaths:
-    - - X: -3650029
+    - - X: -3588407
         Y: -17750000
-      - X: -3650029
+      - X: -3588407
         Y: -249999
-      - X: -10950000
+      - X: -10929461
         Y: -250028
-      - X: -10949971
+      - X: -10929432
         Y: -17750000
+  - m_Collider: {fileID: 347485675}
+    m_ColliderPaths:
+    - - X: -11471797
+        Y: -2573027
+      - X: -5171803
+        Y: -73003
+      - X: -19471814
+        Y: 24526943
+      - X: -35271749
+        Y: 10126945
   m_CompositePaths:
     m_Paths:
     - - {x: 2.8799953, y: 0.3147006}
       - {x: 0.2596386, y: 3.2947915}
-      - {x: -0.3650029, y: 4.4568005}
-      - {x: -0.3650029, y: 5.975}
-      - {x: -0.5755105, y: 5.9749994}
-      - {x: -0.5125017, y: 6.000003}
-      - {x: -1.9425029, y: 8.459997}
-      - {x: -3.522496, y: 7.019998}
-      - {x: -1.1425011, y: 5.7500005}
-      - {x: -1.0949997, y: 5.768851}
-      - {x: -1.0949973, y: 4.337883}
+      - {x: -0.3588407, y: 4.445337}
+      - {x: -0.3588407, y: 5.975}
+      - {x: -0.5617848, y: 5.9749994}
+      - {x: -0.5171803, y: 5.9926996}
+      - {x: -1.9471815, y: 8.452694}
+      - {x: -3.527175, y: 7.0126944}
+      - {x: -1.1471797, y: 5.7426972}
+      - {x: -1.0929458, y: 5.764219}
+      - {x: -1.0929434, y: 4.341742}
       - {x: -2.0199995, y: 2.5999992}
       - {x: -0.92000073, y: 0.19000149}
   m_VertexDistance: 0.0005
@@ -1231,7 +1117,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!60 &347485674
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1745,7 +1631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc7e1f6e88aaaa4ea955915850c8210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 194828520}
+  playerTarget: {fileID: 194828520}
+  bossTarget: {fileID: 6357839}
   smoothing: 3
 --- !u!20 &519420031
 Camera:
@@ -2004,8 +1891,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728210660}
-  - component: {fileID: 728210661}
   - component: {fileID: 728210662}
+  - component: {fileID: 728210661}
   - component: {fileID: 728210663}
   m_Layer: 13
   m_Name: Attack
@@ -2443,7 +2330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1114272443
 Transform:
   m_ObjectHideFlags: 0
@@ -17400,7 +17287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581158106}
   m_LocalRotation: {x: 0, y: 0, z: -0.2946493, w: 0.95560545}
-  m_LocalPosition: {x: 3.1736147, y: -0.0000003528094, z: 0}
+  m_LocalPosition: {x: 3.173615, y: -0.0000003528094, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 754530135}
@@ -18169,7 +18056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866360446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 1.66, z: 0.96}
+  m_LocalPosition: {x: -0.27, y: 1.5, z: 0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 387313105}
@@ -18193,8 +18080,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ee2d97f267d85b4baf3edd9915a588b, type: 2}
-  - {fileID: 2100000, guid: 2ee2d97f267d85b4baf3edd9915a588b, type: 2}
+  - {fileID: 2100000, guid: a499407af62e0c643b2d6c44e9e6b0e8, type: 2}
+  - {fileID: 2100000, guid: a499407af62e0c643b2d6c44e9e6b0e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18228,11 +18115,11 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
+  m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
-  m_VertexStreams: 00010304
+  m_VertexStreams: 000304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -18321,7 +18208,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.23
+      scalar: 0.35
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18374,7 +18261,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.83
+      scalar: 1.51
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18428,7 +18315,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.72487354, g: 0.6263795, b: 0.8679245, a: 1}
+      maxColor: {r: 0.49022767, g: 0.28034887, b: 0.7924528, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -18490,7 +18377,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19124,7 +19011,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 72.95
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19188,7 +19075,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.32420158
+          value: 0.8168926
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -19197,7 +19084,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.6712478
+          value: 0.06185752
           inSlope: 0.017711392
           outSlope: 0.017711392
           tangentMode: 0
@@ -20828,11 +20715,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.39
+      scalar: 0.32
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20989,7 +20876,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.66
+    frequency: 0.65
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -26896,7 +26783,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     collisionShape0: {fileID: 728210660}
     collisionShape1: {fileID: 0}
     collisionShape2: {fileID: 0}
