@@ -1024,7 +1024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347485670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6357839}
@@ -1043,58 +1043,57 @@ CompositeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6}
+  m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 347485674}
-    m_ColliderPaths:
-    - - X: -9200007
-        Y: -58099983
-      - X: 28799952
-        Y: -56852993
-      - X: 2596386
-        Y: -27052084
-      - X: -7000030
-        Y: -9200055
-      - X: -20199994
-        Y: -34000010
   - m_Collider: {fileID: 347485676}
     m_ColliderPaths:
-    - - X: -3588407
-        Y: -17750000
-      - X: -3588407
-        Y: -249999
-      - X: -10929461
-        Y: -250028
-      - X: -10929432
-        Y: -17750000
+    - - X: -2750028
+        Y: -16400000
+      - X: -2750028
+        Y: -1599999
+      - X: -10050000
+        Y: -1600028
+      - X: -10049971
+        Y: -16400000
   - m_Collider: {fileID: 347485675}
     m_ColliderPaths:
-    - - X: -11471797
-        Y: -2573027
-      - X: -5171803
-        Y: -73003
-      - X: -19471814
-        Y: 24526943
-      - X: -35271749
-        Y: 10126945
+    - - X: -1608345
+        Y: -10540710
+      - X: 4691650
+        Y: -8040689
+      - X: -9608361
+        Y: 16559256
+      - X: -22908303
+        Y: 4559259
+  - m_Collider: {fileID: 347485674}
+    m_ColliderPaths:
+    - - X: 23199965
+        Y: -59899994
+      - X: 21499994
+        Y: -42699992
+      - X: -7000021
+        Y: -9200049
+      - X: -17699998
+        Y: -34000007
+      - X: -15299975
+        Y: -58100001
   m_CompositePaths:
     m_Paths:
-    - - {x: 2.8799953, y: 0.3147006}
-      - {x: 0.2596386, y: 3.2947915}
-      - {x: -0.3588407, y: 4.445337}
-      - {x: -0.3588407, y: 5.975}
-      - {x: -0.5617848, y: 5.9749994}
-      - {x: -0.5171803, y: 5.9926996}
-      - {x: -1.9471815, y: 8.452694}
-      - {x: -3.527175, y: 7.0126944}
-      - {x: -1.1471797, y: 5.7426972}
-      - {x: -1.0929458, y: 5.764219}
-      - {x: -1.0929434, y: 4.341742}
-      - {x: -2.0199995, y: 2.5999992}
-      - {x: -0.92000073, y: 0.19000149}
+    - - {x: 2.1499994, y: -4.269999}
+      - {x: -0.2750028, y: -1.4195644}
+      - {x: -0.2750028, y: -0.9731348}
+      - {x: -0.1608345, y: -1.0540711}
+      - {x: 0.469165, y: -0.8040689}
+      - {x: -0.9608361, y: 1.6559256}
+      - {x: -2.2908304, y: 0.4559259}
+      - {x: -1.0049994, y: -0.4556255}
+      - {x: -1.0049971, y: -1.6269096}
+      - {x: -1.7699999, y: -3.4000008}
+      - {x: -1.5299975, y: -5.81}
+      - {x: 2.3199964, y: -5.9899993}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
 --- !u!50 &347485673
@@ -1144,10 +1143,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.7, y: -0.92}
-      - {x: -2.02, y: -3.4}
-      - {x: -0.92, y: -5.81}
-      - {x: 2.88, y: -5.6853046}
-      - {x: 0.2596388, y: -2.7052088}
+      - {x: -1.77, y: -3.4}
+      - {x: -1.53, y: -5.81}
+      - {x: 2.32, y: -5.99}
+      - {x: 2.15, y: -4.27}
 --- !u!60 &347485675
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1173,7 +1172,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -3.45, y: 1.02}
+    - - {x: -3.2, y: 1.26}
       - {x: -1.07, y: -0.25}
       - {x: -0.44, y: -0}
       - {x: -1.87, y: 2.46}
@@ -1201,7 +1200,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 1.75}
+  m_Size: {x: 0.73, y: 1.48}
   m_EdgeRadius: 0
 --- !u!1 &377762555
 GameObject:
@@ -1481,7 +1480,6 @@ MonoBehaviour:
   damage: 0.1
   cont: 0
   crouch: 0
-  canHit: 0
 --- !u!1 &486844173
 GameObject:
   m_ObjectHideFlags: 0
@@ -17641,7 +17639,7 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 0, g: 0.58708096, b: 1, a: 1}
-  m_Intensity: 9
+  m_Intensity: 5.68
   m_Range: 14.43
   m_SpotAngle: 152
   m_InnerSpotAngle: 1
