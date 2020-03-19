@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
     public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.1f;
-    private float move, cameraPan, cameraOffset = -0.2f, dashCooldown = 0, speed;
+    private float move, dashCooldown = 0, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false;
     public int cont = 0; //controller 1=yes 0=no
     [HideInInspector]
-    public bool crouch, canHit = true;
+    public bool crouch;
 
     void Awake()
     {
@@ -165,13 +165,12 @@ public class PlayerController : MonoBehaviour
 
         if (cont == 1) //Controller or keyboard input
         {
-            if ((!run && Mathf.Abs(move) > 0.85f ? true : false) || (!jump && Input.GetButton(buttons["jump"][cont])))
+            if ((!run && Mathf.Abs(move) > 0.75f ? true : false) || (!jump && Input.GetButton(buttons["jump"][cont])))
             {
                 anim.SetBool("transition", true);
             }
-            //cameraPan = Input.GetAxisRaw("RightSticX");
             crouch = Input.GetAxisRaw("Vertical") < -0.4f ? true : false;
-            run = Mathf.Abs(move) > 0.85f ? true : false;
+            run = Mathf.Abs(move) > 0.75f ? true : false;
         }
         else
         {
@@ -275,7 +274,7 @@ public class PlayerController : MonoBehaviour
     {
         //temp height, 0.3 = % above ground from player, 3.5 = offset from ground   
         cameraTarget.position = new Vector3(transform.position.x + transform.right.x +(move * 3)
-            ,(transform.position.y * 0.3f) + cameraOffset, 0);   
+            ,(transform.position.y * 0.3f) -0.2f, 0);   
     }
 
     void Dash()

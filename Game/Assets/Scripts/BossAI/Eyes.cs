@@ -7,8 +7,11 @@ using Apex.Serialization;
 [ApexSerializedType, FriendlyName("EyesScan","Ray casts looking for the player and updates context")]
 public sealed class Eyes : ActionBase
 {  
-    public float radius = 20f, timePassed = 0;    //bottom to top
+    [ApexSerialization]
+    public float radius = 20f;    
+    [ApexSerialization]                   //bottom to top
     public float[] rayAngles = new float[] { 35f, 22f, 10f, 0f, -10f, -18f, -26f, -35f, -45f};
+    private float timePassed = 0f;
     private Transform eyes;
     private Hashtable playerInfo = new Hashtable();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
