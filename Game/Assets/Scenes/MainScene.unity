@@ -1050,24 +1050,24 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 347485676}
     m_ColliderPaths:
-    - - X: -2750028
+    - - X: -3650029
         Y: -16400000
-      - X: -2750028
+      - X: -3650029
         Y: -1599999
-      - X: -10050000
+      - X: -10950000
         Y: -1600028
-      - X: -10049971
+      - X: -10949971
         Y: -16400000
   - m_Collider: {fileID: 347485675}
     m_ColliderPaths:
-    - - X: -1608345
-        Y: -10540710
-      - X: 4691650
-        Y: -8040689
-      - X: -9608361
-        Y: 16559256
-      - X: -22908303
-        Y: 4559259
+    - - X: -11425012
+        Y: -2499991
+      - X: -5125017
+        Y: 30
+      - X: -19425028
+        Y: 24599975
+      - X: -32724969
+        Y: 12599978
   - m_Collider: {fileID: 347485674}
     m_ColliderPaths:
     - - X: 23199965
@@ -1083,14 +1083,16 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 2.1499994, y: -4.269999}
-      - {x: -0.2750028, y: -1.4195644}
-      - {x: -0.2750028, y: -0.9731348}
-      - {x: -0.1608345, y: -1.0540711}
-      - {x: 0.469165, y: -0.8040689}
-      - {x: -0.9608361, y: 1.6559256}
-      - {x: -2.2908304, y: 0.4559259}
-      - {x: -1.0049994, y: -0.4556255}
-      - {x: -1.0049971, y: -1.6269096}
+      - {x: -0.3650029, y: -1.3137751}
+      - {x: -0.3650029, y: -0.1599999}
+      - {x: -0.9157108, y: -0.1600021}
+      - {x: -0.5125017, y: 0.000003}
+      - {x: -1.9425029, y: 2.4599977}
+      - {x: -3.272497, y: 1.2599978}
+      - {x: -1.1425012, y: -0.2499991}
+      - {x: -1.0949999, y: -0.2311492}
+      - {x: -1.0949972, y: -1.64}
+      - {x: -1.010645, y: -1.64}
       - {x: -1.7699999, y: -3.4000008}
       - {x: -1.5299975, y: -5.81}
       - {x: 2.3199964, y: -5.9899993}
@@ -1362,8 +1364,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1748069739
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 44b4ec035de85474084a6d9f04c13ef9, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: b56f766110b989942a0469aaf15baca3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2710,8 +2712,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1748069739
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -7543,8 +7545,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1748069739
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -18054,7 +18056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866360446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27, y: 1.5, z: 0.96}
+  m_LocalPosition: {x: -0.35, y: 1.41, z: 0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 387313105}
@@ -18097,8 +18099,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1748069739
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -18206,7 +18208,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.35
+      scalar: 0.23
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18259,7 +18261,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.51
+      scalar: 2.63
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19009,7 +19011,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 72.95
+      scalar: 102.95
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19082,7 +19084,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.06185752
+          value: 0.082731545
           inSlope: 0.017711392
           outSlope: 0.017711392
           tangentMode: 0
@@ -19386,7 +19388,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -20717,7 +20719,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.32
+      scalar: 1.47
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20874,7 +20876,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.65
+    frequency: 0.57
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -21968,8 +21970,8 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -22024,11 +22026,11 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 1.35
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
-    worldSpace: 0
+    worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
@@ -22040,7 +22042,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.18427505, g: 0.17590779, b: 0.5566038, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -22156,7 +22158,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.27055892, g: 0.30871147, b: 0.6037736, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -22888,9 +22890,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.28, y: 0.36}
+  m_Offset: {x: 2.64, y: 0.36}
   serializedVersion: 2
-  m_Radius: 1.9641846
+  m_Radius: 2
 --- !u!114 &1936063641
 MonoBehaviour:
   m_ObjectHideFlags: 0

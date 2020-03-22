@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Particle system jump trails
-        if (falling || grounded || attack)
+        if ( grounded || attack)
         {
             trail.Stop();
             trail2.Stop();

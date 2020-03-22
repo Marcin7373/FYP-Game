@@ -93,6 +93,18 @@ public class Brain : MonoBehaviour, IContextProvider
         longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
     }
 
+    void FlipBoss()
+    {
+        if (transform.right.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+        }
+        else if (transform.right.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
+        }
+    }
+
     void NotBusy() => context.busy = false;
 
     public void Attacks(int state)
