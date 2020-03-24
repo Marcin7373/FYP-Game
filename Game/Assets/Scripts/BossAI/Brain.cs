@@ -11,12 +11,12 @@ public class Brain : MonoBehaviour, IContextProvider
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
-    private bool faceLeft = true;
+    private bool faceLeft = true, dead = false;
     public float speed = 1f, dmgScale = 0.6f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
-    private AIContext context;           //Current   Bite      Laser     Swipe    TailSwipe
+    private AIContext context;             //Current    Bite      Laser     Swipe   TailSwipe  SpikeThrust
     public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
     private float temp;
 
@@ -40,6 +40,11 @@ public class Brain : MonoBehaviour, IContextProvider
     void Update()
     {
         Health.Instance.BossPos = transform.position;
+        if (Health.Instance.CurHealth <= 0.05f && !dead && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            anim.SetTrigger("death");
+        }
+
         if (context.history[0,1] != temp)
         {
             PrintHistory(context.history);
@@ -141,5 +146,21 @@ public class Brain : MonoBehaviour, IContextProvider
         Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + " | " + his[5, 0] + "\n \t " +
         his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F1") + " | " + his[3, 1] + " | " + his[4, 1] + " | " + his[5, 1]);
         //context.history[2, 1] = 0;
+    }
+
+    void Dying()
+    {
+        dead = true;
+        anim.speed = 0f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 9 && dead)
+        {
+            dead = false;
+            Health.Instance.CurHealth = 1;
+            anim.speed = 1f;
+        }
     }
 }

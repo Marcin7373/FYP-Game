@@ -49,7 +49,7 @@ MonoBehaviour:
     Assembly-CSharp","scoreMin":0,"scoreMax":2,"ID":5,"minFrequency":3},{"@type":"NotRepeat,
     Assembly-CSharp","ID":5,"score":-1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
-  editorConfiguration: '{"offset":{"@x":-55,"@y":-34},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":30,"@top":51,"@width":170,"@height":136},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":251,"@top":51,"@width":170,"@height":340},"QualifierView":{"ActionView":{"Description":"ID
+  editorConfiguration: '{"offset":{"@x":51,"@y":-52},"zoom":1,"SelectorView":{"ViewArea":{"@left":151,"@top":48,"@width":200,"@height":160},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":411,"@top":48,"@width":200,"@height":400},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID
     3"}},"QualifierView":{"ActionView":{"Description":"ID 4"}},"QualifierView":{"ActionView":{"Description":"ID
     5"}},"DefaultQualifier":{}}}'

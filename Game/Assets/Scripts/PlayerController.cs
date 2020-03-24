@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         }
 
+        if (Health.Instance.CurHealth >= 2f)
+        {
+            anim.SetTrigger("death");
+        }
+
         if (Time.timeScale == 1)
         {
             PlayerInput();
@@ -108,7 +113,7 @@ public class PlayerController : MonoBehaviour
             falling = true;
         }
 
-        if (rb.velocity.y < -0.1f && attack)//cancel faster fall and gravity(3) mostly
+        if (rb.velocity.y < -0.1f && attack)//cancel faster fall and gravity(3) mostly while attacking
         {
             rb.velocity -= Vector2.up * Physics2D.gravity.y * (fallMult+2f) * Time.deltaTime;
         }
@@ -331,5 +336,11 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {
         Health.Instance.CurHealth -= damage;
+    }
+
+    void Respawn()
+    {
+        Health.Instance.CurHealth = 1;
+        transform.position = new Vector3(-19f, -2.93f, 0);
     }
 }
