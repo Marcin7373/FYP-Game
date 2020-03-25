@@ -27,7 +27,7 @@ public sealed class Eyes : ActionBase
         for (int i = 0; i < rayAngles.Length; i++)
         {
             target = Quaternion.AngleAxis(rayAngles[i], Vector3.forward) * eyes.right;
-            Debug.DrawRay(eyes.position, target * radius, Color.green);
+            //Debug.DrawRay(eyes.position, target * radius, Color.green);
             rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
         }
         

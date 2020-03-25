@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
-    public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.1f;
+    public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.05f;
     private float move, dashCooldown = 0, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false;
     public int cont = 0; //controller 1=yes 0=no
@@ -39,17 +39,35 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         }
 
-        if (Health.Instance.CurHealth >= 2f)
+        if (Health.Instance.CurHealth >= 2f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             anim.SetTrigger("death");
+            move = 0f;
+            attack = false;
+            jump = false;
+            dashing = false;
+            crouch = false;
+            fade = false;
+            falling = false;
+            grounded = true;
         }
-
-        if (Time.timeScale == 1)
+        else if (Time.timeScale == 1 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             PlayerInput();
+            UpdateFlags();
         }
+         
+        if (anim.speed == 0f && transform.position.x > -19)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(-19.5f, -2.93f, 0), 0.09f);
 
-        UpdateFlags();
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death") && transform.position.x <= -19)
+        {
+            Health.Instance.CurHealth = 1;
+            anim.speed = 1f;
+        }
+       
         //air rotation       
         if (!grounded && !falling)//bug at peak if direction inverting not restricted to ground
         {
@@ -86,7 +104,7 @@ public class PlayerController : MonoBehaviour
             trailCloak.Play();
         }
         //fade ability damage to player
-        if (fade)
+        if (fade && transform.position.x > -1f)
         {
             Health.Instance.CurHealth += 0.8f * Time.deltaTime;
         }
@@ -185,7 +203,7 @@ public class PlayerController : MonoBehaviour
             }
 
             crouch = Input.GetButton("Crouch");
-            run = Input.GetButton("Run");
+            run = Mathf.Abs(move) > 0.75f ? true : false;
         }
 
         if (!dashing && dashCooldown <= 0)
@@ -200,7 +218,7 @@ public class PlayerController : MonoBehaviour
         }
 
         jump = Input.GetButton(buttons["jump"][cont]);
-        attack = Input.GetButtonDown(buttons["attack"][cont]);
+        attack = Input.GetButton(buttons["attack"][cont]);
         fade = Input.GetButton(buttons["fade"][cont]);
     }
 
@@ -273,6 +291,11 @@ public class PlayerController : MonoBehaviour
         {
             attack = false;
         }
+
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("DashEnd") && !dashing)
+        {
+            gameObject.layer = 9;
+        }
     }
 
     void MoveCamera()
@@ -339,8 +362,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Respawn()
-    {
-        Health.Instance.CurHealth = 1;
-        transform.position = new Vector3(-19f, -2.93f, 0);
+    {       
+        anim.speed = 0f;
+        
     }
 }

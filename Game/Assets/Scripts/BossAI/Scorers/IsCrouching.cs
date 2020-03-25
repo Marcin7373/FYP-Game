@@ -6,6 +6,8 @@ public class IsCrouching : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Not", "If true its reversed, e.g. true -> player crouching = 0")]
     public bool not = false;
+    [ApexSerialization]
+    public float newScore = -50f;
     private bool crouch; 
 
     public override float Score(IAIContext context)
@@ -18,13 +20,9 @@ public class IsCrouching : ContextualScorerBase
             crouch = !crouch;
         }
 
-        if (crouch)
+        if (crouch || (float)c.playerInfo["timePassed"] > 0.5f)
         {
-            return score = 0;
-        }
-        else if((float)c.playerInfo["timePassed"] < 0.5f)
-        {
-            return score;
+            return score = newScore;
         }
         else
         {

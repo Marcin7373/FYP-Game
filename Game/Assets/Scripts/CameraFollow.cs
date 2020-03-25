@@ -11,18 +11,18 @@ public class CameraFollow : MonoBehaviour
         if (Vector3.Distance(playerTarget.position, bossTarget.position) < 21)
         {
             if(playerTarget.position.x < bossTarget.position.x - 4){
-                temp = new Vector3(Mathf.Clamp(bossTarget.position.x-10, -16f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+                temp = new Vector3(Mathf.Clamp(bossTarget.position.x-10, -6f, 25f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
             }
             else if(playerTarget.position.x > bossTarget.position.x + 4)
             {
-                temp = new Vector3(Mathf.Clamp(bossTarget.position.x+10, -16f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+                temp = new Vector3(bossTarget.position.x+10, Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
             }
             
             transform.position = Vector3.Lerp(transform.position, temp, smoothing * Time.deltaTime);           
         }
         else
         {
-            temp = new Vector3(Mathf.Clamp(playerTarget.position.x, -15f, 15f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
+            temp = new Vector3(Mathf.Clamp(playerTarget.position.x, -16f, 36f), Mathf.Clamp(playerTarget.position.y, -1.24f, 1.3f), transform.position.z);
             transform.position = Vector3.Lerp(transform.position, temp, smoothing * Time.deltaTime);
         }       
     }

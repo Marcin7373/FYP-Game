@@ -6,7 +6,7 @@ using UnityEngine;
 public class Distance : ContextualScorerBase
 {
     [ApexSerialization]
-    public float minRange = 0, maxRange = 20, scoreMin = 1, scoreMax = 1;
+    public float minRange = 0, maxRange = 20, scoreMin = 0, scoreMax = 10;
     private float distance, mid;
 
     public override float Score(IAIContext context)

@@ -12,7 +12,7 @@ public class Brain : MonoBehaviour, IContextProvider
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser;
     private bool faceLeft = true, dead = false;
-    public float speed = 1f, dmgScale = 0.6f;
+    public float speed = 1f, dmgScale = 1f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
@@ -42,7 +42,7 @@ public class Brain : MonoBehaviour, IContextProvider
         Health.Instance.BossPos = transform.position;
         if (Health.Instance.CurHealth <= 0.05f && !dead && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
-            anim.SetTrigger("death");
+            //anim.SetTrigger("death");
         }
 
         if (context.history[0,1] != temp)
@@ -50,7 +50,7 @@ public class Brain : MonoBehaviour, IContextProvider
             PrintHistory(context.history);
         }
         temp = context.history[0,1];
-       
+        Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
         /*rays = eyes.rays;
         playerInfo = eyes.playerInfo;
         if (rays.Count == 5)
@@ -121,8 +121,7 @@ public class Brain : MonoBehaviour, IContextProvider
             float dis = (Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]) - 19) / (5f - 19);                        
             context.history[(int)context.history[0, 0], 1] += baseDamage * Time.deltaTime  //base 0.8 * 1.25 = 1 over time 
                     *(Mathf.Clamp(dis * 1.8f, 0, 1)) / (damage[(int)context.history[0, 0] - 1] * 1.25f); //fraction of damage landed
-            Health.Instance.CurHealth += baseDamage * Time.deltaTime * dis;            
-            
+            Health.Instance.CurHealth += baseDamage * Time.deltaTime * dis;                       
         }
         else if (state == 0 && context.history[0, 0] != 2)
         {

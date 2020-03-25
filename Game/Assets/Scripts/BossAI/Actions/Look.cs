@@ -10,6 +10,7 @@ public sealed class Look : ActionBase
         if (!c.busy)
         {
             c.bossAnim.SetTrigger("look");
+            c.busy = true;
         }        
     }
 }

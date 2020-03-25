@@ -5,7 +5,7 @@ using UnityEngine;
 public class LearningAccuracy : ContextualScorerBase
 {
     [ApexSerialization]
-    public float scoreMin = 0, scoreMax = 1;
+    public float scoreMin = 0, scoreMax = 10;
     [ApexSerialization, FriendlyName("ID","ID of attack to check accuracy if ID = 0 returns score = 0")]
     public int ID = 0;
     [ApexSerialization, FriendlyName("MinFrequency", "Will look at history of attacks above frequency eg. If (3) accuracy modifications applied on 4th attack")]

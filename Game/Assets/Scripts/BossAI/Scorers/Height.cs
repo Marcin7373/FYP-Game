@@ -6,7 +6,7 @@ using UnityEngine;
 public class Height : ContextualScorerBase
 {
     [ApexSerialization]
-    public float maxPosY = 4.2f, minPosY = -2.85f, scoreMin = 1, scoreMax = 1;
+    public float maxPosY = 4.2f, minPosY = -2.85f, scoreMin = 0, scoreMax = 10;
     private float posY, scoreMid;
 
     public override float Score(IAIContext context)
