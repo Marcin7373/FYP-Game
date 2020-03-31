@@ -3,7 +3,6 @@
 public class SpikeThrust : ActionBase
 {
     private const int ID = 5;
-
     public override void Execute(IAIContext context)
     {
         var c = (AIContext)context;

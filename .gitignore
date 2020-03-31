@@ -1,6 +1,7 @@
 /[Tt]emp/
 /[Ll]ibrary/
 Game/Temp/UnityLockfile
+Game/Library/PlayerDataCache
 
 !/[Aa]ssets/**/*.meta
 

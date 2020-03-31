@@ -43,13 +43,13 @@ MonoBehaviour:
     Assembly-CSharp","scoreMin":0,"scoreMax":10,"ID":4,"minFrequency":3},{"@type":"NotRepeat,
     Assembly-CSharp","ID":4,"repeatScore":-30}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"SpikeThrust, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
-    Assembly-CSharp","minRange":5,"maxRange":11,"scoreMin":0,"scoreMax":20},{"@type":"Height,
+    Assembly-CSharp","minRange":5,"maxRange":11,"scoreMin":0,"scoreMax":30},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":10},{"@type":"IsMoving,
-    Assembly-CSharp","maxSpeed":7.1999998,"minSpeed":0,"scoreMin":0,"scoreMax":20},{"@type":"LearningAccuracy,
+    Assembly-CSharp","maxSpeed":7.1999998,"minSpeed":0,"scoreMin":0,"scoreMax":10},{"@type":"LearningAccuracy,
     Assembly-CSharp","scoreMin":0,"scoreMax":10,"ID":5,"minFrequency":3},{"@type":"NotRepeat,
     Assembly-CSharp","ID":5,"repeatScore":-20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
-  editorConfiguration: '{"offset":{"@x":-281,"@y":-77},"zoom":1,"SelectorView":{"ViewArea":{"@left":-181,"@top":23,"@width":200,"@height":160},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":79,"@top":23,"@width":200,"@height":400},"QualifierView":{"ActionView":{"Description":"ID
+  editorConfiguration: '{"offset":{"@x":-80,"@y":-26},"zoom":1,"SelectorView":{"ViewArea":{"@left":20,"@top":74,"@width":200,"@height":160},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":280,"@top":74,"@width":200,"@height":400},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID
     3"}},"QualifierView":{"ActionView":{"Description":"ID 4"}},"QualifierView":{"ActionView":{"Description":"ID
     5"}},"DefaultQualifier":{}}}'

@@ -173,16 +173,16 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.125
-    functionName: Splash
+    functionName: AttackSFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
-    functionName: Splash
+  - time: 0.375
+    functionName: AttackSFX
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 0.2
     intParameter: 0
     messageOptions: 0

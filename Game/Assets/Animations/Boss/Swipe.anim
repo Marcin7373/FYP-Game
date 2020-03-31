@@ -367,16 +367,16 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.441324}
       - serializedVersion: 3
         time: 0.9
-        value: {x: 0, y: 0, z: 106.716866}
-        inSlope: {x: 0, y: 0, z: 132.95633}
-        outSlope: {x: 0, y: 0, z: 132.95633}
+        value: {x: 0, y: 0, z: 105.21187}
+        inSlope: {x: 0, y: 0, z: 110.381325}
+        outSlope: {x: 0, y: 0, z: 110.381325}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: 0, y: 0, z: 118.5}
+        value: {x: 0, y: 0, z: 115.49}
         inSlope: {x: 0, y: 0, z: 53.83262}
         outSlope: {x: 0, y: 0, z: 53.83262}
         tangentMode: 0
@@ -1017,7 +1017,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.9
-        value: {x: -2.96, y: -2.51, z: 0}
+        value: {x: -4.63, y: -2.51, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1026,9 +1026,9 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -3.61, y: -4.95, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: -3.61, y: -5.46, z: 0}
+        inSlope: {x: 1.5014815, y: 0, z: 0}
+        outSlope: {x: 1.5014815, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -2762,7 +2762,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.9
-        value: -2.96
+        value: -4.63
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2772,8 +2772,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 1
         value: -3.61
-        inSlope: 0
-        outSlope: 0
+        inSlope: 1.5014815
+        outSlope: 1.5014815
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -2817,7 +2817,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -4.95
+        value: -5.46
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -4009,7 +4009,7 @@ AnimationClip:
         outWeight: 0.441324
       - serializedVersion: 3
         time: 1
-        value: 118.5
+        value: 115.49
         inSlope: 53.83262
         outSlope: 53.83262
         tangentMode: 0
@@ -6988,7 +6988,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: root/spine1/spine2/arm/arm 2/forearm
+    path: Colliders
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -6998,7 +6998,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: root/spine1/spine2/arm/arm 2/forearm
+    path: Colliders
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7008,7 +7008,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: root/spine1/spine2/arm/arm 2/forearm
+    path: Colliders
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7408,7 +7408,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Colliders
+    path: root/spine1/spine2/arm/arm 2/forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7418,7 +7418,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Colliders
+    path: root/spine1/spine2/arm/arm 2/forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7428,12 +7428,26 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Colliders
+    path: root/spine1/spine2/arm/arm 2/forearm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.4
+    functionName: SFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 1
+    functionName: Splash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 5
+    intParameter: 0
+    messageOptions: 0
   - time: 1.9
     functionName: NotBusy
     data: 

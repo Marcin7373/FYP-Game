@@ -22,7 +22,7 @@ public sealed class Eyes : ActionBase
         var cont = (AIContext)context;
         eyes = cont.bossEyesTr;
         playerInfo = cont.playerInfo;
-        rays.Clear();  
+        rays.Clear(); 
 
         for (int i = 0; i < rayAngles.Length; i++)
         {
@@ -32,7 +32,7 @@ public sealed class Eyes : ActionBase
         }
         
         for (int i = 0; i < rayAngles.Length; i++)
-        {         
+        {     
             if (rays[i])
             {
                 playerInfo["position"] = rays[i].collider.gameObject.GetComponent<Transform>().position;

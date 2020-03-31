@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Apex.AI.Components;
 using Apex.AI;
@@ -8,10 +7,10 @@ using System;
 public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe TailS
     private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
-    private List<RaycastHit2D> rays = new List<RaycastHit2D>();
     public Transform eyes, longTail, shortTail;
-    public ParticleSystem laser;
-    private bool faceLeft = true, dead = false;
+    public ParticleSystem laser, splash, splashRed;
+    public AudioSource[] sfxSrc;
+    public AudioClip[] sfxClips;
     public float speed = 1f, dmgScale = 1f;
     private Rigidbody2D rb;
     private Animator anim;
@@ -19,6 +18,8 @@ public class Brain : MonoBehaviour, IContextProvider
     private AIContext context;             //Current    Bite      Laser     Swipe   TailSwipe  SpikeThrust
     public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
     private float temp;
+    private bool dead = false;
+    private int sfxIter = 0;
 
     private void Awake()
     {        
@@ -28,6 +29,8 @@ public class Brain : MonoBehaviour, IContextProvider
         playerInfo["crouch"] = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        splashRed = Instantiate(splashRed, transform.position, transform.rotation);
+        splash = Instantiate(splash, transform.position, transform.rotation);
         context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo, history);
         temp = history[0,1];
     }
@@ -42,7 +45,7 @@ public class Brain : MonoBehaviour, IContextProvider
         Health.Instance.BossPos = transform.position;
         if (Health.Instance.CurHealth <= 0.05f && !dead && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
-            //anim.SetTrigger("death");
+            anim.SetTrigger("death");
         }
 
         if (context.history[0,1] != temp)
@@ -51,36 +54,6 @@ public class Brain : MonoBehaviour, IContextProvider
         }
         temp = context.history[0,1];
         Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
-        /*rays = eyes.rays;
-        playerInfo = eyes.playerInfo;
-        if (rays.Count == 5)
-        {
-            SensorResponse();
-        }*/
-    }
-
-    private void SensorResponse()
-    {        
-        if ((bool)playerInfo["isBehind"] && faceLeft)
-        { 
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
-            //eyes.behind = false;
-            faceLeft = false;
-        }
-        else if ((bool)playerInfo["isBehind"] && !faceLeft)
-        {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-            //eyes.behind = false;
-            faceLeft = true;
-        }
-
-        if (rays[0] && rays[1] && rays[2] && faceLeft)
-        {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-        }else if (rays[0] && rays[1] && rays[2] && !faceLeft)
-        {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
-        }
     }
 
     void Laser(float on)
@@ -96,6 +69,8 @@ public class Brain : MonoBehaviour, IContextProvider
     void TailSwipe()
     {
         longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
+        splash.transform.position = new Vector3(((Vector3)playerInfo["position"]).x, -4.6f, transform.position.z);
+        splash.Emit(30);
     }
 
     void FlipBoss()
@@ -151,6 +126,39 @@ public class Brain : MonoBehaviour, IContextProvider
     {
         dead = true;
         anim.speed = 0f;
+    }
+
+    void SFX(int type)
+    {
+        if (type >= 20)
+        {
+            if (sfxIter == 0)
+            {
+                sfxSrc[sfxSrc.Length-1].Stop();
+            }
+            else
+            {
+                sfxSrc[sfxIter - 1].Stop();
+            }
+        }
+        else {
+            sfxIter = (sfxIter + 1) % sfxSrc.Length;
+            sfxSrc[sfxIter].clip = sfxClips[type];
+            sfxSrc[sfxIter].Play();
+        }
+    }
+
+    void Splash(float offset)
+    {
+        if (transform.rotation.eulerAngles.y == 0)
+        {
+            splash.transform.position = new Vector3(transform.position.x - offset, -4.6f, transform.position.z);
+        }
+        else if(transform.rotation.eulerAngles.y == 180)
+        {
+            splash.transform.position = new Vector3(transform.position.x + offset, -4.6f, transform.position.z);
+        }
+        splash.Emit(40);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

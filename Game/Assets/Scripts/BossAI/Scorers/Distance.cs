@@ -23,6 +23,10 @@ public class Distance : ContextualScorerBase
         {
             return score = scoreMin + ((distance - minRange) * (scoreMax - scoreMin) / (mid - minRange));
         }
+        else if (distance > maxRange+3 || distance < minRange-3)
+        {
+            return score = -20f;
+        }
         else
         {
             return score = 0;

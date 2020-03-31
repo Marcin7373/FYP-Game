@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck, cameraTarget;
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
+    public AudioSource[] splashSfx, attackSfx;
     public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.05f;
     private float move, dashCooldown = 0, speed;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false;
-    public int cont = 0; //controller 1=yes 0=no
+    private int sfxIterS = 0, cont = 0; //controller 1=yes 0=no
     [HideInInspector]
     public bool crouch;
 
@@ -33,12 +34,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
+    {   //quit game
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+        //pause game
         if (Input.GetKeyDown("p") || Input.GetButtonDown("Options"))
         {
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         }
-
+        //dying
         if (Health.Instance.CurHealth >= 2f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             anim.SetTrigger("death");
@@ -233,6 +239,12 @@ public class PlayerController : MonoBehaviour
         //ground detection
         if (Physics2D.Linecast(transform.position, groundCheck.position, groundLayer))
         {
+            if (!grounded)
+            {              
+                Splash(0);
+                sfxIterS = (sfxIterS + 1) % splashSfx.Length;
+                splashSfx[sfxIterS].Play();                
+            }
             grounded = true;
             falling = false;
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("AirAttack"))
@@ -242,6 +254,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (grounded && !splashSfx[sfxIterS].isPlaying)
+            {
+                splashSfx[sfxIterS].Play();
+                Splash(0);
+            }
             grounded = false;
         }
 
@@ -302,7 +319,7 @@ public class PlayerController : MonoBehaviour
     {
         //temp height, 0.3 = % above ground from player, 3.5 = offset from ground   
         cameraTarget.position = new Vector3(transform.position.x + transform.right.x +(move * 3)
-            ,(transform.position.y * 0.3f) -0.2f, 0);   
+            ,(transform.position.y * 0.22f), 0);   
     }
 
     void Dash()
@@ -335,12 +352,33 @@ public class PlayerController : MonoBehaviour
             splash.transform.position = new Vector3(transform.position.x - offset, -4.6f, transform.position.z);
         }
 
-        if (offset > 1){
-            splash.Emit(20);
+        if(Mathf.Abs(rb.velocity.x) > 0.9f){
+            splash.Emit(10);
         }
-        else if(Mathf.Abs(rb.velocity.x) > 0.9f){
-            splash.Emit(7);
+        else{
+            splash.Emit(25);
         }
+        sfxIterS = (sfxIterS + 1) % splashSfx.Length;
+        splashSfx[sfxIterS].Play();        
+    }
+
+    void AttackSFX(float from)
+    {
+        if (from > 0 && !attackSfx[0].isPlaying && !attackSfx[1].isPlaying)
+        {
+            attackSfx[0].time = from;
+            attackSfx[0].Play();
+        }
+        else if (attackSfx[0].isPlaying && from == 0)
+        {
+            attackSfx[1].time = from;
+            attackSfx[1].Play();
+        }
+        else if (from == 0)
+        {
+            attackSfx[0].time = from;
+            attackSfx[0].Play();
+        }       
     }
 
     void CanHit(float can)
@@ -363,7 +401,6 @@ public class PlayerController : MonoBehaviour
 
     void Respawn()
     {       
-        anim.speed = 0f;
-        
+        anim.speed = 0f;       
     }
 }
