@@ -14,6 +14,11 @@ public class SeePlayer : ContextualScorerBase
     {
         var c = (AIContext)context;
 
+        if ((float)c.playerInfo["timePassed"] == -1f)
+        {
+            return score = scoreMax;
+        }
+
         return (((float)c.playerInfo["timePassed"] > minTimePassed) || (c.bossTr.position.x+1 >= ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 1) || (c.bossTr.position.x-1 < ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 0))
             ? (score = scoreMin)
             : (score = scoreMax);

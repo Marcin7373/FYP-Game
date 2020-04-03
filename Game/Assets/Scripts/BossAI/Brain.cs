@@ -158,7 +158,7 @@ public class Brain : MonoBehaviour, IContextProvider
     public void DetectCol(Vector3 pos)
     {
         context.playerInfo["position"] = pos;
-        context.playerInfo["timePassed"] = 0f;
+        context.playerInfo["timePassed"] = -1f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -15,10 +15,13 @@ MonoBehaviour:
   description: 
   version: 16779010
   aiId: 6709d383-0541-49b2-b2e9-f0b113709e8b
-  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":0b929143260c4ae4931fc55943d49730,"_id":6709d383054149b2b2e9f0b113709e8b,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":0b929143260c4ae4931fc55943d49730,"_id":6709d383054149b2b2e9f0b113709e8b,"_selectors":[{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":0b929143260c4ae4931fc55943d49730,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Push, Assembly-CSharp"},"_scorers":[{"@type":"SeePlayer,
+    Assembly-CSharp","minTimePassed":0,"scoreMin":0,"scoreMax":1},{"@type":"NotRepeat,
+    Assembly-CSharp","ID":7,"repeatScore":-20}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":08494d2d92274b858463402f6f3828b4},"_scorers":[{"@type":"SeePlayer,
-    Assembly-CSharp","minTimePassed":0.2,"scoreMin":0,"scoreMax":1,"score":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","minTimePassed":0.2,"scoreMin":0,"scoreMax":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0.1,"action":{"@type":"Look, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":08494d2d92274b858463402f6f3828b4,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Bite, Assembly-CSharp"},"_scorers":[{"@type":"IsCrouching,
@@ -49,7 +52,7 @@ MonoBehaviour:
     Assembly-CSharp","scoreMin":0,"scoreMax":10,"ID":5,"minFrequency":3},{"@type":"NotRepeat,
     Assembly-CSharp","ID":5,"repeatScore":-20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
-  editorConfiguration: '{"offset":{"@x":-83,"@y":42},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-3,"@top":122,"@width":160,"@height":128},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":205,"@top":122,"@width":160,"@height":320},"QualifierView":{"ActionView":{"Description":"ID
+  editorConfiguration: '{"offset":{"@x":-83,"@y":42},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-3,"@top":122,"@width":160,"@height":176},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":205,"@top":122,"@width":160,"@height":320},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID
     3"}},"QualifierView":{"ActionView":{"Description":"ID 4"}},"QualifierView":{"ActionView":{"Description":"ID
     5"}},"DefaultQualifier":{}}}'

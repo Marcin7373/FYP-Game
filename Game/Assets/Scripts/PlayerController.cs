@@ -364,27 +364,34 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("dashEnd", true);
             }      
             //speed x direction (top speed - speed of deceleration)
-            rb.velocity = new Vector2(speed * transform.right.x * (10f - (dashCooldown * 23)), rb.velocity.y);
+            rb.velocity = new Vector2(speed * transform.right.x * (13f - (dashCooldown * 23)), rb.velocity.y);
         }
     }
 
     void Splash(float offset)
     {
-        if (move > 0){
-            splash.transform.position = new Vector3(transform.position.x + offset, -4.7f, transform.position.z);
-        }
-        else{
-            splash.transform.position = new Vector3(transform.position.x - offset, -4.7f, transform.position.z);
-        }
+        if (transform.position.y < -3.06f)
+        {
+            if (move > 0)
+            {
+                splash.transform.position = new Vector3(transform.position.x + offset, -4.7f, transform.position.z);
+            }
+            else
+            {
+                splash.transform.position = new Vector3(transform.position.x - offset, -4.7f, transform.position.z);
+            }
 
-        if(Mathf.Abs(rb.velocity.x) > 0.9f){
-            splash.Emit(10);
-        }
-        else{
-            splash.Emit(25);
-        }
-        sfxIterS = (sfxIterS + 1) % splashSfx.Length;
-        splashSfx[sfxIterS].Play();        
+            if (Mathf.Abs(rb.velocity.x) > 0.9f)
+            {
+                splash.Emit(10);
+            }
+            else
+            {
+                splash.Emit(25);
+            }
+            sfxIterS = (sfxIterS + 1) % splashSfx.Length;
+            splashSfx[sfxIterS].Play();
+        }            
     }
 
     void AttackSFX(float from)
@@ -429,11 +436,22 @@ public class PlayerController : MonoBehaviour
         anim.speed = 0f;       
     }
 
+    //keep out of boss
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == 11)
         {
-            rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 15).x, rb.velocity.y);
+            rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 3).x, rb.velocity.y-1.5f);
+            col = true;
+        }
+    }
+
+    //push
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 11)
+        {
+            rb.velocity = new Vector2(((other.gameObject.GetComponent<Transform>().position - transform.position).normalized * 50).x, rb.velocity.y);
             col = true;
         }
     }
