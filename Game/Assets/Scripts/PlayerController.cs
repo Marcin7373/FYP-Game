@@ -7,19 +7,21 @@ public class PlayerController : MonoBehaviour
     {{"attack", new string[] {"Attack", "Square"}}, {"jump", new string[] {"Jump", "X"}}, {"dash", new string[] {"Dash", "Circle"}}, {"fade", new string[] {"Fade", "Triangle"}}};
     private Animator anim;
     private Rigidbody2D rb;
-    public Transform groundCheck, cameraTarget;
+    public Transform cameraTarget;
+    public Transform[] groundChecks;
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
     public AudioSource[] splashSfx, attackSfx;
     public float baseSpeed, jumpHeight, lowJumpMult = 0.1f, fallMult = 1.5f, maxDash = 0.4f, minDash = 0.2f, damage = 0.05f;
     private float move, dashCooldown = 0, speed;
-    private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false;
+    private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false, col = false;
     private int sfxIterS = 0, cont = 0; //controller 1=yes 0=no
     [HideInInspector]
     public bool crouch;
 
     void Awake()
     {
+        AudioListener.volume = 0f;
         for (int i = 0; i<Input.GetJoystickNames().Length;i++)
         {
             if (Input.GetJoystickNames()[i].Length > 0)
@@ -89,9 +91,9 @@ public class PlayerController : MonoBehaviour
         }
         
         //inverting to facing direction
-        if ((move < 0 && !dashing && grounded) || (attack && rb.velocity.x < 0)) {
+        if ((move < 0 && !dashing && grounded) || (attack && move < 0)) {
             transform.rotation = Quaternion.Euler(0, 180, transform.eulerAngles.z);
-        } else if ((move > 0 && !dashing && grounded) || (attack && rb.velocity.x > 0))
+        } else if ((move > 0 && !dashing && grounded) || (attack && move > 0))
         {
             transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
         }
@@ -122,7 +124,15 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("crouch", crouch);
         anim.SetBool("run", run);
         anim.SetBool("grounded", grounded);
-        anim.SetFloat("move", Mathf.Abs(move));
+        if (attack)
+        {
+            anim.SetFloat("move", 0);
+        }
+        else
+        {
+            anim.SetFloat("move", Mathf.Abs(move));
+        }
+        
         anim.SetBool("fade", fade);
         anim.SetBool("attack", attack);
 
@@ -148,36 +158,51 @@ public class PlayerController : MonoBehaviour
         }
 
         Dash();
+        if (!col)
+        {
+            if ((crouch && grounded) || attack)
+            {
+                rb.velocity = new Vector2(rb.velocity.x * 0.92f, rb.velocity.y);//crouch slide
+            }
+            else if (run && !dashing && grounded && !crouch) //running
+            {
+                rb.velocity = new Vector2(move * speed * 3, rb.velocity.y);
+            }
+            else if (run && !dashing && !grounded) //run in air
+            {
+                rb.velocity = new Vector2(Mathf.Lerp(move * speed * 3, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
+            }
+            else if (!dashing && !grounded) //walk in air
+            {
+                rb.velocity = new Vector2(Mathf.Lerp(move * speed, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
+            }
+            else if (!dashing && !crouch)//walking
+            {
+                rb.velocity = new Vector2(move * speed, rb.velocity.y);
+            }
 
-        if ((crouch && grounded) || attack)
-        {
-            rb.velocity = new Vector2(rb.velocity.x * 0.92f, rb.velocity.y);//crouch slide
+            if (jump && grounded && !dashing && !attack)//jump
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            }
         }
-        else if (run && !dashing && grounded && !crouch) //running
+        else
         {
-            rb.velocity = new Vector2(move * speed * 3, rb.velocity.y);
-        }
-        else if (run && !dashing && !grounded) //run in air
-        {
-            rb.velocity = new Vector2(Mathf.Lerp(move * speed * 3, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
-        }
-        else if (!dashing && !grounded) //walk in air
-        {
-            rb.velocity = new Vector2(Mathf.Lerp(move * speed, rb.velocity.x, Time.deltaTime * 5), rb.velocity.y);
-        }
-        else if (!dashing && !crouch)//walking
-        {
-            rb.velocity = new Vector2(move * speed, rb.velocity.y);
-        }
-
-        if (jump && grounded && !dashing && !attack)//jump
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            col = false;
         }
     }
 
     private void PlayerInput()
     {
+        if (Input.GetKeyDown("q"))
+        {
+            AudioListener.volume -= 0.1f;
+        }
+        else if (Input.GetKeyDown("w"))
+        {
+            AudioListener.volume += 0.1f;
+        }
+
         if (!jumpPeak && rb.velocity.y < 6 && !grounded) //transition from jump to peak
         {
             anim.SetBool("transition", true);
@@ -237,7 +262,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //ground detection
-        if (Physics2D.Linecast(transform.position, groundCheck.position, groundLayer))
+        if (Physics2D.Linecast(transform.position, groundChecks[0].position, groundLayer) || Physics2D.Linecast(transform.position, groundChecks[1].position, groundLayer) || Physics2D.Linecast(transform.position, groundChecks[2].position, groundLayer))
         {
             if (!grounded)
             {              
@@ -278,7 +303,7 @@ public class PlayerController : MonoBehaviour
             dashing = false;
         }
 
-        if (crouch || dashing || attack)
+        if (crouch || dashing)
         {
             run = false;
             move = 0f;
@@ -346,10 +371,10 @@ public class PlayerController : MonoBehaviour
     void Splash(float offset)
     {
         if (move > 0){
-            splash.transform.position = new Vector3(transform.position.x + offset, -4.6f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x + offset, -4.7f, transform.position.z);
         }
         else{
-            splash.transform.position = new Vector3(transform.position.x - offset, -4.6f, transform.position.z);
+            splash.transform.position = new Vector3(transform.position.x - offset, -4.7f, transform.position.z);
         }
 
         if(Mathf.Abs(rb.velocity.x) > 0.9f){
@@ -402,5 +427,14 @@ public class PlayerController : MonoBehaviour
     void Respawn()
     {       
         anim.speed = 0f;       
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == 11)
+        {
+            rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 15).x, rb.velocity.y);
+            col = true;
+        }
     }
 }

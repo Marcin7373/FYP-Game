@@ -71,6 +71,8 @@
     <Compile Include="Assets\Scripts\BossAI\Actions\SpikeThrust.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Swipe.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\TailSwipe.cs" />
+    <Compile Include="Assets\Scripts\BossAI\BossAttackCol.cs" />
+    <Compile Include="Assets\Scripts\BossAI\BossDetectCol.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\Distance.cs" />
@@ -80,7 +82,6 @@
     <Compile Include="Assets\Scripts\BossAI\Scorers\LearningAccuracy.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\NotRepeat.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\SeePlayer.cs" />
-    <Compile Include="Assets\Scripts\BossAttackCol.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\PlayerAttackCol.cs" />

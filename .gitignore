@@ -2,6 +2,7 @@
 /[Ll]ibrary/
 Game/Temp/UnityLockfile
 Game/Library/PlayerDataCache
+Game/Library/Artifacts
 
 !/[Aa]ssets/**/*.meta
 

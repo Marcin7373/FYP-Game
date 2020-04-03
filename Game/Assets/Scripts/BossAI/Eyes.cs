@@ -11,7 +11,6 @@ public sealed class Eyes : ActionBase
     public float radius = 20f;    
     [ApexSerialization]                   //bottom to top
     public float[] rayAngles = new float[] { 35f, 22f, 10f, 0f, -10f, -18f, -26f, -35f, -45f};
-    private float timePassed = 0f;
     private Transform eyes;
     private Hashtable playerInfo = new Hashtable();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();
@@ -27,7 +26,7 @@ public sealed class Eyes : ActionBase
         for (int i = 0; i < rayAngles.Length; i++)
         {
             target = Quaternion.AngleAxis(rayAngles[i], Vector3.forward) * eyes.right;
-            //Debug.DrawRay(eyes.position, target * radius, Color.green);
+            Debug.DrawRay(eyes.position, target * radius, Color.green);
             rays.Add(Physics2D.Raycast(eyes.position, target, radius, 1 << LayerMask.NameToLayer("Player")));
         }
         
@@ -38,13 +37,12 @@ public sealed class Eyes : ActionBase
                 playerInfo["position"] = rays[i].collider.gameObject.GetComponent<Transform>().position;
                 playerInfo["velocity"] = rays[i].collider.gameObject.GetComponent<Rigidbody2D>().velocity;
                 playerInfo["crouch"] = rays[i].collider.gameObject.GetComponent<PlayerController>().crouch;
-                timePassed = 0f;
+                playerInfo["timePassed"] = 0f;
                 break;
             }
         }
-        timePassed += Time.deltaTime;
-        playerInfo["timePassed"] = timePassed;
-        //playerInfo["isBehind"] = behind;
+
+        playerInfo["timePassed"] = (float)playerInfo["timePassed"] + Time.deltaTime;
         cont.playerInfo = playerInfo;
     }
 }

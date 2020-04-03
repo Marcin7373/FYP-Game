@@ -24,14 +24,14 @@ public class Brain : MonoBehaviour, IContextProvider
     private void Awake()
     {        
         playerInfo["timePassed"] = 10f;
-        playerInfo["position"] = new Vector3(-27, -4, 0);
+        playerInfo["position"] = new Vector3(-27, -10, 0);
         playerInfo["velocity"] = new Vector2(0,0);
         playerInfo["crouch"] = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         splashRed = Instantiate(splashRed, transform.position, transform.rotation);
         splash = Instantiate(splash, transform.position, transform.rotation);
-        context = new AIContext(this.transform, eyes, rb, anim, speed, false, playerInfo, history);
+        context = new AIContext(transform, eyes, rb, anim, speed, false, playerInfo, history);
         temp = history[0,1];
     }
 
@@ -46,14 +46,15 @@ public class Brain : MonoBehaviour, IContextProvider
         if (Health.Instance.CurHealth <= 0.05f && !dead && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             anim.SetTrigger("death");
+            Health.Instance.CurHealth = 0f;
         }
 
         if (context.history[0,1] != temp)
         {
-            PrintHistory(context.history);
+            //PrintHistory(context.history);
         }
         temp = context.history[0,1];
-        Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
+        //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
     }
 
     void Laser(float on)
@@ -68,8 +69,8 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void TailSwipe()
     {
-        longTail.transform.position = new Vector2(((Vector3)playerInfo["position"]).x, longTail.transform.position.y);
-        splash.transform.position = new Vector3(((Vector3)playerInfo["position"]).x, -4.6f, transform.position.z);
+        longTail.transform.position = new Vector2(((Vector3)context.playerInfo["position"]).x, longTail.transform.position.y);
+        splash.transform.position = new Vector3(((Vector3)context.playerInfo["position"]).x, -4.6f, transform.position.z);
         splash.Emit(30);
     }
 
@@ -108,18 +109,6 @@ public class Brain : MonoBehaviour, IContextProvider
             //context.history[0, 1]++;    //history index
         }
         //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
-    }
-
-    public IAIContext GetContext(Guid aiId)
-    {
-        return context;
-    }
-
-    void PrintHistory(float[,] his)
-    {
-        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + " | " + his[5, 0] + "\n \t " +
-        his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F1") + " | " + his[3, 1] + " | " + his[4, 1] + " | " + his[5, 1]);
-        //context.history[2, 1] = 0;
     }
 
     void Dying()
@@ -161,6 +150,17 @@ public class Brain : MonoBehaviour, IContextProvider
         splash.Emit(40);
     }
 
+    public IAIContext GetContext(Guid aiId)
+    {
+        return context;
+    }
+
+    public void DetectCol(Vector3 pos)
+    {
+        context.playerInfo["position"] = pos;
+        context.playerInfo["timePassed"] = 0f;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 9 && dead)
@@ -169,5 +169,12 @@ public class Brain : MonoBehaviour, IContextProvider
             Health.Instance.CurHealth = 1;
             anim.speed = 1f;
         }
+    }
+
+    void PrintHistory(float[,] his)
+    {
+        Debug.Log(his[0, 0] + " | " + his[1, 0] + " | " + his[2, 0] + "     | " + his[3, 0] + " | " + his[4, 0] + " | " + his[5, 0] + "\n \t " +
+        his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F1") + " | " + his[3, 1] + " | " + his[4, 1] + " | " + his[5, 1]);
+        //context.history[2, 1] = 0;
     }
 }
