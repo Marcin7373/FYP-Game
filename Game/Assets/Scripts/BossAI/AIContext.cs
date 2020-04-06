@@ -5,13 +5,12 @@ using Apex.AI;
 
 public class AIContext : IAIContext
 {
-    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, float speed, bool busy, Hashtable playerInfo, float[,] history)
+    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, bool busy, Hashtable playerInfo, float[,] history)
     {
         bossTr = transform;
         bossEyesTr = eyes;
         bossRb = rb;
         bossAnim = anim;
-        bossSpeed = speed;
         this.busy = busy;
         this.playerInfo = playerInfo;
         this.history = history;
@@ -36,12 +35,6 @@ public class AIContext : IAIContext
     }
 
     public Animator bossAnim
-    {
-        get;
-        set;
-    }
-
-    public float bossSpeed
     {
         get;
         set;

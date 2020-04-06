@@ -17,7 +17,7 @@ public sealed class Run : ActionBase
         }
         else
         {
-            c.bossRb.velocity += new Vector2(c.bossTr.right.x * c.bossSpeed, c.bossRb.velocity.y);    
+            //c.bossRb.velocity += new Vector2(c.bossTr.right.x * c.bossSpeed, c.bossRb.velocity.y);    
         }
     }
 }

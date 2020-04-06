@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak;
     public AudioSource[] splashSfx, attackSfx;
-    public float baseSpeed, jumpHeight, lowJumpMult = 1f, fallMult = 4f, maxDash = 0.4f, minDash = 0.2f, damage = 0.05f;
-    private float moveX, moveY, dashCooldown = 0, speed;
+    public float baseSpeed, jumpHeight, lowJumpMult = 1f, fallMult = 4f, maxDash = 0.4f, minDash = 0.2f;
+    private float moveX, moveY, dashCooldown = 0, speed, damage = 0.05f;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false, col = false;
     private int sfxIterS = 0, cont = 0; //controller 1=yes 0=no
     [HideInInspector]
@@ -400,6 +400,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetCont(int cont) => this.cont = cont;
 
+    public void SetDamage(float damage) => this.damage = damage;
+
     //keep out of boss
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -407,16 +409,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 3).x, rb.velocity.y-1.5f);
             col = true;
-        }
-    }
-
-    //push
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 11)
-        {
-            //rb.velocity = new Vector2(((other.gameObject.GetComponent<Transform>().position - transform.position).normalized * 50).x, rb.velocity.y);
-            //col = true;
         }
     }
 }

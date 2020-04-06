@@ -48,22 +48,20 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 5ecba4035376e93459411e79706bfff6, type: 3}
-    - time: 0.05
       value: {fileID: 21300000, guid: f226eafad8fd8f14197d8b80d0ebeb18, type: 3}
-    - time: 0.1
+    - time: 0.05
       value: {fileID: 21300000, guid: 5d9ff173a7e54f347a4bd0dd385cd8c2, type: 3}
-    - time: 0.2
+    - time: 0.1
       value: {fileID: 21300000, guid: 0ae32df7eff92aa469683baa85b65060, type: 3}
-    - time: 0.25
+    - time: 0.15
       value: {fileID: 21300000, guid: e91242fb0e9ff714390a71fa09533977, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 15162cd042735664d993a6d167d5ce3c, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: 15162cd042735664d993a6d167d5ce3c, type: 3}
-    - time: 0.35
       value: {fileID: 21300000, guid: fd0b02ed7b01439499a4458fda0279fd, type: 3}
-    - time: 0.45
+    - time: 0.4
       value: {fileID: 21300000, guid: 15162cd042735664d993a6d167d5ce3c, type: 3}
-    - time: 0.55
+    - time: 0.5
       value: {fileID: 21300000, guid: e91242fb0e9ff714390a71fa09533977, type: 3}
     attribute: m_Sprite
     path: 
@@ -91,7 +89,6 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 5ecba4035376e93459411e79706bfff6, type: 3}
     - {fileID: 21300000, guid: f226eafad8fd8f14197d8b80d0ebeb18, type: 3}
     - {fileID: 21300000, guid: 5d9ff173a7e54f347a4bd0dd385cd8c2, type: 3}
     - {fileID: 21300000, guid: 0ae32df7eff92aa469683baa85b65060, type: 3}
@@ -154,6 +151,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: CanHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.05
     functionName: Splash
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -161,9 +165,9 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.1
-    functionName: CanHit
+    functionName: Splash
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 1.2
     intParameter: 0
     messageOptions: 0

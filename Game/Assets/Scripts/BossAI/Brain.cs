@@ -8,16 +8,15 @@ public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe TailS
     private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
     public Transform eyes, longTail, shortTail;
-    public ParticleSystem laser, splash, splashSmall, splashLine;
+    public ParticleSystem laser, shockWave, splash, splashSmall, splashLine;
     public AudioSource[] sfxSrc;
     public AudioClip[] sfxClips;
-    public float speed = 1f, dmgScale = 1f;
     private Rigidbody2D rb;
     private Animator anim;
     public Hashtable playerInfo = new Hashtable();
     private AIContext context;             //Current    Bite      Laser     Swipe   TailSwipe  SpikeThrust
     public float[,] history = new float[,] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
-    private float temp;
+    private float dmgScale = 1f, debugTemp;
     private bool dead = false;
     private int sfxIter = 0;
 
@@ -32,8 +31,8 @@ public class Brain : MonoBehaviour, IContextProvider
         splashSmall = Instantiate(splashSmall, transform.position, transform.rotation);
         splash = Instantiate(splash, transform.position, transform.rotation);
         splashLine = Instantiate(splashLine, transform.position, transform.rotation);
-        context = new AIContext(transform, eyes, rb, anim, speed, false, playerInfo, history);
-        temp = history[0,1];
+        context = new AIContext(transform, eyes, rb, anim, false, playerInfo, history);
+        debugTemp = history[0,1];
     }
 
     private void Start()
@@ -50,11 +49,11 @@ public class Brain : MonoBehaviour, IContextProvider
             Health.Instance.CurHealth = 0f;
         }
 
-        if (context.history[0,1] != temp)
+        if (context.history[0,1] != debugTemp)
         {
             //PrintHistory(context.history);
         }
-        temp = context.history[0,1];
+        debugTemp = context.history[0,1];
         //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
     }
 
@@ -159,6 +158,8 @@ public class Brain : MonoBehaviour, IContextProvider
         }
     }
 
+    void Push() => shockWave.Play();
+
     public IAIContext GetContext(Guid aiId)
     {
         return context;
@@ -186,4 +187,6 @@ public class Brain : MonoBehaviour, IContextProvider
         his[0, 1] + " | " + his[1, 1] + " | " + his[2, 1].ToString("F1") + " | " + his[3, 1] + " | " + his[4, 1] + " | " + his[5, 1]);
         //context.history[2, 1] = 0;
     }
+
+    public void SetDmgScale(float dmgScale) => this.dmgScale = dmgScale;
 }

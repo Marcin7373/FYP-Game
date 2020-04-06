@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float volume = 0f;
+    public float volume = 0f, difficulty = 2f;
     public Brain brain;
     public PlayerController player;
     private int cont = 0;
@@ -37,6 +37,21 @@ public class GameManager : MonoBehaviour
         if ((Input.GetKeyDown("w") || Input.GetAxisRaw("DPadY") == 1f) && AudioListener.volume < 1f)
         {
             AudioListener.volume += (0.2f * Time.deltaTime);
+        }
+
+        if (difficulty < 2f) //easy
+        {
+            player.SetDamage(0.065f);
+            brain.SetDmgScale(0.9f);
+        }else if ( difficulty == 2f) //medium
+        {
+            player.SetDamage(0.06f);
+            brain.SetDmgScale(1f);
+        }
+        else if (difficulty > 2f) //hard
+        {
+            player.SetDamage(0.05f);
+            brain.SetDmgScale(1.15f);
         }
     }
 
