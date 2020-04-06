@@ -8,7 +8,7 @@ public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe TailS
     private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
     public Transform eyes, longTail, shortTail;
-    public ParticleSystem laser, splash, splashRed;
+    public ParticleSystem laser, splash, splashSmall, splashLine;
     public AudioSource[] sfxSrc;
     public AudioClip[] sfxClips;
     public float speed = 1f, dmgScale = 1f;
@@ -29,8 +29,9 @@ public class Brain : MonoBehaviour, IContextProvider
         playerInfo["crouch"] = false;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        splashRed = Instantiate(splashRed, transform.position, transform.rotation);
+        splashSmall = Instantiate(splashSmall, transform.position, transform.rotation);
         splash = Instantiate(splash, transform.position, transform.rotation);
+        splashLine = Instantiate(splashLine, transform.position, transform.rotation);
         context = new AIContext(transform, eyes, rb, anim, speed, false, playerInfo, history);
         temp = history[0,1];
     }
@@ -70,7 +71,7 @@ public class Brain : MonoBehaviour, IContextProvider
     void TailSwipe()
     {
         longTail.transform.position = new Vector2(((Vector3)context.playerInfo["position"]).x, longTail.transform.position.y);
-        splash.transform.position = new Vector3(((Vector3)context.playerInfo["position"]).x, -4.6f, transform.position.z);
+        splash.transform.position = new Vector3(((Vector3)context.playerInfo["position"]).x, -5.2f, transform.position.z);
         splash.Emit(30);
     }
 
@@ -139,15 +140,23 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void Splash(float offset)
     {
-        if (transform.rotation.eulerAngles.y == 0)
+        if (offset != 0)
         {
-            splash.transform.position = new Vector3(transform.position.x - offset, -4.6f, transform.position.z);
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+                splash.transform.position = new Vector3(transform.position.x - offset, -5.2f, transform.position.z);
+            }
+            else if (transform.rotation.eulerAngles.y == 180)
+            {
+                splash.transform.position = new Vector3(transform.position.x + offset, -5.2f, transform.position.z);
+            }
+            splash.Emit(40);
         }
-        else if(transform.rotation.eulerAngles.y == 180)
+        else
         {
-            splash.transform.position = new Vector3(transform.position.x + offset, -4.6f, transform.position.z);
+            splashLine.transform.position = new Vector3(transform.position.x + offset, -4.9f, transform.position.z);
+            splashLine.Emit(25);
         }
-        splash.Emit(40);
     }
 
     public IAIContext GetContext(Guid aiId)

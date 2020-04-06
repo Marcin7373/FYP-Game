@@ -139,12 +139,12 @@ TextureImporter:
         parentId: 3
       - name: spine5
         position: {x: 112.25441, y: -0.000021019016, z: 1}
-        rotation: {x: 0, y: 0, z: 0.24833809, w: 0.9686734}
-        length: 135.37521
+        rotation: {x: 0, y: 0, z: 0.24833821, w: 0.9686734}
+        length: 135.37524
         parentId: 4
       - name: head
-        position: {x: 135.37523, y: -0.000021531137, z: 1}
-        rotation: {x: 0, y: 0, z: 0.6575852, w: 0.7533802}
+        position: {x: 135.3752, y: -0.000030888543, z: 1}
+        rotation: {x: 0, y: 0, z: 0.6575852, w: 0.75338024}
         length: 183.69293
         parentId: 5
       - name: eye
@@ -6751,13 +6751,13 @@ TextureImporter:
         length: 185.97757
         parentId: 0
       - name: L_tail3
-        position: {x: 185.97755, y: 0.00013289409, z: 0}
+        position: {x: 185.97755, y: 0.00011763599, z: 0}
         rotation: {x: 0, y: 0, z: 0.00713459, w: 0.99997455}
         length: 148.80403
         parentId: 1
       - name: L_tail4
-        position: {x: 148.80403, y: 0.0008720789, z: 0}
-        rotation: {x: 0, y: 0, z: -0.03067718, w: 0.9995294}
+        position: {x: 148.80403, y: 0.00087971037, z: 0}
+        rotation: {x: 0, y: 0, z: -0.030677224, w: 0.99952936}
         length: 235.71948
         parentId: 2
       spriteID: 099c196a7dfcc384fb28cbe120d1343a
