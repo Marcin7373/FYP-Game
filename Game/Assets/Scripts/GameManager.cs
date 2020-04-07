@@ -39,6 +39,14 @@ public class GameManager : MonoBehaviour
             AudioListener.volume += (0.2f * Time.deltaTime);
         }
 
+        if (Input.GetKeyDown("1")) {
+            difficulty = 1f;
+        }else if (Input.GetKeyDown("2")) {
+            difficulty = 2f;
+        }else if (Input.GetKeyDown("3")) {
+            difficulty = 3f;
+        }
+
         if (difficulty < 2f) //easy
         {
             player.SetDamage(0.065f);
