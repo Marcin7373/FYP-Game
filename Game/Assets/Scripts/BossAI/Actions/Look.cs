@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Apex.AI;
+﻿using Apex.AI;
 
 public sealed class Look : ActionBase
 {
@@ -16,5 +15,5 @@ public sealed class Look : ActionBase
             c.history[0, 0] = ID;
             c.history[0, 1]++;    //history index
         }        
-    }
+    }   
 }

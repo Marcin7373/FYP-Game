@@ -5,7 +5,7 @@ using Apex.AI;
 using System;
 
 public class Brain : MonoBehaviour, IContextProvider
-{                                                 //Bite Laser Swipe TailS
+{                                                 //Bite Laser Swipe  TailS  Spike
     private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
     public Transform eyes, longTail, shortTail;
     public ParticleSystem laser, shockWave, splash, splashSmall, splashLine;
@@ -73,6 +73,10 @@ public class Brain : MonoBehaviour, IContextProvider
         splash.transform.position = new Vector3(((Vector3)context.playerInfo["position"]).x, -5.2f, transform.position.z);
         splash.Emit(30);
     }
+
+    void Push() => longTail.transform.position = new Vector2(transform.position.x, longTail.transform.position.y);
+
+    void ShockWave() => shockWave.Play();
 
     void FlipBoss()
     {
@@ -157,8 +161,6 @@ public class Brain : MonoBehaviour, IContextProvider
             splashLine.Emit(25);
         }
     }
-
-    void Push() => shockWave.Play();
 
     public IAIContext GetContext(Guid aiId)
     {

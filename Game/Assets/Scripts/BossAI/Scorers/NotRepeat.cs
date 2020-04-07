@@ -8,7 +8,7 @@ public class NotRepeat : ContextualScorerBase
     [ApexSerialization, FriendlyName("ID", "If ID of last attack matches score is set to given score")]
     public int ID;
     [ApexSerialization]
-    public float repeatScore = -20;
+    public float repeatScore = -20, minScore = 0f;
 
     public override float Score(IAIContext context)
     {
@@ -20,7 +20,7 @@ public class NotRepeat : ContextualScorerBase
         }
         else
         {
-            return score = 0;
+            return score = minScore;
         }
     }
 }

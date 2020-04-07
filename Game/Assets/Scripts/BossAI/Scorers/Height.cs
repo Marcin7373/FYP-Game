@@ -27,7 +27,6 @@ public class Height : ContextualScorerBase
         {
             score = 0;
         }
-        //Debug.Log(score + "  "+ ypos+ "  "+ ((Vector2)c.playerInfo["velocity"]).y);
 
         return score;
     }
