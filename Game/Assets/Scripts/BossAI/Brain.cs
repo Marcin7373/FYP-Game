@@ -8,6 +8,7 @@ public class Brain : MonoBehaviour, IContextProvider
 {                                                 //Bite Laser Swipe  TailS  Spike
     private readonly float[] damage = new float[] { 0.2f, 0.16f, 0.1f, 0.1f, 0.1f };
     public Transform eyes, longTail, shortTail;
+    public GameObject missile;
     public ParticleSystem laser, shockWave, splash, splashSmall, splashLine;
     public AudioSource[] sfxSrc;
     public AudioClip[] sfxClips;
@@ -31,7 +32,7 @@ public class Brain : MonoBehaviour, IContextProvider
         splashSmall = Instantiate(splashSmall, transform.position, transform.rotation);
         splash = Instantiate(splash, transform.position, transform.rotation);
         splashLine = Instantiate(splashLine, transform.position, transform.rotation);
-        context = new AIContext(transform, eyes, rb, anim, false, playerInfo, history);
+        context = new AIContext(transform, eyes, rb, anim, false, playerInfo, history, missile);
         debugTemp = history[0,1];
     }
 

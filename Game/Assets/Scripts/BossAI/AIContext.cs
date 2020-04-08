@@ -5,7 +5,7 @@ using Apex.AI;
 
 public class AIContext : IAIContext
 {
-    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, bool busy, Hashtable playerInfo, float[,] history)
+    public AIContext(Transform transform, Transform eyes, Rigidbody2D rb, Animator anim, bool busy, Hashtable playerInfo, float[,] history, GameObject missile)
     {
         bossTr = transform;
         bossEyesTr = eyes;
@@ -14,6 +14,7 @@ public class AIContext : IAIContext
         this.busy = busy;
         this.playerInfo = playerInfo;
         this.history = history;
+        this.missile = missile;
     }
 
     public Transform bossTr
@@ -53,6 +54,12 @@ public class AIContext : IAIContext
     }
 
     public float[,] history
+    {
+        get;
+        set;
+    }
+
+    public GameObject missile
     {
         get;
         set;

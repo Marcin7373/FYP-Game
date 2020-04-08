@@ -53,9 +53,12 @@ MonoBehaviour:
     Assembly-CSharp","ID":5,"repeatScore":-30,"minScore":0}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Push, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
     Assembly-CSharp","minRange":4,"maxRange":6,"scoreMin":10,"scoreMax":50},{"@type":"NotRepeat,
-    Assembly-CSharp","ID":8,"repeatScore":-40,"minScore":0}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","ID":8,"repeatScore":-40,"minScore":0}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"HomingMissile, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
+    Assembly-CSharp","minRange":11.5,"maxRange":20,"scoreMin":25,"scoreMax":35},{"@type":"IsActive,
+    Assembly-CSharp","not":false,"newScore":-50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
-  editorConfiguration: '{"offset":{"@x":-83,"@y":42},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-3,"@top":122,"@width":160,"@height":176},"QualifierView":{"ActionView":{"Description":"7"}},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":205,"@top":122,"@width":160,"@height":368},"QualifierView":{"ActionView":{"Description":"ID
+  editorConfiguration: '{"offset":{"@x":-83,"@y":42},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-3,"@top":122,"@width":160,"@height":176},"QualifierView":{"ActionView":{"Description":"7"}},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":205,"@top":122,"@width":160,"@height":416},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID
     3"}},"QualifierView":{"ActionView":{"Description":"ID 4"}},"QualifierView":{"ActionView":{"Description":"ID
-    5"}},"QualifierView":{"ActionView":{"Description":"ID 8"}},"DefaultQualifier":{}}}'
+    5"}},"QualifierView":{"ActionView":{"Description":"ID 8"}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'

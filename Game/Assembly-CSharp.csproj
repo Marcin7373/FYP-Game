@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\BgParallax.cs" />
     <Compile Include="Assets\Scripts\BossAI\AIContext.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Bite.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Actions\HomingMissile.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Laser.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Look.cs" />
     <Compile Include="Assets\Scripts\BossAI\Actions\Push.cs" />
@@ -77,8 +78,10 @@
     <Compile Include="Assets\Scripts\BossAI\BossDetectCol.cs" />
     <Compile Include="Assets\Scripts\BossAI\Brain.cs" />
     <Compile Include="Assets\Scripts\BossAI\Eyes.cs" />
+    <Compile Include="Assets\Scripts\BossAI\MissileFollow.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\Distance.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\Height.cs" />
+    <Compile Include="Assets\Scripts\BossAI\Scorers\IsActive.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\IsCrouching.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\IsMoving.cs" />
     <Compile Include="Assets\Scripts\BossAI\Scorers\LearningAccuracy.cs" />
