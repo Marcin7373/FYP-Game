@@ -14,7 +14,16 @@ public class HomingMissile : ActionBase
             c.busy = true;
             c.history[0,0] = ID;  //current
             c.history[0, 1]++;    //history index
-            c.missile.transform.position = new Vector3(c.bossTr.position.x-3.34f, c.bossTr.position.y+1.46f, 0);
+
+            if (c.bossTr.rotation.y == 0)
+            {
+                c.missile.transform.position = new Vector3(c.bossTr.position.x - 3.34f, c.bossTr.position.y + 1.46f, 0);
+            }
+            else if (c.bossTr.rotation.y == 1)
+            {
+                c.missile.transform.position = new Vector3(c.bossTr.position.x + 3.34f, c.bossTr.position.y + 1.46f, 0);
+            }
+            
             c.missile.SetActive(true);
         } 
     }

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTarget;
     public Transform[] groundChecks;
     public LayerMask groundLayer;
-    public ParticleSystem splash, trail, trail2, trailCloak;
+    public ParticleSystem splash, trail, trail2, trailCloak, attackHitEffect, playerHitEffect;
     public AudioSource[] splashSfx, attackSfx;
     public float baseSpeed, jumpHeight, lowJumpMult = 1f, fallMult = 4f, maxDash = 0.4f, minDash = 0.2f;
     private float moveX, moveY, dashCooldown = 0, speed, damage = 0.05f;
@@ -386,8 +386,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SetDashEnd() => anim.SetBool("dashEnd", false);
-
     public void Attack()
     {
         Health.Instance.CurHealth -= damage;
@@ -397,6 +395,8 @@ public class PlayerController : MonoBehaviour
     {       
         anim.speed = 0f;       
     }
+
+    void SetDashEnd() => anim.SetBool("dashEnd", false);
 
     public void SetCont(int cont) => this.cont = cont;
 
@@ -409,6 +409,14 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 3).x, rb.velocity.y-1.5f);
             col = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 13)
+        {
+            playerHitEffect.Play();
         }
     }
 }

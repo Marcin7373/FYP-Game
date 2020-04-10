@@ -40,7 +40,7 @@ MonoBehaviour:
     Assembly-CSharp","scoreMin":0,"scoreMax":10,"ID":3,"minFrequency":3},{"@type":"NotRepeat,
     Assembly-CSharp","ID":3,"repeatScore":-30,"minScore":0}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"TailSwipe, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
-    Assembly-CSharp","minRange":10,"maxRange":25,"scoreMin":0,"scoreMax":20},{"@type":"Height,
+    Assembly-CSharp","minRange":10,"maxRange":21,"scoreMin":0,"scoreMax":20},{"@type":"Height,
     Assembly-CSharp","maxPosY":4.1999998,"minPosY":-2.8499999,"scoreMin":0,"scoreMax":10},{"@type":"IsMoving,
     Assembly-CSharp","maxSpeed":7.1999998,"minSpeed":0,"scoreMin":0,"scoreMax":20},{"@type":"LearningAccuracy,
     Assembly-CSharp","scoreMin":0,"scoreMax":10,"ID":4,"minFrequency":3},{"@type":"NotRepeat,
@@ -53,12 +53,13 @@ MonoBehaviour:
     Assembly-CSharp","ID":5,"repeatScore":-30,"minScore":0}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Push, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
     Assembly-CSharp","minRange":4,"maxRange":6,"scoreMin":10,"scoreMax":50},{"@type":"NotRepeat,
-    Assembly-CSharp","ID":8,"repeatScore":-40,"minScore":0}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","ID":8,"repeatScore":-40,"minScore":0},{"@type":"IsActive, Assembly-CSharp","not":false,"newScore":-50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"HomingMissile, Assembly-CSharp"},"_scorers":[{"@type":"Distance,
     Assembly-CSharp","minRange":11.5,"maxRange":20,"scoreMin":25,"scoreMax":35},{"@type":"IsActive,
-    Assembly-CSharp","not":false,"newScore":-50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","not":false,"newScore":-50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","_scorers":[{"@type":"Distance, Assembly-CSharp","minRange":20,"maxRange":22,"scoreMin":35,"scoreMax":25}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":0}}]}'
-  editorConfiguration: '{"offset":{"@x":-83,"@y":42},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-3,"@top":122,"@width":160,"@height":176},"QualifierView":{"ActionView":{"Description":"7"}},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":205,"@top":122,"@width":160,"@height":416},"QualifierView":{"ActionView":{"Description":"ID
+  editorConfiguration: '{"offset":{"@x":-76,"@y":-48},"zoom":1,"SelectorView":{"ViewArea":{"@left":24,"@top":52,"@width":200,"@height":220},"QualifierView":{"ActionView":{"Description":"7"}},"QualifierView":{"ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":284,"@top":52,"@width":200,"@height":580},"QualifierView":{"ActionView":{"Description":"ID
     1"}},"QualifierView":{"ActionView":{"Description":"ID 2"}},"QualifierView":{"ActionView":{"Description":"ID
     3"}},"QualifierView":{"ActionView":{"Description":"ID 4"}},"QualifierView":{"ActionView":{"Description":"ID
-    5"}},"QualifierView":{"ActionView":{"Description":"ID 8"}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'
+    5"}},"QualifierView":{"ActionView":{"Description":"ID 8"}},"QualifierView":{"ActionView":{}},"QualifierView":{},"DefaultQualifier":{}}}'

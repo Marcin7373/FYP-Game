@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
     public float volume = 0f, difficulty = 2f;
     public Brain brain;
     public PlayerController player;
-    private int cont = 0;
+    private int cont = 0, deadCount = 0;
+    private bool dead = false;
 
     void Awake()
     {
@@ -29,15 +30,37 @@ public class GameManager : MonoBehaviour
             Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         }
 
-        if ((Input.GetKeyDown("q") || Input.GetAxisRaw("DPadY") == -1f) && AudioListener.volume > 0f)
+        //Audio
+        if (AudioListener.volume > 0f)
         {
-            AudioListener.volume -= (0.2f * Time.deltaTime);
+            if (Input.GetKeyDown("q")) {
+                AudioListener.volume -= 0.1f;
+            }
+
+            if (Input.GetAxisRaw("DPadY") == -1f)
+            {
+                AudioListener.volume -= (0.2f * Time.deltaTime);
+            }
         }
 
-        if ((Input.GetKeyDown("w") || Input.GetAxisRaw("DPadY") == 1f) && AudioListener.volume < 1f)
+        if (AudioListener.volume < 1f)
         {
-            AudioListener.volume += (0.2f * Time.deltaTime);
+            if (Input.GetKeyDown("w")) {
+                AudioListener.volume += 0.1f;
+            }
+
+            if (Input.GetAxisRaw("DPadY") == 1f)
+            {
+                AudioListener.volume += (0.2f * Time.deltaTime);
+            }
         }
+
+        if (brain.GetDead() && !dead)
+        {
+            dead = true;
+            deadCount++;
+        }
+        dead = brain.GetDead();
 
         if (Input.GetKeyDown("1")) {
             difficulty = 1f;
@@ -49,17 +72,17 @@ public class GameManager : MonoBehaviour
 
         if (difficulty < 2f) //easy
         {
-            player.SetDamage(0.065f);
-            brain.SetDmgScale(0.9f);
-        }else if ( difficulty == 2f) //medium
-        {
             player.SetDamage(0.06f);
             brain.SetDmgScale(1f);
+        }else if ( difficulty == 2f) //medium
+        {
+            player.SetDamage(0.04f);
+            brain.SetDmgScale(1.2f);
         }
         else if (difficulty > 2f) //hard
         {
-            player.SetDamage(0.05f);
-            brain.SetDmgScale(1.15f);
+            player.SetDamage(0.03f);
+            brain.SetDmgScale(1.2f + (deadCount * 0.2f));
         }
     }
 

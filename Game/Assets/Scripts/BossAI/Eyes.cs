@@ -8,9 +8,9 @@ using Apex.Serialization;
 public sealed class Eyes : ActionBase
 {  
     [ApexSerialization]
-    public float radius = 20f;    
+    public float radius = 22f;    
     [ApexSerialization]                   //bottom to top
-    public float[] rayAngles = new float[] { 35f, 22f, 10f, 0f, -10f, -18f, -26f, -35f, -45f};
+    public float[] rayAngles = new float[] { 37f, 32f, 26f, 20f, 14f, 8f, 2f, -5f, -12f, -19f, -25f, -30f, -37f, -45f, -50f};
     private Transform eyes;
     private Hashtable playerInfo = new Hashtable();
     private List<RaycastHit2D> rays = new List<RaycastHit2D>();

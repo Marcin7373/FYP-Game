@@ -10,6 +10,7 @@ public class PlayerAttackCol : MonoBehaviour
         if (other.gameObject.layer == 11)
         {
             player.Attack();
+            player.attackHitEffect.Play();
         }
     }
 }

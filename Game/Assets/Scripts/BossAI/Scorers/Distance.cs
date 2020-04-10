@@ -12,7 +12,7 @@ public class Distance : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         var c = (AIContext)context;
-        if ((c.bossTr.position.x >= ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 0) || (c.bossTr.position.x < ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 1))
+        if ((c.bossTr.position.x - 1 >= ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 0) || (c.bossTr.position.x + 1 < ((Vector3)c.playerInfo["position"]).x && c.bossTr.rotation.y == 1))
         {
             distance = ((Vector3)c.playerInfo["position"] - c.bossTr.position).magnitude;
         }
