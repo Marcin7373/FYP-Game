@@ -11,6 +11,7 @@ public class PlayerAttackCol : MonoBehaviour
         {
             player.Attack();
             player.attackHitEffect.Play();
+            player.hitSfx[1].Play();
         }
     }
 }

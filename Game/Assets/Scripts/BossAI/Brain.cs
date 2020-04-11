@@ -52,7 +52,7 @@ public class Brain : MonoBehaviour, IContextProvider
 
         if (context.history[0,1] != debugTemp)
         {
-            PrintHistory(context.history);
+            //PrintHistory(context.history);
         }
         debugTemp = context.history[0,1];
         //Debug.Log(Vector3.Distance(transform.position, (Vector3)context.playerInfo["position"]));
@@ -77,7 +77,11 @@ public class Brain : MonoBehaviour, IContextProvider
 
     void Push() => longTail.transform.position = new Vector2(transform.position.x, longTail.transform.position.y);
 
-    void ShockWave() => shockWave.Play();
+    void ShockWave()
+    {
+        shockWave.Play();
+        SFX(7);
+    }
 
     void FlipBoss()
     {
@@ -110,9 +114,6 @@ public class Brain : MonoBehaviour, IContextProvider
             Health.Instance.CurHealth += baseDamage;
             context.history[0, 1]++;    //history index
             historyIndex = context.history[0, 1];
-        }else if (state == 2 && context.history[0,0] == 2)
-        {
-            //context.history[0, 1]++;    //history index
         }
     }
 

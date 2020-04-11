@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
         transform.position = new Vector3(bossPos.x, transform.position.y, transform.position.z);
         curHealth = Mathf.Clamp(curHealth, 0, 2);
 
-        if ((curHealth > 0 || curHealth < 2f ) && !dead) {
+        if ((curHealth > 0 || curHealth < 1.95f ) && !dead) {
             transform.localScale = new Vector3(Mathf.Lerp(transform.localScale.x, curHealth, 0.2f), transform.localScale.y, transform.localScale.z);
         }
         else if(dead)

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform[] groundChecks;
     public LayerMask groundLayer;
     public ParticleSystem splash, trail, trail2, trailCloak, attackHitEffect, playerHitEffect;
-    public AudioSource[] splashSfx, attackSfx;
+    public AudioSource[] splashSfx, attackSfx, hitSfx;
     public float baseSpeed, jumpHeight, lowJumpMult = 1f, fallMult = 4f, maxDash = 0.4f, minDash = 0.2f;
     private float moveX, moveY, dashCooldown = 0, speed, damage = 0.05f;
     private bool jump, run, grounded, falling, jumpPeak, dashing = false, attack = false, fade = false, col = false;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //dying
-        if (Health.Instance.CurHealth >= 2f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        if (Health.Instance.CurHealth >= 1.95f && !anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             anim.SetTrigger("death");
             moveX = 0f;
@@ -409,6 +409,18 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(((-(other.GetContact(0).point - (Vector2)transform.position).normalized) * 3).x, rb.velocity.y-1.5f);
             col = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 13)
+        {
+            playerHitEffect.Play();
+            if (!hitSfx[0].isPlaying)
+            {
+                hitSfx[0].Play();
+            }          
         }
     }
 
