@@ -14,28 +14,28 @@ Controller is recommended.
 Controller or lack of one is detected automatically:
 
 ### PS4
-Circle   = dash
-X        = jump
-Square   = attack
-Triangle = fade (pass through attacks but lose health)
-Down     = crouch
-D-Pad up, down = volume
+Circle   = dash  
+X        = jump  
+Square   = attack  
+Triangle = fade (pass through attacks but lose health)  
+Down     = crouch  
+D-Pad up, down = volume  
 
 ### Keyboard
-c        = attack
-x        = dash
-z        = fade (pass through attacks but lose health)
-up       = jump
-down     = crouch
+c        = attack  
+x        = dash  
+z        = fade (pass through attacks but lose health)  
+up       = jump  
+down     = crouch  
 
 
-esc      = quit
-q        = volume down
-w        = volume up
-difficulty
-1        = easy
-2        = medium
-3        = hard 
+esc      = quit  
+q        = volume down  
+w        = volume up  
+difficulty  
+'1'        = easy  
+'2'        = medium  
+'3'        = hard  
 
 ## Gameplay Examples
 ![Prototype](https://github.com/Marcin7373/FYP-Game/blob/master/Kra/RayCasting.PNG?raw=true) 
